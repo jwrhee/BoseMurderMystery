@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class FramesInputController : MonoBehaviour
+public class GestureControl : MonoBehaviour
 {
    
     public static event Action OnDoubleTap;
