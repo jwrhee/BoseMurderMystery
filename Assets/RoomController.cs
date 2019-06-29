@@ -23,15 +23,18 @@ public class RoomController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Wait untill sysnced up
 
         butler.audio.clip = clipStartQuestioning;
         butler.audio.Play();
 
-
+        LeanTween.delayedCall(6f, () => { SetState(RoomState.QUESTIONING); });
     }
 
-    //void SetState
+    void SetState(RoomState setState)
+    {
+        state = setState;
+    }
 
     // Update is called once per frame
     void Update()
