@@ -161,7 +161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &48518438
 GameObject:
@@ -859,7 +859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274194390
 GameObject:
@@ -965,11 +965,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293708233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2751, y: 17323, z: 0}
+  m_LocalPosition: {x: -482, y: 16208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &293708235
 MonoBehaviour:
@@ -985,8 +985,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "Well, you\u2019re the only option, so\nyou have to try anyway.\nEveryone,
-    gather into the drawing room."
+  text: 'You must let me know if you find
+
+    it. I must have my medicine.'
   source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!1 &310516512
@@ -1111,6 +1112,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323254982}
   m_CullTransparentMesh: 0
+--- !u!1 &329250216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329250218}
+  - component: {fileID: 329250217}
+  m_Layer: 0
+  m_Name: 1.Bosely.8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &329250217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329250216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "Let\u2019s ask them some more questions, then."
+  source: {fileID: 0}
+  yesEvent: {fileID: 0}
+  noEvent: {fileID: 0}
+--- !u!4 &329250218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329250216}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2256, y: 21289, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345924319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,8 +1206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "Oh hello, darling! I\u2019m so glad you could join us. My husband Lord Reginald
-    is in his study, but he should be down any moment. Would you like a cocktail?"
+  text: "Oh hello! I\u2019m so glad you could\njoin us. My husband Lord Reginald\nis
+    in his study, but he should be\ndown any moment. Would you like a\ncocktail?"
   source: {fileID: 0}
   yesEvent: {fileID: 1799246045}
   noEvent: {fileID: 1899627950}
@@ -2968,7 +3018,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &417587407
 MonoBehaviour:
@@ -3187,7 +3237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529888069
 GameObject:
@@ -3679,9 +3729,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "Well golly! Howdy. I\u2019ve never met a\nfamous detective before. I\u2019m
-    Mr. Watts, Lord Reginald\u2019s new business partner. It sure is swell to meet
-    you. Do you know anything about the plastics industry?"
+  text: "Well golly! Howdy. I\u2019ve never met a famous detective before. I\u2019m
+    Mr.\nWatts, Lord Reginald\u2019s new business partner. It sure is swell to meet\nyou.\n\nDo
+    you know anything about the plastics industry?"
   source: {fileID: 0}
   yesEvent: {fileID: 744771142}
   noEvent: {fileID: 2052129757}
@@ -3897,7 +3947,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &684388233
 GameObject:
@@ -4026,6 +4076,7 @@ Transform:
   - {fileID: 1518826828}
   - {fileID: 394795244}
   - {fileID: 1542366926}
+  - {fileID: 1407332404}
   - {fileID: 1381049133}
   - {fileID: 417587406}
   - {fileID: 1407534257}
@@ -4041,9 +4092,67 @@ Transform:
   - {fileID: 1261335141}
   - {fileID: 1302529468}
   - {fileID: 293708234}
+  - {fileID: 1317694018}
+  - {fileID: 861781236}
+  - {fileID: 729565490}
+  - {fileID: 862261192}
+  - {fileID: 2070662960}
+  - {fileID: 1423952974}
+  - {fileID: 329250218}
+  - {fileID: 2143622797}
   m_Father: {fileID: 180530332}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &729565489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729565490}
+  - component: {fileID: 729565491}
+  m_Layer: 0
+  m_Name: 1.Agatha.7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729565490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729565489}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11, y: 18254, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729565491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729565489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "The way she parades around, all\n\u201Cdear Reggie\u201D this and \u201Cmy
+    darling\u201D that. And of course, she\u2019s quite emotionally unstable. Who
+    knows what a scorned Frenchwoman could be capable of?"
+  source: {fileID: 0}
+  nextEvent: {fileID: 862261191}
 --- !u!1 &744771142
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,8 +4447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "\u2018Ello, mon ami. Allow me to introduce myself, I am Mademoiselle Draguer,
-    the famous chanteuse. Have you heard of me?\t"
+  text: "\u2018Ello, mon ami. Allow me to\nintroduce myself, I am Mademoiselle\nDraguer,
+    the famous chanteuse. Have\nyou heard of me?"
   source: {fileID: 0}
   yesEvent: {fileID: 866839689}
   noEvent: {fileID: 85625882}
@@ -4388,9 +4497,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "What what, young chap! Welcome to\nthe party. I\u2019m Captain Crosby, Lord\nReginald\u2019s
-    old pal. We fought in\nthe war together, though that was a\nlong time ago. Have
-    you ever fought\nin a war, whippersnapper?"
+  text: "What what, young chap! Welcome to\nthe party. I\u2019m Captain Cammish,\nLord
+    Reginald\u2019s old pal. We fought\nin the war together, though that\nwas a long
+    time ago. Have you ever\nfought in a war, whippersnapper?"
   source: {fileID: 0}
   yesEvent: {fileID: 377751177}
   noEvent: {fileID: 1132206171}
@@ -4759,6 +4868,105 @@ Transform:
   m_Father: {fileID: 697228830}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &861781235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861781236}
+  - component: {fileID: 861781237}
+  m_Layer: 0
+  m_Name: 1.Agatha.6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &861781236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861781235}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29, y: 17724, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &861781237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861781235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "Well of course, he was having an\naffair with that hussy Mademoiselle Draguer.
+    Isn\u2019t it obvious?"
+  source: {fileID: 0}
+  yesEvent: {fileID: 729565489}
+  noEvent: {fileID: 729565489}
+--- !u!1 &862261191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 862261192}
+  - component: {fileID: 862261193}
+  m_Layer: 0
+  m_Name: 1.Agatha.8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &862261192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862261191}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1249, y: 18692, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &862261193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862261191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "And I know that Watts and Crosby\nwill both be disappointed now that they\u2019ll
+    never be able to get back their money from my poor late husband."
+  source: {fileID: 0}
+  nextEvent: {fileID: 1154659055}
 --- !u!1 &865914056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,7 +5362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &937047829
 GameObject:
@@ -5283,7 +5491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057387982
 GameObject:
@@ -5396,7 +5604,7 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "It was so nice of Reggie to invite you. He is such a dear. Such a lovely
-    man. I\u2019m sure the evening will be quite, how you say, enchante\u0301."
+    man. I\u2019m sure the evening will be quite, how you say, enchant\xE9."
   source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!4 &1071294370
@@ -5546,7 +5754,8 @@ MonoBehaviour:
   - {fileID: 1521943789}
   - {fileID: 31511766}
   - {fileID: 1261335140}
-  nextEvent: {fileID: 0}
+  - {fileID: 1317694017}
+  nextEvent: {fileID: 2070662958}
 --- !u!4 &1154659057
 Transform:
   m_ObjectHideFlags: 0
@@ -5555,11 +5764,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154659055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4192, y: 16727, z: 0}
+  m_LocalPosition: {x: -4082, y: 16727, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179181063
 GameObject:
@@ -5942,11 +6151,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261335140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1239, y: 18792, z: 0}
+  m_LocalPosition: {x: -1362, y: 15211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1261335142
 MonoBehaviour:
@@ -6024,7 +6233,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1302529468}
-  - component: {fileID: 1302529469}
   - component: {fileID: 1302529470}
   m_Layer: 0
   m_Name: 1.Draguer.3
@@ -6041,30 +6249,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302529467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1468, y: 17822, z: 0}
+  m_LocalPosition: {x: -733, y: 15629, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1302529469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302529467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  bgClips: []
-  text: "Well, you\u2019re the only option, so\nyou have to try anyway.\nEveryone,
-    gather into the drawing room."
-  source: {fileID: 0}
-  nextEvent: {fileID: 293708233}
 --- !u!114 &1302529470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6079,10 +6269,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: 
+  text: 'I am distraught. How can I go on?
+
+    Have you seen my medicine? It has gone missing. It smells of almonds, and is in
+    a little blue bottle.'
   source: {fileID: 0}
-  yesEvent: {fileID: 0}
-  noEvent: {fileID: 0}
+  yesEvent: {fileID: 293708233}
+  noEvent: {fileID: 293708233}
 --- !u!1 &1315567450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6131,6 +6324,57 @@ MonoBehaviour:
   text: Mademoiselle Draguer has fainted!
   source: {fileID: 0}
   nextEvent: {fileID: 1871656856}
+--- !u!1 &1317694017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317694018}
+  - component: {fileID: 1317694019}
+  m_Layer: 0
+  m_Name: 1.Agatha.5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317694018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317694017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -300, y: 16866, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317694019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317694017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "I\u2019m so sorry you had to witness\nthis sad event. This certainly isn\u2019t
+    how I normally run my dinner parties. I assume you want to know if Reggie had
+    any enemies?"
+  source: {fileID: 0}
+  yesEvent: {fileID: 861781235}
+  noEvent: {fileID: 861781235}
 --- !u!1 &1330607348
 GameObject:
   m_ObjectHideFlags: 0
@@ -6450,7 +6694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388424356
 GameObject:
@@ -6500,6 +6744,54 @@ MonoBehaviour:
   text: I present Lady Agatha Skipwith.
   source: {fileID: 0}
   nextEvent: {fileID: 345924319}
+--- !u!1 &1407332402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407332404}
+  - component: {fileID: 1407332403}
+  m_Layer: 0
+  m_Name: 1.Watts.1a
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407332403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407332402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: How incredibly convenient!
+  source: {fileID: 0}
+  nextEvent: {fileID: 1381049131}
+--- !u!4 &1407332404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407332402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4113, y: 15057, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407534255
 GameObject:
   m_ObjectHideFlags: 0
@@ -6547,8 +6839,57 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1423952973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423952974}
+  - component: {fileID: 1423952975}
+  m_Layer: 0
+  m_Name: 1.Bosely.7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423952974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423952973}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5558, y: 19571, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1423952975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423952973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: I really do think that's a bad idea. You need more clues. Are you sure?!
+  source: {fileID: 0}
+  yesEvent: {fileID: 2143622796}
+  noEvent: {fileID: 329250216}
 --- !u!1 &1458068654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,9 +7037,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 0}
   bgClips: []
-  text: "Good evening, and welcome to Skipwith Manor. You must be the famous detective.
-    You\u2019re just in time for Lord Skipwith\u2019s dinner party; all the other
-    guests have already arrived. I\u2019m Bosely, the butler. Please follow me."
+  text: "Good evening, and welcome to\nSkipwith Manor. You must be the\nfamous detective,
+    Inspector\nPumpernickle.\nYou\u2019re just in time for Lord\nSkipwith\u2019s dinner
+    party; all the\nother guests have already arrived.\nI\u2019m Bosely, the butler.
+    Please\nfollow me."
   source: {fileID: 0}
   nextEvent: {fileID: 1388424356}
 --- !u!1 &1517048184
@@ -6845,7 +7187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521979652
 GameObject:
@@ -6983,7 +7325,7 @@ MonoBehaviour:
   bgClips: []
   text: "Well, I suppose it\u2019s good luck that\nwe invited a detective to the party."
   source: {fileID: 0}
-  nextEvent: {fileID: 1381049131}
+  nextEvent: {fileID: 1407332402}
 --- !u!4 &1542366926
 Transform:
   m_ObjectHideFlags: 0
@@ -6992,7 +7334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542366924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4113, y: 14846, z: 0}
+  m_LocalPosition: {x: -4113, y: 14659, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
@@ -7547,7 +7889,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697228830}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752749400
 GameObject:
@@ -8282,6 +8624,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052244409}
   m_CullTransparentMesh: 0
+--- !u!1 &2070662958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070662960}
+  - component: {fileID: 2070662959}
+  m_Layer: 0
+  m_Name: 1.Bosely.6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2070662959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070662958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: "That certainly is a lot of\ninformation. I don\u2019t think it\u2019s enough
+    to make a decision yet- but do you want to make an accusation, or not?"
+  source: {fileID: 0}
+  yesEvent: {fileID: 1423952973}
+  noEvent: {fileID: 329250216}
+--- !u!4 &2070662960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070662958}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4082, y: 18112, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080188390
 GameObject:
   m_ObjectHideFlags: 0
@@ -8432,3 +8824,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080188390}
   m_CullTransparentMesh: 0
+--- !u!1 &2143622796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143622797}
+  - component: {fileID: 2143622798}
+  m_Layer: 0
+  m_Name: 1.Accuse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143622797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143622796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6707, y: 20598, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 697228830}
+  m_RootOrder: 44
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2143622798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143622796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: Who would you like to speak to?
+  source: {fileID: 0}
+  chrEvents: []
+  nextEvent: {fileID: 0}
