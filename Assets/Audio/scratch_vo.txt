@@ -1,0 +1,20 @@
+	•	Intro: “You are a detective. You do detective things. You are at a dinner party.”
+	•	Tutorial: “Do you understand? Nod to say yes, shake your head to repeat.”
+	•	Murder: “Someone was killed. Mass hysteria. You are a detective. It is time to do detective things.”
+	•	Question Intro: “It is time to question. Are you ready to question?”
+	•	Question Prompt Suspect 1: “Do you want to question Suspect 1?”
+	•	Question Prompt Suspect 2: “Do you want to question Suspect 2?”
+	•	Question Prompt Suspect 3: “Do you want to question Suspect 3?”
+	•	Question Prompt Suspect 4: “Do you want to question Suspect 4?”
+	•	Good Suspect Dialogue: “I love being good. How about you?”
+	•	Suspect Secondary Dialogue Yes: “That’s cool.”
+	•	Suspect Secondary Dialogue No: “Oh ok.”
+	•	Bad Suspect Dialogue: “I love murdering people. How about you?”
+	•	Accusation Prompt: “Do you want to accuse?”
+	•	Accusation Prompt Yes: “Are you sure you want to accuse?”
+	•	Accusation Prompt Suspect 1: “Do you want to accuse Suspect 1?”
+	•	Accusation Prompt Suspect 2: “Do you want to accuse Suspect 2?”
+	•	Accusation Prompt Suspect 3: “Do you want to accuse Suspect 3?”
+	•	Accusation Prompt Suspect 4: “Do you want to accuse Suspect 4?”
+	•	Good Ending: “You found the murderer. Good job. He or she will murder no more.”
+	•	Bad Ending: “You accused the wrong person and the murderer is still at large. Later your pet turtle was found dead. Game over.”
