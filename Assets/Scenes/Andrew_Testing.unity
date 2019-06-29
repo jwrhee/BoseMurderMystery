@@ -3581,6 +3581,7 @@ MonoBehaviour:
   clipSelectSuspect: {fileID: 8300000, guid: 04bd22a4fba8d724f8c50fbdab1e68a1, type: 3}
   clipStartQuestioning: {fileID: 8300000, guid: a5ee668bac5ca4937a08ef45396e7c49,
     type: 3}
+  state: 0
 --- !u!1001 &1268319702
 PrefabInstance:
   m_ObjectHideFlags: 0

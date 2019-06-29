@@ -25,10 +25,18 @@ public class RoomController : MonoBehaviour
     {
         // Wait untill sysnced up
 
+        StartInstructionSequence();
+    }
+
+    void StartInstructionSequence()
+    {
+        state = RoomState.INSTRUCTIONS;
+
         butler.audio.clip = clipStartQuestioning;
         butler.audio.Play();
 
-        LeanTween.delayedCall(6f, () => { SetState(RoomState.QUESTIONING); });
+        LeanTween.delayedCall(6f, () => { SetState(RoomState.SELECTING); });
+
     }
 
     void SetState(RoomState setState)
@@ -47,7 +55,7 @@ public class RoomController : MonoBehaviour
 
                 break;
 
-            case RoomState.QUESTIONING:
+            case RoomState.SELECTING:
 
                 int layerMask = 1 << 8;
                 layerMask = ~layerMask;
@@ -89,6 +97,10 @@ public class RoomController : MonoBehaviour
 
                 break;
 
+            case RoomState.QUESTIONING:
+
+                break;
+
             default:
                 break;
         }
@@ -107,7 +119,13 @@ public class RoomController : MonoBehaviour
 
     void PlaySoundEffectOnSuspect(Suspect suspect)
     {
+        state = RoomState.QUESTIONING;
+
         currectSuspect.audio.PlayOneShot(currectSuspect.clipSelectedForQuestioning);
+
+
+
+        LeanTween.delayedCall(10f, () => { StartInstructionSequence(); });
     }
 
     void SilenceAllSuspectExpect( Suspect suspect)
