@@ -29,8 +29,8 @@ public class SimpleEvent : BaseEvent
 
         // Play clip and wait for it to complete
         // TODO: or player skip 
-        var source = RoomController.instance.GetSuspectAudioSource(chrID); 
-        if (source)
+        var source = RoomController.instance.GetSuspectAudioSource(chrID);
+        if (source && clip)
         {
             source.clip = clip;
             source.Play();

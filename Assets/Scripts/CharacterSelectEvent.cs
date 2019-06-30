@@ -7,8 +7,6 @@ using UnityEditor;
 
 public class CharacterSelectEvent : BaseEvent
 {
-    public AudioSource source;
-
     public List<GameObject> chrEvents;
 
     [Tooltip("Plays when all chr events are completed")]
@@ -36,7 +34,8 @@ public class CharacterSelectEvent : BaseEvent
 
             // Play clip and wait for it to complete
             // TODO: or player skip 
-            if (source)
+            var source = RoomController.instance.GetSuspectAudioSource(chrID);
+            if (source && clip)
             {
                 source.clip = clip;
                 source.Play();

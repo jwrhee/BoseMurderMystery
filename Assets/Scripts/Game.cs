@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    //public List<>
-
     public BaseEvent firstEvent; 
 
     public void Start() 
@@ -14,16 +12,5 @@ public class Game : MonoBehaviour
     }
 }
 
-
-
-// questioning 
-// loading 
-// audio 
-// playerInput 
-// settings 
-
-
-
-// inspector log 
 
 

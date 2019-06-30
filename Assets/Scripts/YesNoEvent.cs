@@ -8,8 +8,6 @@ using UnityEditor;
 
 public class YesNoEvent : BaseEvent
 {
-    public AudioSource source;
-
     public GameObject yesEvent;
     public GameObject noEvent;
 
@@ -30,7 +28,8 @@ public class YesNoEvent : BaseEvent
 
         // Play clip and wait for it to complete
         // TODO: or player skip 
-        if (source)
+        var source = RoomController.instance.GetSuspectAudioSource(chrID);
+        if (source && clip)
         {
             source.clip = clip;
             source.Play();
