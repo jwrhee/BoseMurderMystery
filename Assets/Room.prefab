@@ -119,9 +119,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 28c1f2deb28fa4007b3259542d33d329, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7d7eb50b5cf3642d084c1ee6936118ac, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.328
+  m_Volume: 0.439
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -747,6 +747,9 @@ MonoBehaviour:
   clipStartQuestioning: {fileID: 8300000, guid: a5ee668bac5ca4937a08ef45396e7c49,
     type: 3}
   state: 0
+  musicbox: {fileID: 3293188991500219933}
+  bgmQuestioning: {fileID: 8300000, guid: 02ef052e5976742ea871882bfe6d5715, type: 3}
+  bgmSelecting: {fileID: 8300000, guid: 7d7eb50b5cf3642d084c1ee6936118ac, type: 3}
 --- !u!1 &3293188992427266730
 GameObject:
   m_ObjectHideFlags: 0

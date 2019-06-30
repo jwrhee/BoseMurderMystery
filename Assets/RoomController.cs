@@ -34,6 +34,7 @@ public class RoomController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        state = RoomState.INSTRUCTIONS;
         // Wait untill sysnced up
 
         //StartInstructionSequence();
