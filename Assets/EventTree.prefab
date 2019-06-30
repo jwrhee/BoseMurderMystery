@@ -1752,7 +1752,7 @@ GameObject:
   - component: {fileID: 5618334310038739112}
   - component: {fileID: 5618334310038739113}
   m_Layer: 0
-  m_Name: 2.ChrSelect
+  m_Name: 2.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2199,7 +2199,7 @@ GameObject:
   - component: {fileID: 5618334310203101470}
   - component: {fileID: 5618334310203101457}
   m_Layer: 0
-  m_Name: 4.ChrSelect
+  m_Name: 4.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2231,11 +2231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: 'Who would you like to question
-
-    first?'
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310652073665}
   - {fileID: 5618334309783463580}
@@ -4024,7 +4022,7 @@ GameObject:
   - component: {fileID: 5618334310756095769}
   - component: {fileID: 5618334310756095768}
   m_Layer: 0
-  m_Name: 5.Accusation
+  m_Name: 5.Bosely.Accusation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4775,7 +4773,7 @@ GameObject:
   - component: {fileID: 5618334310999186316}
   - component: {fileID: 5618334310999186319}
   m_Layer: 0
-  m_Name: 0.ChrSelect
+  m_Name: 0.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6145,7 +6143,7 @@ GameObject:
   - component: {fileID: 5618334311457539601}
   - component: {fileID: 5618334311457539614}
   m_Layer: 0
-  m_Name: 3.ChrSelect
+  m_Name: 3.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6177,9 +6175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: Who would you like to speak to?
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310366932872}
   - {fileID: 5618334309326075750}
@@ -6231,7 +6229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: c3679bd61a00e4ce98a10d52eb066fec, type: 3}
   bgClips: []
-  text: Excellent.
+  text: Everyone, gather into the drawing room.
   nextEvent: {fileID: 5618334310038739126}
 --- !u!1 &8134099218827767588
 GameObject:
