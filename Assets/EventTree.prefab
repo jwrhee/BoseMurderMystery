@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4557bd5ac2fec4c43890551c82173cbc, type: 3}
   bgClips: []
   text: "Oh dear. You really are the worst\ndetective I\u2019ve ever met. I must\nsay,
     I\u2019m terribly disappointed.\nBetter luck next time, I suppose."
@@ -401,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310303161410}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334309433751078
 MonoBehaviour:
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7542d43e4de0d48ae962a11b613828c4, type: 3}
   bgClips: []
   text: "That\u2019s the stroke of midnight! You\nmust make an accusation. "
   nextEvent: {fileID: 5618334310756095846}
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 5618334309515225694}
   - component: {fileID: 5618334309515225681}
   m_Layer: 0
-  m_Name: 1.FootstepsRunning
+  m_Name: 1.Agatha.Running
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -851,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6ce539952cc4644598638d6e1342cd15, type: 3}
   bgClips: []
   text: "That certainly is a lot of\ninformation. I don\u2019t think it\u2019s enough
     to make a decision yet- but do you want to make an accusation, or not?"
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 546ee86e18b734792950449201819c0c, type: 3}
   bgClips: []
   text: 'Upon further examination of the
 
@@ -1785,9 +1785,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: Who would you like to speak to?
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310208253620}
   - {fileID: 5618334311159561871}
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 5618334310042231594}
   - component: {fileID: 5618334310042231597}
   m_Layer: 0
-  m_Name: 1.Scream
+  m_Name: 1.Agatha.Scream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2486,7 +2486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: aaab82a787ec3450088852af60804977, type: 3}
   bgClips: []
   text: "Good job! You\u2019re truly the best\ndetective I\u2019ve ever met. Justice\nhas
     been served for poor Lord\nReginald."
@@ -2635,6 +2635,7 @@ Transform:
   - {fileID: 5618334309591648153}
   - {fileID: 5618334309725000723}
   - {fileID: 5618334311445258010}
+  - {fileID: 2121608333183104901}
   - {fileID: 5618334309433751257}
   m_Father: {fileID: 7732102285963636254}
   m_RootOrder: 4
@@ -2682,7 +2683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 46394c674027d4b3cb6fe32d84a4ce71, type: 3}
   bgClips: []
   text: I really do think that's a bad idea. You need more clues. Are you sure?!
   yesEvent: {fileID: 5618334310756095846}
@@ -2730,11 +2731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 92a01064d98b449a598a32bdb514beaa, type: 3}
   bgClips: []
-  text: "Well, you\u2019re the only option, so\nyou have to try anyway.\nEveryone,
-    gather into the drawing room."
-  nextEvent: {fileID: 5618334310038739126}
+  text: "Well, you\u2019re the only option, so\nyou have to try anyway."
+  nextEvent: {fileID: 7789290326452644649}
 --- !u!1 &5618334310320773739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +2872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7440e6bcd84cd46c6848466c75f42e7d, type: 3}
   bgClips: []
   text: "It\u2019s up to you to solve the mystery\nof who killed Lord Reginald! Can
     you solve the murder?"
@@ -2970,7 +2970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6ce539952cc4644598638d6e1342cd15, type: 3}
   bgClips: []
   text: "That certainly is a lot of\ninformation. I don\u2019t think it\u2019s\nenough
     to make a decision yet- but\ndo you want to make an accusation,\nor not?"
@@ -3269,7 +3269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3b72c8b49dd4d4beba20f6a815fe9a0f, type: 3}
   bgClips: []
   text: "Let\u2019s ask them some more questions, then."
   nextEvent: {fileID: 5618334311082206107}
@@ -3373,6 +3373,7 @@ Transform:
   - {fileID: 5618334310348884340}
   - {fileID: 5618334311310609047}
   - {fileID: 5618334310320336616}
+  - {fileID: 3424422302574775335}
   m_Father: {fileID: 7732102285963636254}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4068,7 +4069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7d73221bcd28d401ca7b1f447a13df7a, type: 3}
   bgClips: []
   text: Who do you think killed Lord Reginald?
   chrEvents:
@@ -4613,7 +4614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 46394c674027d4b3cb6fe32d84a4ce71, type: 3}
   bgClips: []
   text: I really do think that's a bad idea. You need more clues. Are you sure?!
   yesEvent: {fileID: 5618334310756095846}
@@ -4807,9 +4808,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: Who would you like to speak to?
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310912459468}
   - {fileID: 5618334310922054708}
@@ -5166,7 +5167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c22b32764acfd4bbab23bbc83a63e359, type: 3}
   bgClips: []
   text: "It\u2019s nearly midnight- after these\nquestions, you\u2019ll have to accuse\nsomeone!"
   nextEvent: {fileID: 5618334309345991957}
@@ -5361,7 +5362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: f1b625414d24f40959949774d2161205, type: 3}
   bgClips: []
   text: 'Well, this certainly does look
 
@@ -5697,10 +5698,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c958a692855dc48568d55d6b3668b405, type: 3}
   bgClips: []
   text: Excellent.
-  nextEvent: {fileID: 5618334310038739126}
+  nextEvent: {fileID: 7789290326452644649}
 --- !u!1 &5618334311333049011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5936,7 +5937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3b72c8b49dd4d4beba20f6a815fe9a0f, type: 3}
   bgClips: []
   text: "Let\u2019s ask them some more questions, then."
   nextEvent: {fileID: 5618334309886705477}
@@ -6109,7 +6110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618334311445258008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2701, y: 29810, z: 0}
+  m_LocalPosition: {x: -2394, y: 29983, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310303161410}
@@ -6133,7 +6134,7 @@ MonoBehaviour:
     that lost us the\nfortune. If I had been allowed to\nrun the business, we would
     still be\nrich! And anyway, what woman hasn\u2019t\noccasionally wanted to kill
     their\nhusband? It\u2019s only natural."
-  nextEvent: {fileID: 5618334310203101471}
+  nextEvent: {fileID: 8134099218827767588}
 --- !u!1 &5618334311457539615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,3 +6187,97 @@ MonoBehaviour:
   - {fileID: 5618334310814643466}
   - {fileID: 5618334311239200373}
   nextEvent: {fileID: 5618334310383569587}
+--- !u!1 &7789290326452644649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3424422302574775335}
+  - component: {fileID: 9019199382234242914}
+  m_Layer: 0
+  m_Name: 1.Bosely.6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3424422302574775335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789290326452644649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4088, y: 16356, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310494106695}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9019199382234242914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789290326452644649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: c3679bd61a00e4ce98a10d52eb066fec, type: 3}
+  bgClips: []
+  text: Excellent.
+  nextEvent: {fileID: 5618334310038739126}
+--- !u!1 &8134099218827767588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121608333183104901}
+  - component: {fileID: 3053948371802221690}
+  m_Layer: 0
+  m_Name: 4.Clock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2121608333183104901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134099218827767588}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4321, y: 29503, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310303161410}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3053948371802221690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134099218827767588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: f48b97b09942645408bc241b05c21a70, type: 3}
+  bgClips: []
+  text: <bell tolls>
+  nextEvent: {fileID: 5618334309433751079}
