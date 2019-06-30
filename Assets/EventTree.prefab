@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4f18100c2916843f392c76ca7b4a1955, type: 3}
   bgClips: []
   text: 'More questions? I suppose you think
 
@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: dea3c28b642c24f9f98c06120f977fbd, type: 3}
   bgClips: []
   text: You need to know more?
   yesEvent: {fileID: 5618334310068815208}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7e40ce929f8ea4128b4225e030b0e713, type: 3}
   bgClips: []
   text: "Alright, I\u2019ll admit, Reginald has\nnot been a good friend to me.\nDuring
     the war, I was a coward, and\nhe covered for me. All these years\nhe\u2019s kept
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: bc5f05ab849b34d3f844c8d58a793856, type: 3}
   bgClips: []
   text: "Alright, I\u2019ll tell you the whole\ntruth. Reggie was going to pay me\nback,
     he\u2019d told me tonight. He said\nthat his luck had finally turned,\nand he
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7c5569e6459234173be5f73a662f45f5, type: 3}
   bgClips: []
   text: "Reggie was an old friend, but we\nweren\u2019t on the best terms lately.
     Did Watts tell you that Lord Reginald owed me a great deal of money?"
@@ -4662,7 +4662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a096aab4541a74067a552ab417c4afe8, type: 3}
   bgClips: []
   text: "He asked me for a large loan some\ntime ago, but he hadn\u2019t paid me back.
     And now I suppose he never will. And I don\u2019t trust that Mr. Watts. Did you
@@ -4916,7 +4916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: dcada1bcab7a544d8a6cdcb1585709b1, type: 3}
   bgClips: []
   text: 'How dare you! This accusation is an
 
@@ -5017,7 +5017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 5bcbc01b3933d44c5b4907cf41b7d013, type: 3}
   bgClips: []
   text: "But even if he stooped so low, I am\nan honorable man. I would never\nmurder
     him, even after all he\u2019s\ndone to me."
@@ -5312,7 +5312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 957c59e863cf3418282588b192d51ee2, type: 3}
   bgClips: []
   text: "I must say, I didn\u2019t expect old\nReginald to go out like this. An solider
     knows that you could die at any moment, but murder probably isn\u2019t what he
@@ -5458,7 +5458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: cf4ade5fb160b4acca36ca52bcb63e9f, type: 3}
   bgClips: []
   text: Fishy business, if you ask me.
   nextEvent: {fileID: 5618334310038739126}
