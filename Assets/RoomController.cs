@@ -57,10 +57,20 @@ public class RoomController : MonoBehaviour
         List<string> charOptions = e.GetSelectableCharacterIDs();
 
         // Turn of all suspect then turn on the one we need
+        // turn of images too
+
         Agatha.gameObject.GetComponent<Collider>().enabled = false;
+        Agatha.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
         Cammish.gameObject.GetComponent<Collider>().enabled = false;
+        Cammish.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
         Draguer.gameObject.GetComponent<Collider>().enabled = false;
+        Draguer.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
         Watts.gameObject.GetComponent<Collider>().enabled = false;
+        Watts.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
 
         foreach (string charName in charOptions)
         {
@@ -69,22 +79,28 @@ public class RoomController : MonoBehaviour
                 case "Agatha":
                      
                     Agatha.gameObject.GetComponent<Collider>().enabled = true;
-                    curSuspectString = charName;
+                    Agatha.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+                  
                     break;
 
                 case "Draguer":
                     Draguer.gameObject.GetComponent<Collider>().enabled = true;
-                    curSuspectString = charName;
+                    Draguer.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+                   
                     break;
 
                 case "Watts":
                     Watts.gameObject.GetComponent<Collider>().enabled = true;
-                    curSuspectString = charName;
+                    Watts.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                  
                     break;
 
                 case "Cammish":
                     Cammish.gameObject.GetComponent<Collider>().enabled = true;
-                    curSuspectString = charName;
+                    Cammish.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
                     break;
 
                 default:
@@ -102,6 +118,9 @@ public class RoomController : MonoBehaviour
 
         PlayBgm(bgmSelecting);
     }
+
+
+   
 
     void StartInstructionSequence()
     {
@@ -146,7 +165,7 @@ public class RoomController : MonoBehaviour
                 if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
                 {
                     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                    Debug.Log("Did Hit");
+                   // Debug.Log("Did Hit");
 
                     //Destroy(hit.collider.gameObject);
 
@@ -154,13 +173,12 @@ public class RoomController : MonoBehaviour
 
                     currectSuspect = hit.collider.gameObject.GetComponent<Suspect>();
 
-                    Debug.Log(currectSuspect);
+                    // Debug.Log(currectSuspect);
 
                     if (currectSuspect)
                     {
-                        if (currentSuspectName != currectSuspect.suspectName)
+                        if ( currentSuspectName != currectSuspect.suspectName )
                         {
-
 
                             currentSuspectName = currectSuspect.suspectName;
 
@@ -168,9 +186,12 @@ public class RoomController : MonoBehaviour
                             currectSuspect.audio.volume = 1.0f;
                             currectSuspect.audio.Play();
 
-                            currectSuspect.audio.PlayOneShot(clipSelectSuspect, 0.5f);
+                           // currectSuspect.audio.PlayOneShot(clipSelectSuspect, 0.5f);
 
                             SilenceAllSuspectExpect(currectSuspect);
+
+                            // Set suspect
+                            GetNameBasedOnCurrentSuspect();
                         }
                     }
                 }
@@ -184,10 +205,32 @@ public class RoomController : MonoBehaviour
             default:
                 break;
         }
+    }
 
+    void GetNameBasedOnCurrentSuspect()
+    {
+        switch (currectSuspect.suspectName)
+        {
+            case Suspect.SuspectName.WATTS:
+                curSuspectString = "Watts";
+                break;
 
+            case Suspect.SuspectName.AGATHA:
+                curSuspectString = "Agatha";
+                break;
 
-       
+            case Suspect.SuspectName.CAMMISH:
+                curSuspectString = "Cammish";
+                break;
+
+            case Suspect.SuspectName.DRAGUER:
+                curSuspectString = "Draguer";
+                break;
+
+            default:
+
+                break;
+        }
     }
 
     // Nod head while selected play a effect or enter the questioning phase

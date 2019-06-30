@@ -561,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293188991898559582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.16, y: 0.17347383, z: 8.64}
+  m_LocalPosition: {x: -3.16, y: 0.17347383, z: 6.47}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 6323451628261007591}
@@ -1017,14 +1017,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293188992535886458}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.02, y: 0.17347383, z: 6.26}
+  m_LocalRotation: {x: -0, y: -0.44058853, z: -0, w: 0.8977092}
+  m_LocalPosition: {x: -8.02, y: 0.17347383, z: 1.6}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 5578819950013308091}
   m_Father: {fileID: 3293188992383245726}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -52.283, z: 0}
 --- !u!33 &3293188992535886463
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3293188992535886456
 AudioSource:
@@ -1648,7 +1648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293188993096444947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.88, y: 0.17347383, z: 8.62}
+  m_LocalPosition: {x: 2.88, y: 0.17347383, z: 6.4499993}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4320315556944155042}
@@ -2134,14 +2134,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293188993290074960}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.39, y: 0.17347383, z: 5.76}
+  m_LocalRotation: {x: -0, y: 0.4349315, z: -0, w: 0.9004636}
+  m_LocalPosition: {x: 7.39, y: 0.17347383, z: 1.78}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 2077845941110060978}
   m_Father: {fileID: 3293188992383245726}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 51.562004, z: 0}
 --- !u!33 &3293188993290074965
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2198,7 +2198,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3293188993290074966
 AudioSource:
