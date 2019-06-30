@@ -38,6 +38,7 @@ public class RoomController : MonoBehaviour
     void Awake() 
     {
         instance = this;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         CharacterSelectEvent.OnCharacterSelectBegan += StartCharacterSelecting;
     }
