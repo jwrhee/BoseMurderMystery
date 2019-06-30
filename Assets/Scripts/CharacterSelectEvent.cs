@@ -7,7 +7,10 @@ using UnityEditor;
 
 public class CharacterSelectEvent : BaseEvent
 {
-    public List<GameObject> chrEvents;
+    public delegate CharacterSelectEvent CharacterSelectEventHandler(CharacterSelectEvent characterSelectEvent);
+    public static event CharacterSelectEventHandler OnCharacterSelectBegan;
+
+    public List<GameObject> chrEvents; 
 
     [Tooltip("Plays when all chr events are completed")]
     public GameObject nextEvent; 
@@ -21,6 +24,8 @@ public class CharacterSelectEvent : BaseEvent
         // If there are character events that haven't run, wait for a character selection 
         if (chrEvents.Count > 0) 
         {
+            OnCharacterSelectBegan?.Invoke(this);  
+
             // Set UI 
             GameUI.instance.SetCharacterSelectState(this);
 
@@ -83,6 +88,20 @@ public class CharacterSelectEvent : BaseEvent
         {
             Debug.LogError("No event found for ID " + selectedChrID);
         }
+    }
+
+    public List<string> GetSelectableCharacterIDs()
+    {
+        var result = new List<string>(chrEvents.Count);
+        foreach (var chrEventGO in chrEvents)
+        {
+            var chrEvent = chrEventGO.GetComponent<BaseEvent>();
+            if (chrEvent.chrID != null)
+            {
+                result.Add(chrEvent.chrID);
+            }
+        }
+        return result;
     }
 
 
