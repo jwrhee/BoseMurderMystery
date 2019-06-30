@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &246020723887059017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4117260303106799551}
+  - component: {fileID: 1779469489427889204}
+  m_Layer: 0
+  m_Name: 5.BadEnding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4117260303106799551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246020723887059017}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19424, y: -3621, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310756095769}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1779469489427889204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246020723887059017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f770d0bd1974dbc85166a3c95a000d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: 
+--- !u!1 &2663058847550101409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6832096567124147904}
+  - component: {fileID: 3913555677468386576}
+  m_Layer: 0
+  m_Name: 0.Watts.0a
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6832096567124147904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663058847550101409}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6166, y: 85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310269810422}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3913555677468386576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663058847550101409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 7d0c62d1d5a294d99899ff8ab7f4b5a8, type: 3}
+  bgClips: []
+  text: Do you know anything about the plastics industry?
+  yesEvent: {fileID: 5618334310446228511}
+  noEvent: {fileID: 5618334309677803908}
 --- !u!1 &2816561255023446720
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,11 +170,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3382246745015913294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5327, y: 759, z: 0}
+  m_LocalPosition: {x: -1998, y: 130, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1752193105578511719
 MonoBehaviour:
@@ -97,7 +191,101 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 2d4b52b57b1104d64bf5fb240a4e40e0, type: 3}
   bgClips: []
   text: <bell rings>
-  nextEvent: {fileID: 3382246745015913294}
+  nextEvent: {fileID: 5618334310577427336}
+--- !u!1 &3532884404867454516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3084435812952034176}
+  - component: {fileID: 2913334393335044350}
+  m_Layer: 0
+  m_Name: 0.Bosely.0a
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3084435812952034176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3532884404867454516}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1970, y: -3726, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310269810422}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2913334393335044350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3532884404867454516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 97ccde7db15674d4d9c9afbcf37da233, type: 3}
+  bgClips: []
+  text: "You\u2019re just in time for Lord\nSkipwith\u2019s dinner party; all the\nother
+    guests have already arrived.\nI\u2019m Bosely, the butler. Please\nfollow me."
+  nextEvent: {fileID: 5618334310339479293}
+--- !u!1 &3675226889068960125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3666442318948420064}
+  - component: {fileID: 8664213305401635884}
+  m_Layer: 0
+  m_Name: 5.GoodEnding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3666442318948420064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675226889068960125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15527, y: -7671, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5618334310756095769}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8664213305401635884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675226889068960125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f770d0bd1974dbc85166a3c95a000d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  bgClips: []
+  text: 
 --- !u!1 &3868133724324808618
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3868133724324808618}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9398.762, y: 23053.092, z: -106.00121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -325,7 +513,7 @@ MonoBehaviour:
   bgClips: []
   text: "Oh dear. You really are the worst\ndetective I\u2019ve ever met. I must\nsay,
     I\u2019m terribly disappointed.\nBetter luck next time, I suppose."
-  nextEvent: {fileID: 0}
+  nextEvent: {fileID: 246020723887059017}
 --- !u!1 &5618334309394119300
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334309394119302
 MonoBehaviour:
@@ -981,11 +1169,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618334309677803908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5327, y: 759, z: 0}
+  m_LocalPosition: {x: -5658, y: 335, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334309677803910
 MonoBehaviour:
@@ -1228,7 +1416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334309830569961
 MonoBehaviour:
@@ -1968,7 +2156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310060864004
 MonoBehaviour:
@@ -2586,7 +2774,7 @@ MonoBehaviour:
   bgClips: []
   text: "Good job! You\u2019re truly the best\ndetective I\u2019ve ever met. Justice\nhas
     been served for poor Lord\nReginald."
-  nextEvent: {fileID: 0}
+  nextEvent: {fileID: 3675226889068960125}
 --- !u!1 &5618334310239606276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618334310239606276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2018, y: -4089, z: 0}
+  m_LocalPosition: {x: -1970, y: -4271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
@@ -2632,11 +2820,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 6eaab2a60061a4b93b173f991a707dfe, type: 3}
   bgClips: []
-  text: "Good evening, and welcome to\nSkipwith Manor. You must be the\nfamous detective,
-    Inspector\nPumpernickle.\nYou\u2019re just in time for Lord\nSkipwith\u2019s dinner
-    party; all the\nother guests have already arrived.\nI\u2019m Bosely, the butler.
-    Please\nfollow me."
-  nextEvent: {fileID: 5618334310339479293}
+  text: 'Good evening, and welcome to
+
+    Skipwith Manor. You must be the
+
+    famous detective, Inspector
+
+    Pumpernickle.'
+  nextEvent: {fileID: 3532884404867454516}
 --- !u!1 &5618334310269810423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5618334310239606279}
+  - {fileID: 3084435812952034176}
   - {fileID: 5618334310339479292}
   - {fileID: 5618334311384303801}
   - {fileID: 5618334309394119303}
@@ -2679,6 +2871,7 @@ Transform:
   - {fileID: 5618334311107765829}
   - {fileID: 5618334310658969083}
   - {fileID: 5618334310579439771}
+  - {fileID: 6832096567124147904}
   - {fileID: 5618334310446228510}
   - {fileID: 5618334309677803911}
   - {fileID: 6961229586373087239}
@@ -2904,11 +3097,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618334310339479293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2002, y: -3421, z: 0}
+  m_LocalPosition: {x: -1954, y: -3058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310339479295
 MonoBehaviour:
@@ -3199,7 +3392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310446228497
 MonoBehaviour:
@@ -3653,7 +3846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310577427338
 MonoBehaviour:
@@ -3680,7 +3873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5618334310579439771}
-  - component: {fileID: 5618334310579439770}
+  - component: {fileID: 2327762368319402952}
   m_Layer: 0
   m_Name: 0.Watts.0
   m_TagString: Untagged
@@ -3696,13 +3889,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618334310579439768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5723, y: 216, z: 0}
+  m_LocalPosition: {x: -5328, y: -342, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5618334310579439770
+--- !u!114 &2327762368319402952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3711,16 +3904,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5618334310579439768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: af7e43451526143d5a4bdbc9b209f75b, type: 3}
   bgClips: []
-  text: "Well golly! Howdy. I\u2019ve never met a famous detective before. I\u2019m
-    Mr.\nWatts, Lord Reginald\u2019s new business partner. It sure is swell to meet\nyou.\n\nDo
-    you know anything about the plastics industry?"
-  yesEvent: {fileID: 5618334310446228511}
-  noEvent: {fileID: 5618334309677803908}
+  text: "Well golly! Howdy. I\u2019ve never met a\nfamous detective before. I\u2019m
+    Mr.\nWatts, Lord Reginald\u2019s new business\npartner. It sure is swell to meet\nyou."
+  nextEvent: {fileID: 2663058847550101409}
 --- !u!1 &5618334310584761165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,7 +3991,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310605854185
 MonoBehaviour:
@@ -3947,7 +4138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310658969080
 MonoBehaviour:
@@ -4151,6 +4342,8 @@ Transform:
   - {fileID: 5618334311431316727}
   - {fileID: 5618334309357128576}
   - {fileID: 5618334310219656687}
+  - {fileID: 3666442318948420064}
+  - {fileID: 4117260303106799551}
   m_Father: {fileID: 7732102285963636254}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4303,7 +4496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310861358803
 MonoBehaviour:
@@ -4545,7 +4738,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310912459470
 MonoBehaviour:
@@ -4595,7 +4788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310922054710
 MonoBehaviour:
@@ -4894,7 +5087,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334310999186319
 MonoBehaviour:
@@ -4915,7 +5108,7 @@ MonoBehaviour:
   - {fileID: 5618334310912459468}
   - {fileID: 5618334310922054708}
   - {fileID: 5618334310579439768}
-  nextEvent: {fileID: 5618334310577427336}
+  nextEvent: {fileID: 3382246745015913294}
 --- !u!1 &5618334311000487733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,7 +5493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334311107765826
 MonoBehaviour:
@@ -5880,7 +6073,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334311350086866
 MonoBehaviour:
@@ -5974,7 +6167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334311384303800
 MonoBehaviour:
@@ -6070,7 +6263,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5618334310269810422}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5618334311417590139
 MonoBehaviour:
