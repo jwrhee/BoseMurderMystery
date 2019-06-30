@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     public Game game;
+    public GameObject uiCharPanel;
 
     public GameObject player;
 
@@ -54,6 +55,8 @@ public class RoomController : MonoBehaviour
 
     void StartCharacterSelecting(CharacterSelectEvent e)
     {
+        uiCharPanel.SetActive(false);
+
         List<string> charOptions = e.GetSelectableCharacterIDs();
 
         // Turn of all suspect then turn on the one we need
@@ -251,10 +254,8 @@ public class RoomController : MonoBehaviour
             state = RoomState.QUESTIONING;
         }
 
-       
+        uiCharPanel.SetActive(true);
     }
-
-
 
 
     void PlaySoundEffectOnSuspect(Suspect suspect)
