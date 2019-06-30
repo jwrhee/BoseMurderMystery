@@ -10,7 +10,12 @@ public class RoomController : MonoBehaviour
     public Suspect.SuspectName currentSuspectName;
 
     public Suspect butler;
-    public Suspect[] suspects;
+    public Suspect[] suspects; // Array
+
+    public Suspect Agatha;
+    public Suspect Cammish;
+    public Suspect Draguer;
+    public Suspect Watts;
 
     public AudioClip clipSelectSuspect;
     //public AudioClip clipSelectSuspectVoice;
@@ -19,6 +24,8 @@ public class RoomController : MonoBehaviour
     public enum RoomState { INSTRUCTIONS, SELECTING ,QUESTIONING }
     public RoomState state = RoomState.INSTRUCTIONS;
      
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -138,6 +145,44 @@ public class RoomController : MonoBehaviour
                 sus.audio.Stop();
             }
         }
+    }
+
+
+    public AudioSource GetSuspectAudioSource(string id)
+    {
+
+        AudioSource audio;
+
+        switch (id)
+        {
+            case "Bosely":
+                audio = butler.audio;
+                break;
+
+            case "Agatha":
+                audio = butler.audio;
+                break;
+
+            case "Cammish":
+                audio = butler.audio;
+                break;
+
+            case "Draguer":
+                audio = butler.audio;
+                break;
+
+            case "Watts":
+                audio = butler.audio;
+                break;
+
+
+            default:
+
+                audio = butler.audio;
+                break;
+        }
+
+        return audio;
     }
 
     private void OnEnable()
