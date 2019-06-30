@@ -45,12 +45,12 @@ public class SimpleEvent : BaseEvent
         }
 
         // Wait for input 
-        GameUI.OnNextEvent += OnNextEvent;
+        Game.OnNextEvent += OnNextEvent;
     }
 
     private void OnNextEvent()
     {
-        GameUI.OnNextEvent -= OnNextEvent;
+        Game.OnNextEvent -= OnNextEvent;
 
         // Play next event 
         nextEvent.GetComponent<BaseEvent>().Play();

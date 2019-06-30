@@ -40,12 +40,12 @@ public class YesNoEvent : BaseEvent
         }
 
         // Wait for input 
-        GameUI.OnYesNoEvent += OnYesNoEvent;
+        Game.OnYesNoEvent += OnYesNoEvent;
     }
 
     private void OnYesNoEvent(bool isYes)
     {
-        GameUI.OnYesNoEvent -= OnYesNoEvent;
+        Game.OnYesNoEvent -= OnYesNoEvent;
 
         if (isYes) 
         {

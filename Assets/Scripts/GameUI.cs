@@ -7,14 +7,6 @@ public class GameUI : MonoBehaviour
 {
     public static GameUI instance; 
 
-    public delegate void VoidAction();
-    public delegate void BoolAction(bool value); 
-    public delegate void StringAction(string value);
-
-    public static event VoidAction OnNextEvent;
-    public static event BoolAction OnYesNoEvent;
-    public static event StringAction OnCharacterSelectEvent;
-
     public Text text;
 
     public GameObject nextMenu;
@@ -26,21 +18,6 @@ public class GameUI : MonoBehaviour
     void Awake() 
     {
         instance = this; 
-    }
-
-    public void OnYesNo(bool isYes) 
-    {
-        OnYesNoEvent?.Invoke(isYes); 
-    }
-
-    public void OnNext() 
-    {
-        OnNextEvent?.Invoke(); 
-    }
-
-    public void OnCharacterSelect(string chrID) 
-    {
-        OnCharacterSelectEvent?.Invoke(chrID); 
     }
 
     public void SetNextState() 

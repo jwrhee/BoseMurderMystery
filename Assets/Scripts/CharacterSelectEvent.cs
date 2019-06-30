@@ -21,7 +21,7 @@ public class CharacterSelectEvent : BaseEvent
         // If there are character events that haven't run, wait for a character selection 
         if (chrEvents.Count > 0) 
         {
-            GameUI.OnCharacterSelectEvent += OnCharacterSelectEvent;
+            Game.OnCharacterSelectEvent += OnCharacterSelectEvent;
 
             // Set UI 
             GameUI.instance.SetCharacterSelectState(this);
@@ -54,7 +54,7 @@ public class CharacterSelectEvent : BaseEvent
 
     private void OnCharacterSelectEvent(string selectedChrID)
     {
-        GameUI.OnCharacterSelectEvent -= OnCharacterSelectEvent;
+        Game.OnCharacterSelectEvent -= OnCharacterSelectEvent;
 
         BaseEvent eventToPlay = null; 
 
