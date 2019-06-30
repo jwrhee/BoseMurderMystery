@@ -17,7 +17,7 @@ public class GestureControl : MonoBehaviour
 
     public void InputDoubleTap()
     {
-        Debug.Log("Double Tap");
+        //Debug.Log("Double Tap");
         if (OnDoubleTap != null)
         {
             OnDoubleTap();
@@ -26,7 +26,7 @@ public class GestureControl : MonoBehaviour
 
     public void InputHeadNod()
     {
-        Debug.Log("Head Nod");
+       // Debug.Log("Head Nod");
         if (OnHeadNod != null)
         {
             OnHeadNod();
@@ -35,7 +35,7 @@ public class GestureControl : MonoBehaviour
 
     public void InputHeadShake()
     {
-        Debug.Log("Head Shake");
+        //Debug.Log("Head Shake");
         if (OnHeadShake != null)
         {
             OnHeadShake();

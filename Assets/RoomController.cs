@@ -9,6 +9,8 @@ public class RoomController : MonoBehaviour
     public GameObject player;
 
     public Suspect currectSuspect = null;
+    public string curSuspectString = null;
+
     public Suspect.SuspectName currentSuspectName;
 
     public Suspect butler;
@@ -26,11 +28,19 @@ public class RoomController : MonoBehaviour
     public enum RoomState { INSTRUCTIONS, SELECTING ,QUESTIONING }
     public RoomState state = RoomState.INSTRUCTIONS;
 
-    public static RoomController instance; 
+    public static RoomController instance;
+
+    public AudioSource musicbox;
+
+    public AudioClip bgmSelecting;
+    public AudioClip bgmQuestioning;
 
     void Awake() 
     {
-        instance = this; 
+        instance = this;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        CharacterSelectEvent.OnCharacterSelectBegan += StartCharacterSelecting;
     }
 
     // Start is called before the first frame update
@@ -40,19 +50,73 @@ public class RoomController : MonoBehaviour
         // Wait untill sysnced up
 
         //StartInstructionSequence();
+    }
 
-        
+    void StartCharacterSelecting(CharacterSelectEvent e)
+    {
+        List<string> charOptions = e.GetSelectableCharacterIDs();
+
+        // Turn of all suspect then turn on the one we need
+        Agatha.gameObject.GetComponent<Collider>().enabled = false;
+        Cammish.gameObject.GetComponent<Collider>().enabled = false;
+        Draguer.gameObject.GetComponent<Collider>().enabled = false;
+        Watts.gameObject.GetComponent<Collider>().enabled = false;
+
+        foreach (string charName in charOptions)
+        {
+            switch (charName)
+            {
+                case "Agatha":
+                     
+                    Agatha.gameObject.GetComponent<Collider>().enabled = true;
+                    curSuspectString = charName;
+                    break;
+
+                case "Draguer":
+                    Draguer.gameObject.GetComponent<Collider>().enabled = true;
+                    curSuspectString = charName;
+                    break;
+
+                case "Watts":
+                    Watts.gameObject.GetComponent<Collider>().enabled = true;
+                    curSuspectString = charName;
+                    break;
+
+                case "Cammish":
+                    Cammish.gameObject.GetComponent<Collider>().enabled = true;
+                    curSuspectString = charName;
+                    break;
+
+                default:
+                    break;
+            }
+
+
+          
+
+        }
+
+
+
+        SetState(RoomState.SELECTING);
+
+        PlayBgm(bgmSelecting);
     }
 
     void StartInstructionSequence()
     {
         state = RoomState.INSTRUCTIONS;
 
-        butler.audio.clip = clipStartQuestioning;
-        butler.audio.Play();
 
         LeanTween.delayedCall(6f, () => { SetState(RoomState.SELECTING); });
 
+    }
+
+    void PlayBgm( AudioClip clip)
+    {
+
+        musicbox.clip = clip;
+        musicbox.Play();
     }
 
     void SetState(RoomState setState)
@@ -129,13 +193,25 @@ public class RoomController : MonoBehaviour
     // Nod head while selected play a effect or enter the questioning phase
     void Confirm()
     {
-        if (game)
+     
+        if (state == RoomState.SELECTING)
         {
-            game.OnCharacterSelect("Bosely");
+            //PlaySoundEffectOnSuspect(currectSuspect);
+
+            PlayBgm(bgmQuestioning);
+
+            if (game)
+            {
+                game.OnCharacterSelect(curSuspectString);
+            }
+
+            state = RoomState.QUESTIONING;
         }
 
-        PlaySoundEffectOnSuspect(currectSuspect);
+       
     }
+
+
 
 
     void PlaySoundEffectOnSuspect(Suspect suspect)
