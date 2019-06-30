@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c2277eafb50274257a41312e97a9be31, type: 3}
   bgClips: []
   text: "I\u2019ll get the smelling salts."
   nextEvent: {fileID: 5618334310889777195}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 54f95d1cc2a534c6b9b9ccb260e1ae62, type: 3}
   bgClips: []
   text: Look what I just discovered!
   nextEvent: {fileID: 5618334310075511795}
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: d5fde77142a074b0b8ccb39e6aec893c, type: 3}
   bgClips: []
   text: "I\u2019ll have Bosely fetch you one."
   nextEvent: {fileID: 5618334310999186317}
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3511804278f78448b98c04a487f10621, type: 3}
   bgClips: []
   text: "I\u2019m sure you\u2019ve realized this by\nnow, but do you know he\u2019d
     lost the\nfamily fortune?"
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 5618334309431622978}
   - component: {fileID: 5618334309431622979}
   m_Layer: 0
-  m_Name: 1.Cammish.2
+  m_Name: 1.Cammish.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: aa383215702a34d969012cff79098296, type: 3}
   bgClips: []
   text: "His gin and tonic smells of bitter\nalmonds. I think he\u2019s been poisoned
     with cyanide!"
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 603e3e6c033bf4c9594b19ebcb968efd, type: 3}
   bgClips: []
   text: <Footsteps running>
   nextEvent: {fileID: 5618334310953147891}
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 985040faa5eb04d398c0434196c9c1e3, type: 3}
   bgClips: []
   text: "It\u2019s the future, I\u2019m telling ya. Lord Reginald has made a solid
     investment!"
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9990f485113784fbea4d6e68e3066c80, type: 3}
   bgClips: []
   text: 'I suppose that Draguer woman has
 
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3730ae9da75284783956fe25b65a5a2d, type: 3}
   bgClips: []
   text: "He made bad investment after bad\ninvestment. Hundreds of thousands\nof dollars,
     all gone. He\u2019d\nabsolutely ruined me! Or, us,\nrather. Do you know about
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7005c57a1294047409ca5d5348938b6d, type: 3}
   bgClips: []
   text: He is <i>dead!</i>
   nextEvent: {fileID: 5618334311195362277}
@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 2a83a4775acef475aa0803947d1ec741, type: 3}
   bgClips: []
   text: Suit yourself.
   nextEvent: {fileID: 5618334310999186317}
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a4c6b6184267444c180b4d2848f9ed9c, type: 3}
   bgClips: []
   text: <door creaks>
   nextEvent: {fileID: 5618334311058264048}
@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4ca4d5b90dde841dbb9d78779a8e12cd, type: 3}
   bgClips: []
   text: "I\u2019m so sorry you had to witness\nthis sad event. I can assure you,\nthis
     certainly isn\u2019t how I normally\nrun my dinner parties. I assume you\nwant
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: ad10240d15e294901a58d5c7e051c028, type: 3}
   bgClips: []
   text: Mademoiselle Draguer has fainted!
   nextEvent: {fileID: 5618334309319581121}
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 872389e8c0898407797978f403f4c111, type: 3}
   bgClips: []
   text: "He\u2019s... he\u2019s..."
   nextEvent: {fileID: 5618334309776896943}
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 658e4c791c32f4e6c9a792f30b011594, type: 3}
   bgClips: []
   text: "What? No. This can\u2019t be. Millions?\nBut... that\u2019s even more than
     the\nlife insurance payout! This can\u2019t\nbe happening!\nMy only regret is
@@ -1706,7 +1706,7 @@ GameObject:
   - component: {fileID: 5618334310011882064}
   - component: {fileID: 5618334310011882065}
   m_Layer: 0
-  m_Name: 1.Cammish.1
+  m_Name: 1.Cammish.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 75102a3e9fcfe4a30bcddabc8fc03fa7, type: 3}
   bgClips: []
   text: "Wait just a moment.\t"
   nextEvent: {fileID: 5618334309431622976}
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 5618334310042231594}
   - component: {fileID: 5618334310042231597}
   m_Layer: 0
-  m_Name: 1.Agatha.1
+  m_Name: 1.Scream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1837,7 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 462d5d293fbd743a283044e4e1d835fb, type: 3}
   bgClips: []
   text: <Agatha screams>
   nextEvent: {fileID: 5618334309515225695}
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 00b3855b2c9614007abef0a9e9d82105, type: 3}
   bgClips: []
   text: Not prepared to die for your country, eh?
   nextEvent: {fileID: 5618334311417590137}
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6854807d69580417eb8de7b1865c12a0, type: 3}
   bgClips: []
   text: "I\u2019ll admit, I was the one who\nencouraged him to take it out. Now\nthat
     he\u2019s gone, it will pay out in\nthe tens of thousands- and of\ncourse, it
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: e206327c4f24645f5a4c38ce22f22ae9, type: 3}
   bgClips: []
   text: "Well, I suppose it\u2019s good luck that\nwe invited a detective to the party."
   nextEvent: {fileID: 5618334310320773739}
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 03f291e83ee314e718d0319d5f8876c9, type: 3}
   bgClips: []
   text: Who could have done such a thing?
   nextEvent: {fileID: 5618334311333049011}
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 71515bb33d8fe4a91a0a53b82f6c1966, type: 3}
   bgClips: []
   text: Oh no.
   nextEvent: {fileID: 5618334309910011952}
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 92cb27eea7597493e886274dd459931e, type: 3}
   bgClips: []
   text: "And I know that Watts and Cammish\nwill both be disappointed now that\nthey\u2019ll
     never be able to get back\ntheir money from my poor late\nhusband."
@@ -3035,7 +3035,7 @@ GameObject:
   - component: {fileID: 5618334310409184613}
   - component: {fileID: 5618334310409184610}
   m_Layer: 0
-  m_Name: 1.Agatha.3
+  m_Name: 1.Agatha.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 41cf909dda94e4c48a6f2e747d514450, type: 3}
   bgClips: []
   text: 'And with a letter opener! How
 
@@ -3116,7 +3116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: ff4441e1112354fd69608b60863655b8, type: 3}
   bgClips: []
   text: "Then you know what a solid investment Lord Reginald has made! Plastics are
     the future, I\u2019m telling ya."
@@ -3221,7 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 386b6c3a9282949878461d94a49c7376, type: 3}
   bgClips: []
   text: "Well of course, he was having an\naffair with that hussy Mademoiselle\nDraguer.
     Isn\u2019t it obvious?"
@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: ee56ba4ef75ac4b168a8cabd04aa554e, type: 3}
   bgClips: []
   text: "I\u2019ll admit it! I killed my husband!\nLord Reginald was a philanderer,
     a\nbore, and a bad businessman! I\u2019m\nglad that he\u2019s dead!"
@@ -3569,7 +3569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: e217d56820d854fb8b79e4d2f3e63821, type: 3}
   bgClips: []
   text: "That\u2019s the dinner bell, ladies and gentlemen."
   nextEvent: {fileID: 5618334310605854199}
@@ -3616,7 +3616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: af7e43451526143d5a4bdbc9b209f75b, type: 3}
   bgClips: []
   text: "Well golly! Howdy. I\u2019ve never met a famous detective before. I\u2019m
     Mr.\nWatts, Lord Reginald\u2019s new business partner. It sure is swell to meet\nyou.\n\nDo
@@ -3716,7 +3716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 984a3fa946e4644a4a17b9860912d7b5, type: 3}
   bgClips: []
   text: "Oh dear. Where is Lord Reginald?\nBosely, fetch the key to his study. I\u2019ll
     go tell him we\u2019re ready to eat."
@@ -3764,7 +3764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 795b526f0706b420f88a0f5a0a32c1d2, type: 3}
   bgClips: []
   text: <footsteps>
   nextEvent: {fileID: 5618334309852388396}
@@ -3863,7 +3863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 16d6b208b599d44c88ede605a5e9d944, type: 3}
   bgClips: []
   text: "It was so nice of Reggie to invite you. He is such a dear. Such a lovely
     man. I\u2019m sure the evening will be quite, how you say, enchant\xE9."
@@ -3977,7 +3977,7 @@ GameObject:
   - component: {fileID: 5618334310722000217}
   - component: {fileID: 5618334310722000038}
   m_Layer: 0
-  m_Name: 5.Agatha.2
+  m_Name: 5.Laugh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4009,7 +4009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: d6c0cb16c63af429b874b069d61ddf7b, type: 3}
   bgClips: []
   text: <laughs>
   nextEvent: {fileID: 5618334310879413432}
@@ -4219,7 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: cfd738ae2924344b299c15530ffb09d6, type: 3}
   bgClips: []
   text: It is so nice to meet a fan!
   nextEvent: {fileID: 5618334310658969081}
@@ -4266,7 +4266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: b5a4f14415db0457fa3520468771a59b, type: 3}
   bgClips: []
   text: "The way she parades around, all\n\u201Cdear Reggie\u201D this and \u201Cmy
     darling\u201D\nthat. And of course, she\u2019s quite\nemotionally unstable. Who
@@ -4315,7 +4315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: da243115d45e94f818485b8d0e679665, type: 3}
   bgClips: []
   text: "What do you mean, you don\u2019t want to\nknow? What kind of a detective
     are\nyou? I\u2019m going to tell you anyway.\t"
@@ -4332,7 +4332,7 @@ GameObject:
   - component: {fileID: 5618334310879413434}
   - component: {fileID: 5618334310879413435}
   m_Layer: 0
-  m_Name: 5.Agatha.3
+  m_Name: 5.Agatha.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4364,7 +4364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c940ea57d3f314ca59424f6a585c3e88, type: 3}
   bgClips: []
   text: "You fool! You fell for everything.\nI was the one that killed my\nhusband!
     Lord Reginald was a\nphilanderer, a bore, and a bad\nbusinessman! I\u2019m glad
@@ -4382,7 +4382,7 @@ GameObject:
   - component: {fileID: 5618334310889777197}
   - component: {fileID: 5618334310889777194}
   m_Layer: 0
-  m_Name: 1.Agatha.2
+  m_Name: 1.Agatha.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4414,7 +4414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 236151f3be9b844b488f72a965b21334, type: 3}
   bgClips: []
   text: Oh, my poor husband.
   nextEvent: {fileID: 5618334311359100621}
@@ -4461,7 +4461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: e2792db0f5f4948239c9964d06ddf8d7, type: 3}
   bgClips: []
   text: "What what, young chap! Welcome to\nthe party. I\u2019m Captain Cammish,\nLord
     Reginald\u2019s old pal. We fought\nin the war together, though that\nwas a long
@@ -4511,7 +4511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: e07ee68b957564638be50391b6b5edd9, type: 3}
   bgClips: []
   text: "\u2018Ello, mon ami. Allow me to\nintroduce myself, I am Mademoiselle\nDraguer,
     the famous chanteuse. Have\nyou heard of me?"
@@ -4711,7 +4711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6df9dd196e6814d64aded540eeee0e1d, type: 3}
   bgClips: []
   text: Dear Lord!
   nextEvent: {fileID: 5618334310210829089}
@@ -4758,7 +4758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 5a8c5d794c448481bb763d9efb29e820, type: 3}
   bgClips: []
   text: 'Poisoned and stabbed! Oh, this is
 
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 2f945bb6913e54c93b68ce1847b70d67, type: 3}
   bgClips: []
   text: Darling, dinner is-
   nextEvent: {fileID: 5618334310042231595}
@@ -5213,7 +5213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 8746af2c76a064ae8bc083a4ea8e2f3a, type: 3}
   bgClips: []
   text: 'I have performed on all seven
 
@@ -5410,7 +5410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: fff1a8f556b1f4c3cb2f11040a94d726, type: 3}
   bgClips: []
   text: <thud>
   nextEvent: {fileID: 5618334309875506435}
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4ef1de350477744ebb99aa6edcd3395d, type: 3}
   bgClips: []
   text: "In the kitchen! Right next to the\ncocktail glasses! And this isn\u2019t\nmedicine-
     it\u2019s cyanide!"
@@ -5552,7 +5552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 27537c81a4aa8460c8bf796ced6d73b6, type: 3}
   bgClips: []
   text: "Well, you\u2019re discovering all of\nReggie\u2019s dirty little secrets.
     He\nhad a lot of them."
@@ -5744,7 +5744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: fa5bd3fe14f2941768e6984fee6559de, type: 3}
   bgClips: []
   text: 'You four are the only ones in the
 
@@ -5793,7 +5793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c9b0292bcf9694425a5290089034d80b, type: 3}
   bgClips: []
   text: "That\u2019s what I like to hear, a fellow veteran!"
   nextEvent: {fileID: 5618334311417590137}
@@ -5840,7 +5840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 45c8682a4e7eb4cc4b16347dc1940837, type: 3}
   bgClips: []
   text: "He\u2019s been stabbed! Right in the\nmiddle of the chest!"
   nextEvent: {fileID: 5618334310409184611}
@@ -5983,7 +5983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 578cb0b4a59fc4ee38beed6872f6ef6d, type: 3}
   bgClips: []
   text: Fascinating to meet you. Just fascinating.
   nextEvent: {fileID: 5618334310999186317}
@@ -5998,7 +5998,7 @@ GameObject:
   - component: {fileID: 5618334311431316727}
   - component: {fileID: 5618334311431316724}
   m_Layer: 0
-  m_Name: 5.Agatha.4
+  m_Name: 5.Agatha.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6030,7 +6030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4a9ad7caf8a2b4e329599b979fa9cbad, type: 3}
   bgClips: []
   text: "(horrified)\nWhat? No. This can\u2019t be. Millions?\nBut... that\u2019s
     even more than the\nlife insurance payout! Damn!"
@@ -6127,7 +6127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 71cd73a3fa29844f38c45836b59fcb0a, type: 3}
   bgClips: []
   text: "I\u2019ll admit it, I married Reginald\nfor his money. But it was his\nirresponsibility
     that lost us the\nfortune. If I had been allowed to\nrun the business, we would
