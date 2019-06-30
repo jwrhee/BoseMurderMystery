@@ -146,7 +146,6 @@ MonoBehaviour:
   text: 'Well, this certainly does look
 
     incriminating.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1525070662}
 --- !u!4 &15181742
 Transform:
@@ -261,7 +260,6 @@ MonoBehaviour:
   text: 'I can finally get this off my
 
     chest.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1727860666}
 --- !u!1 &48518438
 GameObject:
@@ -459,7 +457,7 @@ RectTransform:
   - {fileID: 1464498048}
   - {fileID: 664624273}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -500,7 +498,6 @@ MonoBehaviour:
   text: 'I have performed on all seven
 
     continents! I sang for le petite penguins in Antarctica.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1071294368}
 --- !u!4 &85625884
 Transform:
@@ -548,7 +545,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "It\u2019s nearly midnight- after these\nquestions, you\u2019ll have to accuse\nsomeone!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1847080780}
 --- !u!4 &110922180
 Transform:
@@ -610,7 +606,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Darling, dinner is-
-  source: {fileID: 0}
   nextEvent: {fileID: 1150929266}
 --- !u!1 &162692627
 GameObject:
@@ -652,7 +647,6 @@ MonoBehaviour:
     I would never have killed him!
 
     Never!'
-  source: {fileID: 0}
   nextEvent: {fileID: 272493638}
 --- !u!4 &162692629
 Transform:
@@ -715,7 +709,6 @@ MonoBehaviour:
   bgClips: []
   text: "But even if he stooped so low, I am\nan honorable man. I would never\nmurder
     him, even after all he\u2019s\ndone to me."
-  source: {fileID: 0}
   nextEvent: {fileID: 272493638}
 --- !u!1 &177902547
 GameObject:
@@ -750,7 +743,6 @@ MonoBehaviour:
   bgClips: []
   text: "I knew you\u2019d understand. Reggie was\nmy true love. That cow Agatha could\nnever
     understand."
-  source: {fileID: 0}
   nextEvent: {fileID: 2138353086}
 --- !u!4 &177902549
 Transform:
@@ -814,7 +806,7 @@ Transform:
   - {fileID: 1424979483}
   - {fileID: 971816256}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187883246
 GameObject:
@@ -1018,7 +1010,6 @@ MonoBehaviour:
     until my last breath! I am no
 
     murderer!'
-  source: {fileID: 0}
   nextEvent: {fileID: 1007976190}
 --- !u!1 &192912748
 GameObject:
@@ -1076,7 +1067,6 @@ MonoBehaviour:
     been richer than you ever were
 
     before he lost the family fortune!'
-  source: {fileID: 0}
   nextEvent: {fileID: 1220089261}
 --- !u!1 &194245076
 GameObject:
@@ -1164,7 +1154,6 @@ MonoBehaviour:
   text: 'Poisoned and stabbed! Oh, this is
 
     just too much.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1518826826}
 --- !u!4 &201773383
 Transform:
@@ -1226,7 +1215,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Dear Lord!
-  source: {fileID: 0}
   nextEvent: {fileID: 1517048184}
 --- !u!1 &242609153
 GameObject:
@@ -1548,7 +1536,6 @@ MonoBehaviour:
     that lost us the\nfortune. If I had been allowed to\nrun the business, we would
     still be\nrich! And anyway, what woman hasn\u2019t\noccasionally wanted to kill
     their\nhusband? It\u2019s only natural."
-  source: {fileID: 0}
   nextEvent: {fileID: 1525070662}
 --- !u!4 &284718403
 Transform:
@@ -1612,7 +1599,6 @@ MonoBehaviour:
   text: 'You must let me know if you find
 
     it. I must have my medicine.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!1 &296586924
 GameObject:
@@ -1647,7 +1633,6 @@ MonoBehaviour:
   bgClips: []
   text: "(horrified)\nWhat? No. This can\u2019t be. Millions?\nBut... that\u2019s
     even more than the\nlife insurance payout! Damn!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1836196311}
 --- !u!4 &296586926
 Transform:
@@ -1709,7 +1694,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Fascinating to meet you. Just fascinating.
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!1 &323254982
 GameObject:
@@ -1817,7 +1801,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Let\u2019s ask them some more questions, then."
-  source: {fileID: 0}
   nextEvent: {fileID: 1304597788}
 --- !u!4 &329250218
 Transform:
@@ -1876,7 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 158fafc519c15435abf8be91fc0324ca, type: 3}
   bgClips: []
   text: "Oh hello! I\u2019m so glad you could\njoin us. My husband Lord Reginald\nis
     in his study, but he should be\ndown any moment. Would you like a\ncocktail?"
@@ -1915,7 +1898,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "He\u2019s been stabbed! Right in the\nmiddle of the chest!"
-  source: {fileID: 0}
   nextEvent: {fileID: 783879994}
 --- !u!4 &371170454
 Transform:
@@ -1977,7 +1959,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "That\u2019s what I like to hear, a fellow veteran!"
-  source: {fileID: 0}
   nextEvent: {fileID: 310516512}
 --- !u!1 &394795242
 GameObject:
@@ -2013,7 +1994,6 @@ MonoBehaviour:
   text: 'You four are the only ones in the
 
     house- which means all of you are suspects.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1542366924}
 --- !u!4 &394795244
 Transform:
@@ -2082,7 +2062,7 @@ PrefabInstance:
     - target: {fileID: 224777648085037456, guid: 526c488d4f3cef64694852f14c19bb3d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224777648085037456, guid: 526c488d4f3cef64694852f14c19bb3d,
         type: 3}
@@ -3707,7 +3687,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Excellent.
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!1 &438704172
 GameObject:
@@ -3868,7 +3847,6 @@ MonoBehaviour:
   bgClips: []
   text: "Well, you\u2019re discovering all of\nReggie\u2019s dirty little secrets.
     He\nhad a lot of them."
-  source: {fileID: 0}
   nextEvent: {fileID: 1763084994}
 --- !u!4 &488637486
 Transform:
@@ -3916,7 +3894,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Too bad, I\u2019m telling you anyway!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1727860666}
 --- !u!4 &490219053
 Transform:
@@ -3965,7 +3942,6 @@ MonoBehaviour:
   bgClips: []
   text: "In the kitchen! Right next to the\ncocktail glasses! And this isn\u2019t\nmedicine-
     it\u2019s cyanide!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1076943518}
 --- !u!4 &490872916
 Transform:
@@ -4092,7 +4068,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Fishy business, if you ask me.
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!4 &525527604
 Transform:
@@ -4233,104 +4208,7 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <thud>
-  source: {fileID: 0}
   nextEvent: {fileID: 1315567450}
---- !u!1 &534669902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 534669905}
-  - component: {fileID: 534669904}
-  - component: {fileID: 534669903}
-  - component: {fileID: 534669906}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &534669903
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
---- !u!20 &534669904
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &534669905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534669906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2473de429d55f45a3b8c7d55f0fdc6bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotationSource: 0
 --- !u!1 &539196568
 GameObject:
   m_ObjectHideFlags: 0
@@ -4430,7 +4308,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <footsteps>
-  source: {fileID: 0}
   nextEvent: {fileID: 1338586741}
 --- !u!1 &585121710
 GameObject:
@@ -4479,7 +4356,6 @@ MonoBehaviour:
   bgClips: []
   text: "Oh dear. Where is Lord Reginald?\nBosely, fetch the key to his study. I\u2019ll
     go tell him we\u2019re ready to eat."
-  source: {fileID: 0}
   nextEvent: {fileID: 578159642}
 --- !u!1 &591874524
 GameObject:
@@ -4604,7 +4480,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606474516
 GameObject:
@@ -4754,7 +4630,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "That\u2019s the dinner bell, ladies and gentlemen."
-  source: {fileID: 0}
   nextEvent: {fileID: 585121710}
 --- !u!1 &664624272
 GameObject:
@@ -4921,7 +4796,6 @@ MonoBehaviour:
   text: 'How dare you! Reggie was my true
 
     love. You could never understand.'
-  source: {fileID: 0}
   nextEvent: {fileID: 2138353086}
 --- !u!1 &671686827
 GameObject:
@@ -4975,7 +4849,6 @@ MonoBehaviour:
     Reggie and I will be together in
 
     death!'
-  source: {fileID: 0}
   nextEvent: {fileID: 1007976190}
 --- !u!1 &672717833
 GameObject:
@@ -5010,7 +4883,6 @@ MonoBehaviour:
   bgClips: []
   text: "Seems suspicious. But I\u2019m just\nworried. I don\u2019t know what I\u2019ll
     do without my business partner."
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!4 &672717835
 Transform:
@@ -5207,7 +5079,6 @@ MonoBehaviour:
   bgClips: []
   text: "I\u2019ll admit it! I killed my husband!\nLord Reginald was a philanderer,
     a\nbore, and a bad businessman! I\u2019m\nglad that he\u2019s dead!"
-  source: {fileID: 0}
   nextEvent: {fileID: 192912748}
 --- !u!1 &726528322
 GameObject:
@@ -5241,7 +5112,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Let\u2019s ask them some more questions, then."
-  source: {fileID: 0}
   nextEvent: {fileID: 110922178}
 --- !u!4 &726528324
 Transform:
@@ -5304,7 +5174,6 @@ MonoBehaviour:
   bgClips: []
   text: "Well of course, he was having an\naffair with that hussy Mademoiselle\nDraguer.
     Isn\u2019t it obvious?"
-  source: {fileID: 0}
   nextEvent: {fileID: 862261191}
 --- !u!1 &730168518
 GameObject:
@@ -5348,7 +5217,6 @@ MonoBehaviour:
     been richer than you ever were
 
     before he lost the family fortune!'
-  source: {fileID: 0}
   nextEvent: {fileID: 296586924}
 --- !u!4 &730168520
 Transform:
@@ -5411,7 +5279,6 @@ MonoBehaviour:
   bgClips: []
   text: "Then you know what a solid investment Lord Reginald has made! Plastics are
     the future, I\u2019m telling ya."
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!1 &755434627
 GameObject:
@@ -5597,7 +5464,6 @@ MonoBehaviour:
   text: 'And with a letter opener! How
 
     horrid.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1179181063}
 --- !u!4 &783879996
 Transform:
@@ -5842,7 +5708,7 @@ PrefabInstance:
     - target: {fileID: 224735255644499794, guid: 0499f078647c040d7a21b94ff1177202,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224735255644499794, guid: 0499f078647c040d7a21b94ff1177202,
         type: 3}
@@ -6063,7 +5929,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Oh, my poor husband.
-  source: {fileID: 0}
   nextEvent: {fileID: 371170452}
 --- !u!4 &840188532
 Transform:
@@ -6114,7 +5979,6 @@ MonoBehaviour:
     Lord Reginald was a\nphilanderer, a bore, and a bad\nbusinessman! I\u2019m glad
     that he\u2019s\ndead! And you\u2019ve just sent an\ninnocent patsy to jail- and
     there\u2019s\nno way you can prove it was me!"
-  source: {fileID: 0}
   nextEvent: {fileID: 730168518}
 --- !u!4 &850816739
 Transform:
@@ -6228,7 +6092,6 @@ MonoBehaviour:
   text: "The way she parades around, all\n\u201Cdear Reggie\u201D this and \u201Cmy
     darling\u201D\nthat. And of course, she\u2019s quite\nemotionally unstable. Who
     knows\nwhat a scorned Frenchwoman could be\ncapable of?"
-  source: {fileID: 0}
   nextEvent: {fileID: 1344269892}
 --- !u!1 &865914056
 GameObject:
@@ -6341,7 +6204,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: It is so nice to meet a fan!
-  source: {fileID: 0}
   nextEvent: {fileID: 1071294368}
 --- !u!4 &866839691
 Transform:
@@ -6757,6 +6619,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937047829}
   m_CullTransparentMesh: 0
+--- !u!1001 &944193118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6131806944135368500, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_Name
+      value: GestureControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13282585
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.17347383
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131806944135368463, guid: d42b1ce919e554c928e74804eebfeb2b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d42b1ce919e554c928e74804eebfeb2b, type: 3}
 --- !u!1 &971816255
 GameObject:
   m_ObjectHideFlags: 0
@@ -6856,7 +6787,6 @@ MonoBehaviour:
   text: "I arrived around 8. I gave Lord\nReginald a gift, and then I spoke to Captain
     Crosby for a while. He and Lord Reginald fought in the war together, but Crosby
     doesn\u2019t seem to like him very much. Have you noticed that?"
-  source: {fileID: 0}
   nextEvent: {fileID: 672717833}
 --- !u!4 &1007516217
 Transform:
@@ -6904,7 +6834,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <laughs>
-  source: {fileID: 0}
   nextEvent: {fileID: 850816737}
 --- !u!4 &1007976192
 Transform:
@@ -7082,7 +7011,6 @@ MonoBehaviour:
   bgClips: []
   text: "It was so nice of Reggie to invite you. He is such a dear. Such a lovely
     man. I\u2019m sure the evening will be quite, how you say, enchant\xE9."
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!4 &1071294370
 Transform:
@@ -7130,7 +7058,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Mon dieu!\t"
-  source: {fileID: 0}
   nextEvent: {fileID: 15181740}
 --- !u!4 &1076943520
 Transform:
@@ -7180,7 +7107,6 @@ MonoBehaviour:
   text: 'Oh! My little blue bottle! My...
 
     medicine. Where did you find it?'
-  source: {fileID: 0}
   nextEvent: {fileID: 490872914}
 --- !u!4 &1117624748
 Transform:
@@ -7231,7 +7157,6 @@ MonoBehaviour:
     he\u2019s gone, it will pay out in\nthe tens of thousands- and of\ncourse, it
     will all be mine. But I\nwould never want Reginald dead- I\nwas just making sure
     that I\nwouldn\u2019t be destitute, if anything\never... happened to him."
-  source: {fileID: 0}
   nextEvent: {fileID: 272493638}
 --- !u!4 &1120844351
 Transform:
@@ -7284,7 +7209,6 @@ MonoBehaviour:
     such a\nbetrayal. What kind of friend would\nblackmail you? Money can\u2019t buy
     you\nhonor. It would have been better if\nhe\u2019d died a soldier\u2019s death
     all\nthose years ago."
-  source: {fileID: 0}
   nextEvent: {fileID: 1525070662}
 --- !u!4 &1122479923
 Transform:
@@ -7346,7 +7270,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Not prepared to die for your country, eh?
-  source: {fileID: 0}
   nextEvent: {fileID: 310516512}
 --- !u!1 &1150929266
 GameObject:
@@ -7394,7 +7317,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <Agatha screams>
-  source: {fileID: 0}
   nextEvent: {fileID: 1676034054}
 --- !u!1 &1154659055
 GameObject:
@@ -7481,7 +7403,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Wait just a moment.\t"
-  source: {fileID: 0}
   nextEvent: {fileID: 1759680281}
 --- !u!4 &1179181065
 Transform:
@@ -7545,7 +7466,6 @@ MonoBehaviour:
   text: "What? No. This can\u2019t be. Millions?\nBut... that\u2019s even more than
     the\nlife insurance payout! This can\u2019t\nbe happening!\nMy only regret is
     that I\u2019ll never\nget that money- I deserve those\nmillions, not him!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1508181940}
 --- !u!1 &1226125781
 GameObject:
@@ -7951,7 +7871,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "He\u2019s... he\u2019s..."
-  source: {fileID: 0}
   nextEvent: {fileID: 1950947830}
 --- !u!1 &1284453017
 GameObject:
@@ -8005,7 +7924,6 @@ MonoBehaviour:
     had nothing to do with this! I
 
     swear!'
-  source: {fileID: 0}
   nextEvent: {fileID: 1525070662}
 --- !u!1 &1302529467
 GameObject:
@@ -8101,7 +8019,6 @@ MonoBehaviour:
     fell on it once the cyanide kicked
 
     in.'
-  source: {fileID: 0}
   nextEvent: {fileID: 2147238131}
 --- !u!4 &1304597790
 Transform:
@@ -8215,7 +8132,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Mademoiselle Draguer has fainted!
-  source: {fileID: 0}
   nextEvent: {fileID: 1871656856}
 --- !u!1 &1317694017
 GameObject:
@@ -8300,7 +8216,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: A red herring, monsieur!
-  source: {fileID: 0}
   nextEvent: {fileID: 272493638}
 --- !u!4 &1327207628
 Transform:
@@ -8435,7 +8350,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <door creaks>
-  source: {fileID: 0}
   nextEvent: {fileID: 132736425}
 --- !u!1 &1344269892
 GameObject:
@@ -8484,7 +8398,6 @@ MonoBehaviour:
   bgClips: []
   text: "And I know that Watts and Cammish\nwill both be disappointed now that\nthey\u2019ll
     never be able to get back\ntheir money from my poor late\nhusband."
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!1 &1344299242
 GameObject:
@@ -8586,6 +8499,85 @@ Transform:
   m_Father: {fileID: 2116898219}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1365315512
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3293188992383245721, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_Name
+      value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188992383245726, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188991500219935, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188991752705581, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad80b2668345a4c6084e4dae59b3f903, type: 3}
 --- !u!1 &1374972507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8829,10 +8821,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 410c57ce762974fb7a6c12c415ab77a9, type: 3}
   bgClips: []
   text: I present Lady Agatha Skipwith.
-  source: {fileID: 0}
   nextEvent: {fileID: 345924319}
 --- !u!1 &1407332402
 GameObject:
@@ -8866,7 +8857,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: How incredibly convenient!
-  source: {fileID: 0}
   nextEvent: {fileID: 1381049131}
 --- !u!4 &1407332404
 Transform:
@@ -8915,7 +8905,6 @@ MonoBehaviour:
   bgClips: []
   text: "Well, you\u2019re the only option, so\nyou have to try anyway.\nEveryone,
     gather into the drawing room."
-  source: {fileID: 0}
   nextEvent: {fileID: 1154659055}
 --- !u!4 &1407534257
 Transform:
@@ -9174,13 +9163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6eaab2a60061a4b93b173f991a707dfe, type: 3}
   bgClips: []
   text: "Good evening, and welcome to\nSkipwith Manor. You must be the\nfamous detective,
     Inspector\nPumpernickle.\nYou\u2019re just in time for Lord\nSkipwith\u2019s dinner
     party; all the\nother guests have already arrived.\nI\u2019m Bosely, the butler.
     Please\nfollow me."
-  source: {fileID: 0}
   nextEvent: {fileID: 1388424356}
 --- !u!1 &1508181940
 GameObject:
@@ -9215,7 +9203,6 @@ MonoBehaviour:
   bgClips: []
   text: "Good job! You\u2019re truly the best\ndetective I\u2019ve ever met. Justice\nhas
     been served for poor Lord\nReginald."
-  source: {fileID: 0}
   nextEvent: {fileID: 0}
 --- !u!4 &1508181942
 Transform:
@@ -9277,7 +9264,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Oh no.
-  source: {fileID: 0}
   nextEvent: {fileID: 1283345001}
 --- !u!1 &1518826826
 GameObject:
@@ -9311,7 +9297,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Who could have done such a thing?
-  source: {fileID: 0}
   nextEvent: {fileID: 394795242}
 --- !u!4 &1518826828
 Transform:
@@ -9369,7 +9354,6 @@ MonoBehaviour:
     only love she feels is for cash
 
     money!'
-  source: {fileID: 0}
   nextEvent: {fileID: 272493638}
 --- !u!4 &1521172974
 Transform:
@@ -9419,7 +9403,6 @@ MonoBehaviour:
   text: 'This is terrible. Poor Lord
 
     Reginald. Did you know him well?'
-  source: {fileID: 0}
   nextEvent: {fileID: 1740056003}
 --- !u!4 &1521943791
 Transform:
@@ -9682,7 +9665,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Well, I suppose it\u2019s good luck that\nwe invited a detective to the party."
-  source: {fileID: 0}
   nextEvent: {fileID: 1407332402}
 --- !u!4 &1542366926
 Transform:
@@ -10198,7 +10180,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: <Footsteps running>
-  source: {fileID: 0}
   nextEvent: {fileID: 237860778}
 --- !u!1 &1727860666
 GameObject:
@@ -10236,7 +10217,6 @@ MonoBehaviour:
     an affair with my mother, and I was
 
     born illegitimate.'
-  source: {fileID: 0}
   nextEvent: {fileID: 1540968460}
 --- !u!4 &1727860668
 Transform:
@@ -10299,7 +10279,6 @@ MonoBehaviour:
   bgClips: []
   text: "No! This is a huge mistake! Oh gee,\nthis is terrible! I didn\u2019t kill\nLord
     Reginald! You have to believe\nme!"
-  source: {fileID: 0}
   nextEvent: {fileID: 1007976190}
 --- !u!1 &1740056003
 GameObject:
@@ -10334,7 +10313,6 @@ MonoBehaviour:
   bgClips: []
   text: "I only knew him a short time. We\nmet a few months ago, and I proposed we
     go into business together.\nShould I tell you where I\u2019ve been this evening?"
-  source: {fileID: 0}
   nextEvent: {fileID: 1007516215}
 --- !u!4 &1740056005
 Transform:
@@ -10457,7 +10435,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "That\u2019s the stroke of midnight! You\nmust make an accusation. "
-  source: {fileID: 0}
   nextEvent: {fileID: 971816255}
 --- !u!4 &1759321216
 Transform:
@@ -10506,7 +10483,6 @@ MonoBehaviour:
   bgClips: []
   text: "His gin and tonic smells of bitter\nalmonds. I think he\u2019s been poisoned
     with cyanide!"
-  source: {fileID: 0}
   nextEvent: {fileID: 201773381}
 --- !u!4 &1759680283
 Transform:
@@ -10618,7 +10594,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "I\u2019ll have Bosely fetch you one."
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!1 &1812933992
 GameObject:
@@ -10728,7 +10703,6 @@ MonoBehaviour:
   bgClips: []
   text: "Oh dear. You really are the worst\ndetective I\u2019ve ever met. I must\nsay,
     I\u2019m terribly disappointed.\nBetter luck next time, I suppose."
-  source: {fileID: 0}
   nextEvent: {fileID: 0}
 --- !u!4 &1836196313
 Transform:
@@ -10808,7 +10782,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847080780
 GameObject:
@@ -10842,7 +10816,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Look what I just discovered!
-  source: {fileID: 0}
   nextEvent: {fileID: 1117624746}
 --- !u!4 &1847080782
 Transform:
@@ -10955,7 +10928,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "I\u2019ll get the smelling salts."
-  source: {fileID: 0}
   nextEvent: {fileID: 840188530}
 --- !u!1 &1899627950
 GameObject:
@@ -11003,7 +10975,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: Suit yourself.
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!1 &1928682548
 GameObject:
@@ -11169,7 +11140,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: He is <i>dead!</i>
-  source: {fileID: 0}
   nextEvent: {fileID: 534604220}
 --- !u!1 &1951341075
 GameObject:
@@ -11399,7 +11369,6 @@ MonoBehaviour:
   bgClips: []
   text: "It\u2019s the future, I\u2019m telling ya. Lord Reginald has made a solid
     investment!"
-  source: {fileID: 0}
   nextEvent: {fileID: 194245076}
 --- !u!1 &2052244409
 GameObject:
@@ -11814,7 +11783,6 @@ MonoBehaviour:
   bgClips: []
   text: "I would rather die than never kiss\nReggie again. My poor sweet\ndarling.
     If I can\u2019t have him\nalive..."
-  source: {fileID: 0}
   nextEvent: {fileID: 1525070662}
 --- !u!4 &2138353088
 Transform:
@@ -11862,7 +11830,6 @@ MonoBehaviour:
   clip: {fileID: 0}
   bgClips: []
   text: "Maybe it\u2019s a... a blue haddock?"
-  source: {fileID: 0}
   nextEvent: {fileID: 1327207626}
 --- !u!4 &2147238133
 Transform:

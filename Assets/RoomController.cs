@@ -17,8 +17,6 @@ public class RoomController : MonoBehaviour
     public Suspect Draguer;
     public Suspect Watts;
 
-   
-
     public AudioClip clipSelectSuspect;
     //public AudioClip clipSelectSuspectVoice;
     public AudioClip clipStartQuestioning;
@@ -26,31 +24,24 @@ public class RoomController : MonoBehaviour
     public enum RoomState { INSTRUCTIONS, SELECTING ,QUESTIONING }
     public RoomState state = RoomState.INSTRUCTIONS;
 
+    public static RoomController instance; 
 
-    public AudioSource musicbox;
-
-    public AudioClip bgmQuestioning;
-    public AudioClip bgmSelecting;
-
+    void Awake() 
+    {
+        instance = this; 
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         // Wait untill sysnced up
-        StartInstructionSequence();
-    }
 
-    void SetBgm(AudioClip setClip)
-    {
-        musicbox.clip = setClip;
-        musicbox.Play();
+        //StartInstructionSequence();
     }
 
     void StartInstructionSequence()
     {
         state = RoomState.INSTRUCTIONS;
-
-        SetBgm(bgmSelecting);
 
         butler.audio.clip = clipStartQuestioning;
         butler.audio.Play();
@@ -108,7 +99,7 @@ public class RoomController : MonoBehaviour
                             currectSuspect.audio.volume = 1.0f;
                             currectSuspect.audio.Play();
 
-                            currectSuspect.audio.PlayOneShot(clipSelectSuspect, 0.3f);
+                            currectSuspect.audio.PlayOneShot(clipSelectSuspect, 0.5f);
 
                             SilenceAllSuspectExpect(currectSuspect);
                         }
@@ -140,8 +131,6 @@ public class RoomController : MonoBehaviour
     void PlaySoundEffectOnSuspect(Suspect suspect)
     {
         state = RoomState.QUESTIONING;
-
-        SetBgm(bgmQuestioning);
 
         currectSuspect.audio.PlayOneShot(currectSuspect.clipSelectedForQuestioning);
 

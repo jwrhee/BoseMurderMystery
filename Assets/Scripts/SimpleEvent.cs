@@ -10,8 +10,6 @@ using UnityEditor;
 /// </summary>
 public class SimpleEvent : BaseEvent
 {
-    public AudioSource source;
-
     public GameObject nextEvent;
 
     public override void Play()
@@ -31,6 +29,7 @@ public class SimpleEvent : BaseEvent
 
         // Play clip and wait for it to complete
         // TODO: or player skip 
+        var source = RoomController.instance.GetSuspectAudioSource(chrID); 
         if (source)
         {
             source.clip = clip;
@@ -39,6 +38,10 @@ public class SimpleEvent : BaseEvent
             {
                 yield return null;
             }
+        }
+        else 
+        {
+            Debug.LogWarning(chrID + " not found"); 
         }
 
         // Wait for input 
