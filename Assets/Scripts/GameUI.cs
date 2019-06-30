@@ -9,6 +9,7 @@ public class GameUI : MonoBehaviour
 
     public List<GameObject> chrButtons;
 
+    public GameObject portraitContainer; 
     public List<CharacterUI> portraits;
 
     public Text text;

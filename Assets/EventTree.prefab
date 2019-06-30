@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 2d4b52b57b1104d64bf5fb240a4e40e0, type: 3}
   bgClips: []
-  text: <bell rings>
+  text: 
   nextEvent: {fileID: 5618334310577427336}
 --- !u!1 &3532884404867454516
 GameObject:
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 603e3e6c033bf4c9594b19ebcb968efd, type: 3}
   bgClips: []
-  text: <Footsteps running>
+  text: 
   nextEvent: {fileID: 5618334310953147891}
 --- !u!1 &5618334309582727850
 GameObject:
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a4c6b6184267444c180b4d2848f9ed9c, type: 3}
   bgClips: []
-  text: <door creaks>
+  text: 
   nextEvent: {fileID: 5618334311058264048}
 --- !u!1 &5618334309866192531
 GameObject:
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 462d5d293fbd743a283044e4e1d835fb, type: 3}
   bgClips: []
-  text: <Agatha screams>
+  text: 
   nextEvent: {fileID: 5618334309515225695}
 --- !u!1 &5618334310060864002
 GameObject:
@@ -4055,7 +4055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 795b526f0706b420f88a0f5a0a32c1d2, type: 3}
   bgClips: []
-  text: <footsteps>
+  text: 
   nextEvent: {fileID: 5618334309852388396}
 --- !u!1 &5618334310652073665
 GameObject:
@@ -5706,7 +5706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: fff1a8f556b1f4c3cb2f11040a94d726, type: 3}
   bgClips: []
-  text: <thud>
+  text: 
   nextEvent: {fileID: 5618334309875506435}
 --- !u!1 &5618334311204765803
 GameObject:

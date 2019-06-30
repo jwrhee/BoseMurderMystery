@@ -10,7 +10,7 @@ public class CharacterSelectEvent : BaseEvent
     public delegate void CharacterSelectEventHandler(CharacterSelectEvent characterSelectEvent);
     public static event CharacterSelectEventHandler OnCharacterSelectBegan;
 
-    public List<GameObject> chrEvents; 
+    public List<GameObject> chrEvents;
 
     [Tooltip("Plays when all chr events are completed")]
     public GameObject nextEvent; 
@@ -24,7 +24,9 @@ public class CharacterSelectEvent : BaseEvent
         // If there are character events that haven't run, wait for a character selection 
         if (chrEvents.Count > 0) 
         {
-            OnCharacterSelectBegan?.Invoke(this);  
+            OnCharacterSelectBegan?.Invoke(this);
+
+            GameUI.instance.portraitContainer.SetActive(false);
 
             // Set UI 
             GameUI.instance.SetCharacterSelectState(this);
@@ -63,6 +65,8 @@ public class CharacterSelectEvent : BaseEvent
     private void OnCharacterSelectEvent(string selectedChrID)
     {
         Game.OnCharacterSelectEvent -= OnCharacterSelectEvent;
+
+        GameUI.instance.portraitContainer.SetActive(true); 
 
         if (source)
             source.Stop(); 
