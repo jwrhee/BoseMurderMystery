@@ -23,16 +23,20 @@ public class RoomController : MonoBehaviour
 
     public enum RoomState { INSTRUCTIONS, SELECTING ,QUESTIONING }
     public RoomState state = RoomState.INSTRUCTIONS;
-     
 
+    public static RoomController instance; 
 
+    void Awake() 
+    {
+        instance = this; 
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         // Wait untill sysnced up
 
-        StartInstructionSequence();
+        //StartInstructionSequence();
     }
 
     void StartInstructionSequence()
