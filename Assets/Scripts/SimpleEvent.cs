@@ -12,6 +12,9 @@ public class SimpleEvent : BaseEvent
 {
     public GameObject nextEvent;
 
+    // Used for preventing skip and complete events from both firing next event 
+    private bool didFinish = false;
+
     public override void Play()
     {
         StartCoroutine(PlayCR());
@@ -32,6 +35,8 @@ public class SimpleEvent : BaseEvent
         // Wait for input 
         Game.OnNextEvent += OnNextEvent;
 
+        didFinish = false; 
+
         // Play clip and wait for it to complete
         // TODO: or player skip 
         source = RoomController.instance.GetSuspectAudioSource(chrID);
@@ -43,14 +48,26 @@ public class SimpleEvent : BaseEvent
             {
                 yield return null;
             }
+
+            // Wait a beat between clips so they don't play back to back 
+            yield return new WaitForSeconds(1f); 
+
+            // Basic events should automatically resume when audio completes 
+            OnNextEvent();
         }
         else 
         {
             Debug.LogWarning(chrID + " not found"); 
         }
     }
+
     private void OnNextEvent()
     {
+        if (didFinish)
+            return;
+
+        didFinish = true;
+
         Game.OnNextEvent -= OnNextEvent;
 
         if (source)
