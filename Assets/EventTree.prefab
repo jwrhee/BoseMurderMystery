@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 5a108fc42d3434c7f9d3dc975ece91f4, type: 3}
   bgClips: []
   text: "I only knew him a short time. We\nmet a few months ago, and I proposed we
     go into business together.\nShould I tell you where I\u2019ve been this evening?"
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: d22be65ff004f48d6b0b903bf86ab343, type: 3}
   bgClips: []
   text: "No! This is a huge mistake! Oh gee,\nthis is terrible! I didn\u2019t kill\nLord
     Reginald! You have to believe\nme!"
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 3628262e1661a4bb99d81c03421ad3df, type: 3}
   bgClips: []
   text: 'Lord Reginald was my father! He had
 
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 378470b85511f41c89465465b36d12e2, type: 3}
   bgClips: []
   text: "Maybe it\u2019s a... a blue haddock?"
   nextEvent: {fileID: 5618334309866192531}
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: bc0320b28e7024a6d9aa19e0d8a2c07b, type: 3}
   bgClips: []
   text: "I\u2019d never have stabbed Lord\nReginald! I just wanted to give him\na
     present.\nI can\u2019t keep this secret anymore!\nWill you let me tell you the\ntruth???"
@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 796f06a69209a465b9508c6b1f91d605, type: 3}
   bgClips: []
   text: 'I guess... with him dead now... all
 
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c80dd6f8ca54f438eb790d37caa53cc4, type: 3}
   bgClips: []
   text: 'I tracked him down after all these
 
@@ -2342,7 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53147921efec54f33b20cada815dd50d, type: 3}
   bgClips: []
   text: 'This is terrible. Poor Lord
 
@@ -2745,7 +2745,7 @@ GameObject:
   - component: {fileID: 5618334310320773741}
   - component: {fileID: 5618334310320773738}
   m_Layer: 0
-  m_Name: 1.Watts.1a
+  m_Name: 1.Watts.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 34b94a7f69f834a39bc69aecdc8474dd, type: 3}
   bgClips: []
   text: How incredibly convenient!
   nextEvent: {fileID: 5618334310348884338}
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 90a1afdfb4fdf4323b306f3fccf5b071, type: 3}
   bgClips: []
   text: "What more do you need to know from\nme? I\u2019ve answered all your\nquestions
     so far.\nIs it the letter opener?"
@@ -3163,7 +3163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 219257334e07e4326a1a86d20c251128, type: 3}
   bgClips: []
   text: 'But Lady Agatha, your husband
 
@@ -3472,7 +3472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 64fc877ec62c249e784361a9e69bd32a, type: 3}
   bgClips: []
   text: "Seems suspicious. But I\u2019m just\nworried. I don\u2019t know what I\u2019ll
     do without my business partner."
@@ -3811,7 +3811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 49c3bf1d221ef4a189f6dddc05e2e89c, type: 3}
   bgClips: []
   text: "I\u2019ve told you everything I know.\nReginald and I reconciled before he\ndied,
     I told him who I was and he\napologized for abandoning me. And\nlike I said, plastics
@@ -3960,7 +3960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: adce65f5a92f44f3a9c5931eadd7d8c6, type: 3}
   bgClips: []
   text: "I arrived around 8. I gave Lord\nReginald a gift, and then I spoke to Captain
     Crosby for a while. He and Lord Reginald fought in the war together, but Crosby
@@ -3977,7 +3977,7 @@ GameObject:
   - component: {fileID: 5618334310722000217}
   - component: {fileID: 5618334310722000038}
   m_Layer: 0
-  m_Name: 5.Laugh
+  m_Name: 5.Agatha.Laugh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4858,7 +4858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 219257334e07e4326a1a86d20c251128, type: 3}
   bgClips: []
   text: 'But Lady Agatha, your husband
 
@@ -5064,7 +5064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: becb3c9fa05704509be87688c6c689ac, type: 3}
   bgClips: []
   text: 'At first I was angry he abandoned
 
@@ -5262,7 +5262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 557a970957640487eac8189e748a59e6, type: 3}
   bgClips: []
   text: 'I can finally get this off my
 
@@ -5600,7 +5600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: ac2fef24a3332478097b39c8488e6abf, type: 3}
   bgClips: []
   text: "Too bad, I\u2019m telling you anyway!"
   nextEvent: {fileID: 5618334309465204195}

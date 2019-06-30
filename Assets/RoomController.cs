@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
+    public Game game;
+
     public GameObject player;
 
     public Suspect currectSuspect = null;
@@ -38,6 +40,8 @@ public class RoomController : MonoBehaviour
         // Wait untill sysnced up
 
         //StartInstructionSequence();
+
+        
     }
 
     void StartInstructionSequence()
@@ -125,7 +129,12 @@ public class RoomController : MonoBehaviour
     // Nod head while selected play a effect or enter the questioning phase
     void Confirm()
     {
-     //   PlaySoundEffectOnSuspect(currectSuspect);
+        if (game)
+        {
+            game.OnCharacterSelect("Bosely");
+        }
+
+        PlaySoundEffectOnSuspect(currectSuspect);
     }
 
 
@@ -137,7 +146,7 @@ public class RoomController : MonoBehaviour
 
 
 
-        LeanTween.delayedCall(10f, () => { StartInstructionSequence(); });
+     //   LeanTween.delayedCall(10f, () => { StartInstructionSequence(); });
     }
 
     void SilenceAllSuspectExpect( Suspect suspect)
