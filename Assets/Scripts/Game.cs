@@ -12,11 +12,20 @@ public class Game : MonoBehaviour
     public static event BoolAction OnYesNoEvent;
     public static event StringAction OnCharacterSelectEvent;
 
-    public BaseEvent firstEvent; 
+    public BaseEvent firstEvent;
+
+    public GameObject TitlePanel;
 
     public void Start() 
     {
-        firstEvent.Play(); 
+
+    }
+
+    public void StartGame()
+    {
+        TitlePanel.SetActive(false);
+
+        firstEvent.Play();
     }
 
     public void OnYesNo(bool isYes)
