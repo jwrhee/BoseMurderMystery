@@ -7,7 +7,7 @@ using UnityEditor;
 
 public class CharacterSelectEvent : BaseEvent
 {
-    public delegate CharacterSelectEvent CharacterSelectEventHandler(CharacterSelectEvent characterSelectEvent);
+    public delegate void CharacterSelectEventHandler(CharacterSelectEvent characterSelectEvent);
     public static event CharacterSelectEventHandler OnCharacterSelectBegan;
 
     public List<GameObject> chrEvents; 

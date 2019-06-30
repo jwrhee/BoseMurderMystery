@@ -26,11 +26,18 @@ public class RoomController : MonoBehaviour
     public enum RoomState { INSTRUCTIONS, SELECTING ,QUESTIONING }
     public RoomState state = RoomState.INSTRUCTIONS;
 
-    public static RoomController instance; 
+    public static RoomController instance;
+
+    public AudioSource musicbox;
+
+    public AudioClip bgmSelecting;
+    public AudioClip bgmQuestioning;
 
     void Awake() 
     {
-        instance = this; 
+        instance = this;
+
+        CharacterSelectEvent.OnCharacterSelectBegan += StartCharacterSelecting;
     }
 
     // Start is called before the first frame update
@@ -40,19 +47,34 @@ public class RoomController : MonoBehaviour
         // Wait untill sysnced up
 
         //StartInstructionSequence();
+    }
 
-        
+    void StartCharacterSelecting(CharacterSelectEvent e)
+    {
+        List<string> charOptions = e.GetSelectableCharacterIDs();
+
+
+
+      
+        SetState(RoomState.SELECTING);
+
+        PlayBgm(bgmSelecting);
     }
 
     void StartInstructionSequence()
     {
         state = RoomState.INSTRUCTIONS;
 
-        butler.audio.clip = clipStartQuestioning;
-        butler.audio.Play();
 
         LeanTween.delayedCall(6f, () => { SetState(RoomState.SELECTING); });
 
+    }
+
+    void PlayBgm( AudioClip clip)
+    {
+
+        musicbox.clip = clip;
+        musicbox.Play();
     }
 
     void SetState(RoomState setState)
@@ -129,12 +151,16 @@ public class RoomController : MonoBehaviour
     // Nod head while selected play a effect or enter the questioning phase
     void Confirm()
     {
-        if (game)
-        {
-            game.OnCharacterSelect("Bosely");
-        }
+       
 
         PlaySoundEffectOnSuspect(currectSuspect);
+
+        PlayBgm(bgmQuestioning);
+
+        if (game)
+        {
+            game.OnCharacterSelect("Watts");
+        }
     }
 
 
