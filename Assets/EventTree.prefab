@@ -2231,11 +2231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: 'Who would you like to question
-
-    first?'
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310652073665}
   - {fileID: 5618334309783463580}
@@ -6177,9 +6175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cbb32f2cfb34d4ebafaf7ce421d15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 53ec4633dd85841a89b677e1576db376, type: 3}
   bgClips: []
-  text: Who would you like to speak to?
+  text: Who would you like to question next?
   chrEvents:
   - {fileID: 5618334310366932872}
   - {fileID: 5618334309326075750}
@@ -6231,7 +6229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: c3679bd61a00e4ce98a10d52eb066fec, type: 3}
   bgClips: []
-  text: Excellent.
+  text: Everyone, gather into the drawing room.
   nextEvent: {fileID: 5618334310038739126}
 --- !u!1 &8134099218827767588
 GameObject:
