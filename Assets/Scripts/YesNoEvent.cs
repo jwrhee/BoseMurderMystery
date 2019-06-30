@@ -26,9 +26,15 @@ public class YesNoEvent : BaseEvent
             GameUI.instance.text.text = text;
         }
 
+        // Set portrait 
+        GameUI.instance.SetActivePortrait(chrID);
+
+        // Wait for input 
+        Game.OnYesNoEvent += OnYesNoEvent;
+
         // Play clip and wait for it to complete
         // TODO: or player skip 
-        var source = RoomController.instance.GetSuspectAudioSource(chrID);
+        source = RoomController.instance.GetSuspectAudioSource(chrID);
         if (source && clip)
         {
             source.clip = clip;
@@ -38,14 +44,14 @@ public class YesNoEvent : BaseEvent
                 yield return null;
             }
         }
-
-        // Wait for input 
-        Game.OnYesNoEvent += OnYesNoEvent;
     }
 
     private void OnYesNoEvent(bool isYes)
     {
         Game.OnYesNoEvent -= OnYesNoEvent;
+
+        if (source)
+            source.Stop();
 
         if (isYes) 
         {

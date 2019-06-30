@@ -18,6 +18,8 @@ public abstract class BaseEvent : MonoBehaviour
 
     public List<AudioClip> bgClips;
 
+    protected AudioSource source;
+
     [TextArea]
     public string text;
 
@@ -44,9 +46,4 @@ public abstract class BaseEvent : MonoBehaviour
             chrID = null; 
         }
     }
-
-    //public string GetChrID() 
-    //{
-    //    return name.Split(); 
-    //}
 }

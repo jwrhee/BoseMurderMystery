@@ -21,8 +21,6 @@ public class CharacterSelectEvent : BaseEvent
         // If there are character events that haven't run, wait for a character selection 
         if (chrEvents.Count > 0) 
         {
-            Game.OnCharacterSelectEvent += OnCharacterSelectEvent;
-
             // Set UI 
             GameUI.instance.SetCharacterSelectState(this);
 
@@ -32,9 +30,14 @@ public class CharacterSelectEvent : BaseEvent
                 GameUI.instance.text.text = text;
             }
 
+            // Set portrait 
+            GameUI.instance.SetActivePortrait(chrID);
+
+            Game.OnCharacterSelectEvent += OnCharacterSelectEvent;
+
             // Play clip and wait for it to complete
             // TODO: or player skip 
-            var source = RoomController.instance.GetSuspectAudioSource(chrID);
+            source = RoomController.instance.GetSuspectAudioSource(chrID);
             if (source && clip)
             {
                 source.clip = clip;
@@ -55,6 +58,9 @@ public class CharacterSelectEvent : BaseEvent
     private void OnCharacterSelectEvent(string selectedChrID)
     {
         Game.OnCharacterSelectEvent -= OnCharacterSelectEvent;
+
+        if (source)
+            source.Stop(); 
 
         BaseEvent eventToPlay = null; 
 

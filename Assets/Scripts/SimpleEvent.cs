@@ -26,10 +26,15 @@ public class SimpleEvent : BaseEvent
         {
             GameUI.instance.text.text = text;
         }
+        // Set portrait 
+        GameUI.instance.SetActivePortrait(chrID);
+
+        // Wait for input 
+        Game.OnNextEvent += OnNextEvent;
 
         // Play clip and wait for it to complete
         // TODO: or player skip 
-        var source = RoomController.instance.GetSuspectAudioSource(chrID);
+        source = RoomController.instance.GetSuspectAudioSource(chrID);
         if (source && clip)
         {
             source.clip = clip;
@@ -43,14 +48,13 @@ public class SimpleEvent : BaseEvent
         {
             Debug.LogWarning(chrID + " not found"); 
         }
-
-        // Wait for input 
-        Game.OnNextEvent += OnNextEvent;
     }
-
     private void OnNextEvent()
     {
         Game.OnNextEvent -= OnNextEvent;
+
+        if (source)
+            source.Stop();
 
         // Play next event 
         nextEvent.GetComponent<BaseEvent>().Play();

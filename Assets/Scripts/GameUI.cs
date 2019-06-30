@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    public static GameUI instance; 
+    public static GameUI instance;
+
+    public List<GameObject> chrButtons;
+
+    public List<CharacterUI> portraits;
 
     public Text text;
 
@@ -71,5 +75,18 @@ public class GameUI : MonoBehaviour
         return null; 
     }
 
-    public List<GameObject> chrButtons; 
+    public void SetActivePortrait(string chrID) 
+    {
+        foreach(var portrait in portraits) 
+        {
+            if (portrait.name == chrID) 
+            {
+                portrait.gameObject.SetActive(true); 
+            }
+            else 
+            {
+                portrait.gameObject.SetActive(false); 
+            }
+        }
+    }
 }
