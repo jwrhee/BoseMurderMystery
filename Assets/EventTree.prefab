@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 5618334309776896942}
   - component: {fileID: 5618334309776896929}
   m_Layer: 0
-  m_Name: 1.Druguer.0
+  m_Name: 1.Draguer.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 5618334309852388399}
   - component: {fileID: 5618334309852388398}
   m_Layer: 0
-  m_Name: 1.Door
+  m_Name: 1.Agatha.Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2359,7 +2359,7 @@ GameObject:
   - component: {fileID: 5618334310209314581}
   - component: {fileID: 5618334310209314578}
   m_Layer: 0
-  m_Name: 1.Druguer.1
+  m_Name: 1.Draguer.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,7 +3732,7 @@ GameObject:
   - component: {fileID: 5618334310615166530}
   - component: {fileID: 5618334310615166533}
   m_Layer: 0
-  m_Name: 1.Footsteps
+  m_Name: 1.Agatha.Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5378,7 +5378,7 @@ GameObject:
   - component: {fileID: 5618334311195362276}
   - component: {fileID: 5618334311195362279}
   m_Layer: 0
-  m_Name: 1.Thud
+  m_Name: 1.Draguer.Thud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6244,7 +6244,7 @@ GameObject:
   - component: {fileID: 2121608333183104901}
   - component: {fileID: 3053948371802221690}
   m_Layer: 0
-  m_Name: 4.Clock
+  m_Name: 4.Bosely.Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6278,5 +6278,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: f48b97b09942645408bc241b05c21a70, type: 3}
   bgClips: []
-  text: <bell tolls>
+  text: <midnight bell chime>
   nextEvent: {fileID: 5618334309433751079}
