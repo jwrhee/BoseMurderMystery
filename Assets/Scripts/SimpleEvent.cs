@@ -50,7 +50,7 @@ public class SimpleEvent : BaseEvent
             }
 
             // Wait a beat between clips so they don't play back to back 
-            yield return new WaitForSeconds(1f); 
+            yield return new WaitForSeconds(.3f); 
 
             // Basic events should automatically resume when audio completes 
             OnNextEvent();
