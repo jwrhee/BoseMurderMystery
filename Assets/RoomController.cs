@@ -125,7 +125,7 @@ public class RoomController : MonoBehaviour
     // Nod head while selected play a effect or enter the questioning phase
     void Confirm()
     {
-        PlaySoundEffectOnSuspect(currectSuspect);
+     //   PlaySoundEffectOnSuspect(currectSuspect);
     }
 
 
