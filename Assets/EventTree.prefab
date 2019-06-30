@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 5618334309591648153}
   - component: {fileID: 5618334309591648230}
   m_Layer: 0
-  m_Name: 4.Draguer.4
+  m_Name: 4.Draguer.6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 21f7d3b2c7aca492cb6711d9b203aa49, type: 3}
   bgClips: []
   text: "I would rather die than never kiss\nReggie again. My poor sweet\ndarling.
     If I can\u2019t have him\nalive..."
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4f393b5530dba45bfa41d468a794fafe, type: 3}
   bgClips: []
   text: A red herring, monsieur!
   nextEvent: {fileID: 5618334311457539615}
@@ -1455,7 +1455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5618334309888700389}
-  - component: {fileID: 5618334309888700391}
+  - component: {fileID: 5209522562066997892}
   m_Layer: 0
   m_Name: 2.Draguer.1
   m_TagString: Untagged
@@ -1477,7 +1477,7 @@ Transform:
   m_Father: {fileID: 5618334310928665679}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5618334309888700391
+--- !u!114 &5209522562066997892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1486,17 +1486,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5618334309888700386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
+  m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: f704ef05baa48407888d9eb2922ccfc9, type: 3}
   bgClips: []
   text: 'I am distraught. How can I go on?
 
     Have you seen my medicine? It has gone missing. It smells of almonds, and is in
     a little blue bottle.'
-  yesEvent: {fileID: 5618334311434193808}
-  noEvent: {fileID: 5618334311434193808}
+  nextEvent: {fileID: 5618334311434193808}
 --- !u!1 &5618334309906782400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a54fe5135396a49feaaf470c27d32fb0, type: 3}
   bgClips: []
   text: "This is \u2018orrible, just \u2018orrible! My\npoor dear Reggie. Sweet Reggie.
     He would not hurt a fly! Do you see how devastated I am?"
@@ -2033,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4969cdc4d97ff42599ded37e89d3ca0b, type: 3}
   bgClips: []
   text: 'Oh! My little blue bottle! My...
 
@@ -2082,7 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 808279f9ac40c4293893747a5c5a6a93, type: 3}
   bgClips: []
   text: "Mon dieu!\t"
   nextEvent: {fileID: 5618334311176113653}
@@ -2286,7 +2285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: ce009fce2730c4f49bc88a699a26cb8b, type: 3}
   bgClips: []
   text: 'But I really loved him. Not like
 
@@ -3420,7 +3419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 348140f0a10a64bdcbd4befb4bfa3926, type: 3}
   bgClips: []
   text: 'How could you do this to me! I told
 
@@ -3489,7 +3488,7 @@ GameObject:
   - component: {fileID: 5618334310527200233}
   - component: {fileID: 5618334310527200232}
   m_Layer: 0
-  m_Name: 4.Draguer.2
+  m_Name: 4.Draguer.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3521,7 +3520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: bcb9dd738d03f4a96b071674264afe82, type: 3}
   bgClips: []
   text: 'How dare you! Reggie was my true
 
@@ -3635,7 +3634,7 @@ GameObject:
   - component: {fileID: 5618334310584761167}
   - component: {fileID: 5618334310584761164}
   m_Layer: 0
-  m_Name: 4.Draguer.1
+  m_Name: 4.Draguer.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3667,7 +3666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 49b23336fee11401e87ffa4a3469e855, type: 3}
   bgClips: []
   text: "I was going to drink it myself. I\ncouldn\u2019t bear the thought of living
     without Reggie! You understand that- you don\u2019t think I\u2019m a whore, do
@@ -3880,7 +3879,7 @@ GameObject:
   - component: {fileID: 5618334310707876525}
   - component: {fileID: 5618334310707876522}
   m_Layer: 0
-  m_Name: 4.Draguer.0
+  m_Name: 4.Draguer.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3912,7 +3911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: c11afa6f74b2d4af5bb1144e2876b409, type: 3}
   bgClips: []
   text: "I know this looks bad, with my\npoison being found near the drinks.\nBut
     I swear, I didn\u2019t kill Reggie!\nDo you believe me?"
@@ -4121,7 +4120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 52cbd36daf690459c93ddde0200b594d, type: 3}
   bgClips: []
   text: 'I suppose Lady Agatha told you
 
@@ -4937,7 +4936,7 @@ GameObject:
   - component: {fileID: 5618334311015496076}
   - component: {fileID: 5618334311015496077}
   m_Layer: 0
-  m_Name: 4.Draguer.3
+  m_Name: 4.Draguer.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4969,7 +4968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 58b1a94a216984751b9cab9c017185ef, type: 3}
   bgClips: []
   text: "I knew you\u2019d understand. Reggie was\nmy true love. That cow Agatha could\nnever
     understand."
@@ -5648,7 +5647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640231d664d1b4006a55a8d94390ff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 0d63917abef494180b33ba7bdf038644, type: 3}
   bgClips: []
   text: "What she doesn\u2019t know is that it\nwas over. Reggie broke up with me
     a\nfew days ago, and I\u2019ve been crying\nmy eyes out ever since. Can you see\nhow
@@ -6079,7 +6078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b4d5cd88064487281e8981f4116e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9cbd2eb0c87c44a3d9619ea191894a4d, type: 3}
   bgClips: []
   text: 'You must let me know if you find
 
