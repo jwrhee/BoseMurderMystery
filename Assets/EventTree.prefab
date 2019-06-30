@@ -4252,7 +4252,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: adce65f5a92f44f3a9c5931eadd7d8c6, type: 3}
   bgClips: []
   text: "I arrived around 8. I gave Lord\nReginald a gift, and then I spoke to Captain
-    Crosby for a while. He and Lord Reginald fought in the war together, but Crosby
+    Cammish for a while. He and Lord Reginald fought in the war together, but Cammish
     doesn\u2019t seem to like him very much. Have you noticed that?"
   nextEvent: {fileID: 5618334310520452688}
 --- !u!1 &5618334310722000039
