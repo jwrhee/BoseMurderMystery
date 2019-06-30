@@ -1752,7 +1752,7 @@ GameObject:
   - component: {fileID: 5618334310038739112}
   - component: {fileID: 5618334310038739113}
   m_Layer: 0
-  m_Name: 2.ChrSelect
+  m_Name: 2.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2199,7 +2199,7 @@ GameObject:
   - component: {fileID: 5618334310203101470}
   - component: {fileID: 5618334310203101457}
   m_Layer: 0
-  m_Name: 4.ChrSelect
+  m_Name: 4.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4022,7 +4022,7 @@ GameObject:
   - component: {fileID: 5618334310756095769}
   - component: {fileID: 5618334310756095768}
   m_Layer: 0
-  m_Name: 5.Accusation
+  m_Name: 5.Bosely.Accusation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4773,7 +4773,7 @@ GameObject:
   - component: {fileID: 5618334310999186316}
   - component: {fileID: 5618334310999186319}
   m_Layer: 0
-  m_Name: 0.ChrSelect
+  m_Name: 0.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6143,7 +6143,7 @@ GameObject:
   - component: {fileID: 5618334311457539601}
   - component: {fileID: 5618334311457539614}
   m_Layer: 0
-  m_Name: 3.ChrSelect
+  m_Name: 3.Bosely.ChrSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
