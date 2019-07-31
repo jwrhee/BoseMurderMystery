@@ -28,6 +28,11 @@ public class GameUI : MonoBehaviour
         Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
     }
 
+    public bool GetBoseConnected()
+    {
+        return isBoseConnected;
+    }
+
     public void DisableMenu()
     {
         nextMenu.SetActive(false);
