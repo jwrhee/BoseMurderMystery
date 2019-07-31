@@ -5118,6 +5118,31 @@ PrefabInstance:
       propertyPath: uiCharPanel
       value: 
       objectReference: {fileID: 1464498047}
+    - target: {fileID: 3293188993096444944, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188993290074961, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188991898559580, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188993096444945, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293188993290074966, guid: ad80b2668345a4c6084e4dae59b3f903,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad80b2668345a4c6084e4dae59b3f903, type: 3}
 --- !u!1 &1374972507
