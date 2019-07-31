@@ -18,50 +18,81 @@ public class GameUI : MonoBehaviour
 
     public GameObject yesNoMenu;
 
-    public GameObject characterSelectMenu; 
+    public GameObject characterSelectMenu;
+
+    private bool isBoseConnected;
 
     void Awake() 
     {
-        instance = this; 
+        instance = this;
+        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
+    }
+
+    public void DisableMenu()
+    {
+        nextMenu.SetActive(false);
+        yesNoMenu.SetActive(false);
+        characterSelectMenu.SetActive(false);
     }
 
     public void SetNextState() 
     {
-        nextMenu.SetActive(true);
-        yesNoMenu.SetActive(false);
-        characterSelectMenu.SetActive(false);
+        if (!isBoseConnected)
+        {
+            nextMenu.SetActive(true);
+            yesNoMenu.SetActive(false);
+            characterSelectMenu.SetActive(false);
+        } else
+        {
+            DisableMenu();
+        }
+        
     }
 
     public void SetYesNoState() 
     {
-        nextMenu.SetActive(false);
-        yesNoMenu.SetActive(true);
-        characterSelectMenu.SetActive(false);
+        if (!isBoseConnected)
+        {
+            nextMenu.SetActive(false);
+            yesNoMenu.SetActive(true);
+            characterSelectMenu.SetActive(false);
+        } else
+        {
+            DisableMenu();
+        }
+        
     }
 
     public void SetCharacterSelectState(CharacterSelectEvent chrSelectEvent) 
     {
-        nextMenu.SetActive(false);
-        yesNoMenu.SetActive(false);
-        characterSelectMenu.SetActive(true);
-
-        // Disable all character buttons 
-        foreach(var button in chrButtons) 
+        if (!isBoseConnected)
         {
-            button.SetActive(false); 
-        }
+            nextMenu.SetActive(false);
+            yesNoMenu.SetActive(false);
+            characterSelectMenu.SetActive(true);
 
-        // Enable buttons that still have unplayed events 
-        var chrEvents = chrSelectEvent.chrEvents; 
-        foreach(var go in chrEvents) 
-        {
-            var chrEvent = go.GetComponent<BaseEvent>(); 
-            var chrButton = GetCharacterButton(chrEvent.chrID); 
-            if (chrButton != null) 
+            // Disable all character buttons 
+            foreach (var button in chrButtons)
             {
-                chrButton.SetActive(true); 
+                button.SetActive(false);
             }
+
+            // Enable buttons that still have unplayed events 
+            var chrEvents = chrSelectEvent.chrEvents;
+            foreach (var go in chrEvents)
+            {
+                var chrEvent = go.GetComponent<BaseEvent>();
+                var chrButton = GetCharacterButton(chrEvent.chrID);
+                if (chrButton != null)
+                {
+                    chrButton.SetActive(true);
+                }
+            }
+        } else
+        {
+            DisableMenu();
         }
+        
     }
 
     private GameObject GetCharacterButton(string chrID) 
@@ -89,5 +120,11 @@ public class GameUI : MonoBehaviour
                 portrait.gameObject.SetActive(false); 
             }
         }
+    }
+
+    public void OnBoseConnectStatusChange(Bose.Wearable.ConnectionStatus status, Bose.Wearable.Device? device)
+    {
+        isBoseConnected = (status == Bose.Wearable.ConnectionStatus.Connected);
+        Debug.Log("bose glasses status " + isBoseConnected);
     }
 }
