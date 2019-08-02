@@ -67,8 +67,7 @@ public class CharacterSelectEvent : BaseEvent
     {
         Game.OnCharacterSelectEvent -= OnCharacterSelectEvent;
 
-        if (GameUI.instance.GetBoseConnected())// Deactivate portrait layer if using bose ar 
-            GameUI.instance.portraitContainer.SetActive(true);
+        GameUI.instance.portraitContainer.SetActive(true);
 
         if (source)
             source.Stop(); 

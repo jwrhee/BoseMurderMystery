@@ -35,6 +35,8 @@ public class RoomController : MonoBehaviour
     public AudioClip bgmSelecting;
     public AudioClip bgmQuestioning;
 
+    bool oldChrSelected;
+
     void Awake() 
     {
         instance = this;
@@ -177,9 +179,8 @@ public class RoomController : MonoBehaviour
 
                     if (currectSuspect)
                     {
-                        if ( currentSuspectName != currectSuspect.suspectName )
+                        if (currentSuspectName != currectSuspect.suspectName )
                         {
-
                             currentSuspectName = currectSuspect.suspectName;
 
                             currectSuspect.audio.clip = currectSuspect.clipRollOverForQuestioning;
@@ -192,6 +193,9 @@ public class RoomController : MonoBehaviour
 
                             // Set suspect
                             GetNameBasedOnCurrentSuspect();
+
+                            // Set flag that the same character isn't being selected
+                            oldChrSelected = false;
                         }
                     }
                 }
@@ -228,7 +232,6 @@ public class RoomController : MonoBehaviour
                 break;
 
             default:
-
                 break;
         }
     }
@@ -237,7 +240,7 @@ public class RoomController : MonoBehaviour
     void Confirm()
     {
      
-        if (state == RoomState.SELECTING)
+        if (state == RoomState.SELECTING && !oldChrSelected)
         {
             //PlaySoundEffectOnSuspect(currectSuspect);
 
@@ -246,6 +249,8 @@ public class RoomController : MonoBehaviour
             if (game)
             {
                 game.OnCharacterSelect(curSuspectString);
+                Debug.Log("running character event");
+                oldChrSelected = true;
             }
 
             state = RoomState.QUESTIONING;
