@@ -1,18 +1,18 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomEditor(typeof(WearableRequirement))]
-	public sealed class WearableRequirementInspector : UnityEditor.Editor
+	internal sealed class WearableRequirementInspector : UnityEditor.Editor
 	{
-		private const string DeviceConfigPropertyName = "_wearableDeviceConfig";
+		private const string DEVICE_CONFIG_PROPERTY_NAME = "_wearableDeviceConfig";
 
 		public override void OnInspectorGUI()
 		{
 			GUI.changed = false;
-			var property = serializedObject.FindProperty(DeviceConfigPropertyName);
-			EditorGUILayout.PropertyField(property, WearableConstants.EmptyLayoutOptions);
+			var property = serializedObject.FindProperty(DEVICE_CONFIG_PROPERTY_NAME);
+			EditorGUILayout.PropertyField(property, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 
 			if (GUI.changed)
 			{

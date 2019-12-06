@@ -13,6 +13,8 @@ namespace Bose.Wearable
 		// For example, on Bose Frames, a head nod means affirmative.
 		private static Dictionary<ProductType, Dictionary<GestureId, GestureId>> _agnosticToSpecificGesture;
 
+		private static List<ActiveNoiseReductionMode> _anrModeList;
+
 		/// <summary>
 		/// Static constructor.
 		/// </summary>
@@ -48,6 +50,8 @@ namespace Bose.Wearable
 				   }
 			   }
 		   };
+
+			_anrModeList = new List<ActiveNoiseReductionMode>();
 		}
 
 		/// <summary>
@@ -219,6 +223,54 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
+		/// Returns the appropriate <see cref="OSPermissionFlags"/> for the passed individual <see cref="OSPermission"/>
+		/// <paramref name="permission"/>.
+		/// </summary>
+		/// <param name="permission"></param>
+		/// <returns></returns>
+		internal static OSPermissionFlags GetOSPermissionFlag(OSPermission permission)
+		{
+			OSPermissionFlags flag;
+			switch (permission)
+			{
+				case OSPermission.Bluetooth:
+					flag = OSPermissionFlags.Bluetooth;
+					break;
+				case OSPermission.Location:
+					flag = OSPermissionFlags.Location;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException("permission", permission, null);
+			}
+
+			return flag;
+		}
+
+		/// <summary>
+		/// Returns the appropriate <see cref="OSServiceFlags"/> for the passed individual <see cref="OSService"/>
+		/// <paramref name="service"/>.
+		/// </summary>
+		/// <param name="service"></param>
+		/// <returns></returns>
+		internal static OSServiceFlags GetOSServiceFlag(OSService service)
+		{
+			OSServiceFlags flag;
+			switch (service)
+			{
+				case OSService.Bluetooth:
+					flag = OSServiceFlags.Bluetooth;
+					break;
+				case OSService.LocationServices:
+					flag = OSServiceFlags.LocationServices;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException("service", service, null);
+			}
+
+			return flag;
+		}
+
+		/// <summary>
 		/// Each product has its own mapping from physical gestures to abstract ones.  If we do not know
 		/// about this product or this gesture we return GestureId.None.
 		/// </summary>
@@ -228,7 +280,7 @@ namespace Bose.Wearable
 
 			if (deviceAgnosticGestureId.IsGestureDeviceAgnostic())
 			{
-				Debug.LogWarningFormat(WearableConstants.GestureNotDeviceAgnosticWarning, deviceAgnosticGestureId);
+				Debug.LogWarningFormat(WearableConstants.GESTURE_NOT_DEVICE_AGNOSTIC_WARNING, deviceAgnosticGestureId);
 			}
 			else
 			{
@@ -437,6 +489,68 @@ namespace Bose.Wearable
 			}
 
 			return result;
+		}
+
+		/// <summary>
+		/// Packs the supplied list of <see cref="ActiveNoiseReductionMode"/>s into an int in the same manner as the
+		/// underlying SDK. Duplicated modes are transparently ignored. Supplying
+		/// <see cref="ActiveNoiseReductionMode.Invalid"/> will throw an exception.
+		/// </summary>
+		/// <param name="modes"></param>
+		/// <returns></returns>
+		/// <exception cref="ArgumentOutOfRangeException"></exception>
+		internal static int GetActiveNoiseReductionModesAsInt(ActiveNoiseReductionMode[] modes)
+		{
+			int result = 0;
+			for (int i = 0; i < modes.Length; i++)
+			{
+				ActiveNoiseReductionMode mode = modes[i];
+				if (mode == ActiveNoiseReductionMode.Invalid)
+				{
+					throw new ArgumentOutOfRangeException(WearableConstants.INVALID_IS_INVALID_ANR_MODE);
+				}
+
+				// Set the corresponding bit in the availability mask.
+				result |= 1 << (int) mode;
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Unpacks an int representing the available <see cref="ActiveNoiseReductionMode"/>s in the same manner
+		/// as the underlying SDK. Neither duplicated modes nor <see cref="ActiveNoiseReductionMode.Invalid"/> will
+		/// be returned in the resultant list; list order is undefined.
+		/// </summary>
+		/// <param name="flags"></param>
+		/// <returns></returns>
+		internal static ActiveNoiseReductionMode[] GetActiveNoiseReductionModesAsList(int flags)
+		{
+			if (flags == 0)
+			{
+				// Feature disabled; signify with an empty list.
+				return WearableConstants.EMPTY_ACTIVE_NOISE_REDUCTION_MODES;
+			}
+
+			_anrModeList.Clear();
+
+			for (int i = 0; i < WearableConstants.ACTIVE_NOISE_REDUCTION_MODES.Length; i++)
+			{
+				ActiveNoiseReductionMode mode = WearableConstants.ACTIVE_NOISE_REDUCTION_MODES[i];
+
+				if (mode == ActiveNoiseReductionMode.Invalid)
+				{
+					continue;
+				}
+
+				// Check if the corresponding bit is set in the availability mask.
+				if (((1 << (int) mode) & flags) != 0)
+				{
+					_anrModeList.Add(mode);
+				}
+			}
+
+			return _anrModeList.ToArray();
 		}
 	}
 }

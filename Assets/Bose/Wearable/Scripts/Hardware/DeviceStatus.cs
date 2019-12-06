@@ -49,7 +49,7 @@ namespace Bose.Wearable
 		public SensorServiceSuspendedReason GetServiceSuspendedReason()
 		{
 			// The top 4 bits of the status form the service suspended reason
-			SensorServiceSuspendedReason reason = (SensorServiceSuspendedReason)(_value & ServiceSuspensionReasonMask);
+			SensorServiceSuspendedReason reason = (SensorServiceSuspendedReason)(_value & SERVICE_SUSPENSION_REASON_MASK);
 
 			// Older versions of the firmware do not populate this field; treat this case as "unknown"
 			if (reason == 0)
@@ -63,7 +63,7 @@ namespace Bose.Wearable
 		[SerializeField]
 		private int _value;
 
-		private const int ServiceSuspensionReasonMask = 0xF000;
+		private const int SERVICE_SUSPENSION_REASON_MASK = 0xF000;
 
 		public static implicit operator int(DeviceStatus deviceStatus)
 		{
@@ -130,7 +130,7 @@ namespace Bose.Wearable
 		/// <param name="reason"></param>
 		internal void SetServiceSuspendedReason(SensorServiceSuspendedReason reason)
 		{
-			_value = (_value & ~ServiceSuspensionReasonMask) | (int) reason;
+			_value = (_value & ~SERVICE_SUSPENSION_REASON_MASK) | (int) reason;
 		}
 	}
 }

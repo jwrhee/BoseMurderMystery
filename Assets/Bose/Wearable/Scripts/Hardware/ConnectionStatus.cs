@@ -2,6 +2,9 @@ using System;
 
 namespace Bose.Wearable
 {
+	/// <summary>
+	/// Represents the current status of a connection task.
+	/// </summary>
 	[Serializable]
 	public enum ConnectionStatus
 	{
@@ -11,9 +14,25 @@ namespace Bose.Wearable
 		Disconnected = 0,
 
 		/// <summary>
-		/// Trying to connect to the last successfully connected device, if discovered in a search,
+		/// Trying to connect to the last successfully connected device. If that device is discovered in a
+		/// search a connection attempt will automatically begin, otherwise it will transition to searching.
 		/// </summary>
 		AutoReconnect = 9,
+
+		/// <summary>
+		/// A permission is needed in order for the SDK to properly function which requires a user to grant it.
+		/// </summary>
+		PermissionRequired = 10,
+
+		/// <summary>
+		/// A service is needed in order for the SDK to properly function which requires a user to enable it.
+		/// </summary>
+		ServiceRequired = 11,
+
+		/// <summary>
+		/// All Bose AR SDK requirements for permissions and services have been met.
+		/// </summary>
+		RequirementsMet = 12,
 
 		/// <summary>
 		/// Searching for available devices.

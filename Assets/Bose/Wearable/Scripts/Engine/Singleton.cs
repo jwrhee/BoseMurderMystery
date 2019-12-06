@@ -28,9 +28,21 @@ namespace Bose.Wearable
 			}
 		}
 
+		/// <summary>
+		/// Returns true if this singleton exists, otherwise false.
+		/// </summary>
 		public static bool Exists
 		{
 			get { return _instance != null; }
+		}
+
+		/// <summary>
+		/// Returns true if this instance is the singleton, otherwise false.
+		/// </summary>
+		/// <returns></returns>
+		public bool IsSingletonInstance
+		{
+			get { return Exists && Instance == this; }
 		}
 
 		protected virtual void Awake()

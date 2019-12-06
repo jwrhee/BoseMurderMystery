@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,11 +38,21 @@ namespace Bose.Wearable
 		/// Invoked when service is suspended on the device.
 		/// </summary>
 		internal event Action<SensorServiceSuspendedReason> SensorServiceSuspended;
-		/// <summary>
 
+		/// <summary>
 		/// Invoked when service is resumed.
 		/// </summary>
 		internal event Action SensorServiceResumed;
+
+		/// <summary>
+		/// Invoked when the current ANR mode has changed.
+		/// </summary>
+		internal event Action<ActiveNoiseReductionMode> ActiveNoiseReductionModeChanged;
+
+		/// <summary>
+		/// Invoked when either the CNC level or state has changed.
+		/// </summary>
+		internal event Action<int, bool> ControllableNoiseCancellationInfoChanged;
 
 		/// <summary>
 		/// Whether or not the provider has been initialized
@@ -125,9 +136,62 @@ namespace Bose.Wearable
 		private bool _waitingForIntentValidation;
 
 		/// <summary>
-		/// The last received device status.
+		/// Returns true if currently waiting for a write to either the ANR or CNC feature configuration to complete, otherwise false.
 		/// </summary>
-		private DeviceStatus _lastDeviceStatus;
+		protected bool WaitingForAnrCncWriteComplete
+		{
+			get { return _waitingForAnrCncWriteComplete; }
+		}
+
+		private bool _waitingForAnrCncWriteComplete;
+
+		/// <summary>
+		/// If non-null, this will be initialized with the specific <see cref="OSPermission"/> value that the user
+		/// was last prompted to grant and was not granted or was denied. This will only be initialized if
+		/// <see cref="ConnectionStatusChanged"/> was invoked with parameter
+		/// <see cref="Wearable.ConnectionStatus.PermissionRequired"/>.
+		/// </summary>
+		internal OSPermission? LastPermissionRequestedForUser
+		{
+			get
+			{
+				return _lastPermissionRequestedForUser;
+			}
+		}
+
+		protected OSPermission? _lastPermissionRequestedForUser;
+
+		/// <summary>
+		/// Returns true if the last permission checked is granted, otherwise false.
+		/// </summary>
+		internal bool LastPermissionCheckedIsGranted
+		{
+			get { return _lastPermissionCheckedIsGranted; }
+		}
+
+		protected bool _lastPermissionCheckedIsGranted;
+
+		/// <summary>
+		/// If non-null, this will be initialized with the specific <see cref="OSService"/> value that the user
+		/// was last prompted to enable and was not enable. This will only be initialized if <see cref="ConnectionStatusChanged"/>
+		/// was invoked with parameter <see cref="Wearable.ConnectionStatus.ServiceRequired"/>.
+		/// </summary>
+		internal OSService? LastServiceRequestedForUser
+		{
+			get { return _lastServiceRequestedForUser; }
+		}
+
+		protected OSService? _lastServiceRequestedForUser;
+
+		/// <summary>
+		/// Returns true if the last service checked is enabled, otherwise false.
+		/// </summary>
+		internal bool LastServiceCheckedIsEnabled
+		{
+			get { return _lastServiceCheckedIsEnabled; }
+		}
+
+		protected bool _lastServiceCheckedIsEnabled;
 
 		/// <summary>
 		/// An event holding any callbacks that have subscribed to the request for new configuration.
@@ -147,7 +211,7 @@ namespace Bose.Wearable
 			get { return _connectionStatus; }
 		}
 
-		private ConnectionStatus _connectionStatus;
+		protected ConnectionStatus _connectionStatus;
 
 		/// <summary>
 		/// Should the provider attempt to reconnect to the last successfully connected device?
@@ -161,14 +225,36 @@ namespace Bose.Wearable
 		protected float _autoReconnectTimeout;
 
 		/// <summary>
+		/// Should the provider attempt to skip common prompts during an auto-reconnect attempt?
+		/// </summary>
+		protected bool _autoReconnectWithoutPrompts;
+
+		/// <summary>
 		/// The UID of the last successfully connected (including secure connection, firmware updates, and
 		/// intent validation) device. Stored and accessed through PlayerPrefs.
 		/// </summary>
-		private string LastConnectedDeviceUID
+		internal string LastConnectedDeviceUID
 		{
-			get { return PlayerPrefs.GetString(WearableConstants.PrefLastConnectedDeviceUID, string.Empty); }
-			set { PlayerPrefs.SetString(WearableConstants.PrefLastConnectedDeviceUID, value);}
+			get { return PlayerPrefs.GetString(WearableConstants.PREF_LAST_CONNECTED_DEVICE_UID, string.Empty); }
+			set { PlayerPrefs.SetString(WearableConstants.PREF_LAST_CONNECTED_DEVICE_UID, value);}
 		}
+
+		/// <summary>
+		/// Enable additional debug logging for the provider.
+		/// </summary>
+		[SerializeField]
+		protected bool _debugLogging;
+
+		internal void ConfigureDebugLogging()
+		{
+			SetDebugLogging(_debugLogging ? LogLevel.Verbose : LogLevel.Error);
+		}
+
+		/// <summary>
+		/// Notifies the provider to provide more verbose logging.
+		/// </summary>
+		/// <param name="logLevel"></param>
+		internal abstract void SetDebugLogging(LogLevel logLevel);
 
 		/// <summary>
 		/// Returns the <see cref="DeviceConnectionInfo"/> for the current connection
@@ -177,6 +263,86 @@ namespace Bose.Wearable
 		public virtual DeviceConnectionInfo GetDeviceConnectionInfo()
 		{
 			return new DeviceConnectionInfo();
+		}
+
+		/// <summary>
+		/// <see cref="_lastPermissionCheckedIsGranted"/> is set to true if the user has granted the <see cref="OSPermissionFlags"/> <paramref name="permission"/>,
+		/// otherwise false if the user has not granted the permission. If not granted,
+		/// <see cref="ConnectionStatusChanged"/> will be invoked with <seealso cref="ConnectionStatus.PermissionRequest"/>
+		/// as the passed value.
+		/// </summary>
+		/// <param name="permission"></param>
+		/// <returns></returns>
+		internal abstract IEnumerator ValidatePermissionIsGranted(OSPermission permission);
+
+		/// <summary>
+		/// <see name="_isServiceEnabled"/> is set to true if the user has enabled the <see cref="OSServiceFlags"/> <paramref name="service"/>,
+		/// otherwise false if the user has not enabled it.If not granted,
+		/// <see cref="ConnectionStatusChanged"/> will be invoked with <seealso cref="ConnectionStatus.ServiceRequest"/>
+		/// as the passed value.
+		/// </summary>
+		/// <param name="service"></param>
+		/// <returns></returns>
+		internal abstract IEnumerator ValidateServiceIsEnabled(OSService service);
+
+		/// <summary>
+		/// Asynchronously requests the <see cref="OSPermission"/> <paramref name="permission"/>. This should
+		/// yield until the user has confirmed or denied the permission or returned to the application.
+		/// </summary>
+		/// <param name="permission"></param>
+		/// <returns></returns>
+		internal abstract IEnumerator RequestPermissionCoroutine(OSPermission permission);
+
+		/// <summary>
+		/// Invoked when a user has denied granting or enabling a permission or service.
+		/// </summary>
+		internal void DenyPermissionOrService()
+		{
+			OnConnectionStatusChanged(ConnectionStatus.Failed);
+		}
+
+		/// <summary>
+		/// Changes the connection status to indicate that all OS requirements had been met.
+		/// </summary>
+		internal void SetOSRequirementsAsMet()
+		{
+			OnConnectionStatusChanged(ConnectionStatus.RequirementsMet);
+		}
+
+		/// <summary>
+		/// Returns the proper text description of a permission prompt.
+		/// </summary>
+		/// <param name="permission"></param>
+		/// <returns></returns>
+		internal virtual string GetPermissionRequiredText(OSPermission permission)
+		{
+			switch (permission)
+			{
+				case OSPermission.Bluetooth:
+					return WearableConstants.BLUETOOTH_PERMISSION_MESSAGE;
+				case OSPermission.Location:
+					return string.Format(WearableConstants.GENERAL_PERMISSION_MESSAGE_FORMAT, permission);
+				default:
+					throw new ArgumentOutOfRangeException("permission", permission, null);
+			}
+		}
+
+		/// <summary>
+		/// Returns the proper text description of a permission prompt.
+		/// </summary>
+		/// <param name="service"></param>
+		/// <returns></returns>
+		internal virtual string GetServiceRequiredText(OSService service)
+		{
+			switch (service)
+			{
+				case OSService.Bluetooth:
+					return string.Format(WearableConstants.GENERAL_SERVICE_FORMAT, service);
+				case OSService.LocationServices:
+					return string.Format(WearableConstants.GENERAL_SERVICE_FORMAT, service);
+				default:
+					throw new ArgumentOutOfRangeException("service", service, null);
+			}
 		}
 
 		/// <summary>
@@ -192,9 +358,14 @@ namespace Bose.Wearable
 			bool autoReconnect,
 			float autoReconnectTimeout)
 		{
-			DeviceSearchCallback += onDevicesUpdated;
+			if (onDevicesUpdated != null)
+			{
+				DeviceSearchCallback += onDevicesUpdated;
+			}
+
 			_autoReconnect = autoReconnect;
-			_autoReconnectTimeout = Time.unscaledTime + autoReconnectTimeout;
+			_autoReconnectTimeout = Mathf.Min(Time.unscaledTime + autoReconnectTimeout, float.MaxValue);
+			_autoReconnectWithoutPrompts = false;
 		}
 
 		/// <summary>
@@ -217,7 +388,7 @@ namespace Bose.Wearable
 				{
 					if (devices[i].uid == uid)
 					{
-						ConnectToDevice(devices[i], null, null);
+						ConnectToDevice(devices[i]);
 						break;
 					}
 				}
@@ -232,18 +403,25 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
+		/// Reconnects to the device last successfully connected.
+		/// </summary>
+		/// <param name="appIntentProfile"></param>
+		internal virtual void ReconnectToLastSuccessfulDevice(AppIntentProfile appIntentProfile)
+		{
+			_autoReconnectWithoutPrompts = true;
+		}
+
+		/// <summary>
 		/// Cancels any currently running device connection if there is one.
 		/// </summary>
 		internal abstract void CancelDeviceConnection();
 
 		/// <summary>
-		/// Connects to a specified device and invokes either <paramref name="onSuccess"/> or <paramref name="onFailure"/>
-		/// depending on the result.
+		/// Connects to a specified device and conveys the result via the <see cref="ConnectionStatusChanged"/>
+		/// event.
 		/// </summary>
 		/// <param name="device"></param>
-		/// <param name="onSuccess"></param>
-		/// <param name="onFailure"></param>
-		internal abstract void ConnectToDevice(Device device, Action onSuccess, Action onFailure);
+		internal abstract void ConnectToDevice(Device device);
 
 		/// <summary>
 		/// Stops all attempts to connect to or monitor a device and disconnects from a device if connected.
@@ -285,7 +463,7 @@ namespace Bose.Wearable
 		{
 			if (!_connectedDevice.HasValue)
 			{
-				Debug.LogWarning(WearableConstants.DeviceIsNotCurrentlyConnected);
+				Debug.LogWarning(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
 				_waitingForDeviceConfig = false;
 				return;
 			}
@@ -305,6 +483,94 @@ namespace Bose.Wearable
 		protected abstract void RequestDeviceConfigurationInternal();
 
 		/// <summary>
+		/// Checks <see cref="DeviceStatus"/> <paramref name="deviceStatus"/> to see if the sensor service is
+		/// suspended and if so invokes the <see cref="SensorServiceSuspended"/> event.
+		/// </summary>
+		/// <param name="deviceStatus"></param>
+		protected void CheckForServiceSuspended(DeviceStatus deviceStatus)
+		{
+			if (deviceStatus.ServiceSuspended)
+			{
+				var reason = deviceStatus.GetServiceSuspendedReason();
+
+				if (SensorServiceSuspended != null)
+				{
+					SensorServiceSuspended.Invoke(reason);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the active noise reduction mode on the attached device, if the feature is available.
+		/// <paramref name="mode"/> should be one of the available modes returned by
+		/// <see cref="Device.GetAvailableActiveNoiseReductionModes"/>.
+		/// </summary>
+		public void SetActiveNoiseReductionMode(ActiveNoiseReductionMode mode)
+		{
+			if (!_connectedDevice.HasValue)
+			{
+				Debug.LogWarning(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
+				_waitingForAnrCncWriteComplete = false;
+				return;
+			}
+
+			if (mode == ActiveNoiseReductionMode.Invalid)
+			{
+				Debug.LogError(WearableConstants.INVALID_IS_INVALID_ANR_MODE);
+				// Exit early without setting or clearing the waiting flag
+				return;
+			}
+
+			if (_waitingForAnrCncWriteComplete)
+			{
+				Debug.LogError(WearableConstants.ANR_CNC_WRITE_LOCK_ERROR);
+				return;
+			}
+
+			_waitingForAnrCncWriteComplete = true;
+			SetActiveNoiseReductionModeInternal(mode);
+		}
+
+		/// <summary>
+		/// Performs the actual ANR mode write. Will not be called if any ANR or CNC writes are outstanding.
+		/// Providers should invoke <see cref="OnAnrCncWriteComplete"/> when the write is finished, which is permitted
+		/// to happen during this call.
+		/// </summary>
+		/// <param name="mode"></param>
+		protected abstract void SetActiveNoiseReductionModeInternal(ActiveNoiseReductionMode mode);
+
+		/// <summary>
+		/// Set the controllable noise cancellation level on the attached device, if the feature is available.
+		/// <paramref name="level"/> should be between zero and
+		/// (<see cref="Device.totalControllableNoiseCancellationLevels"/> - 1).
+		/// </summary>
+		public void SetControllableNoiseCancellationLevel(int level, bool enabled)
+		{
+			if (!_connectedDevice.HasValue)
+			{
+				Debug.LogWarning(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
+				_waitingForAnrCncWriteComplete = false;
+				return;
+			}
+
+			if (_waitingForAnrCncWriteComplete)
+			{
+				Debug.LogError(WearableConstants.ANR_CNC_WRITE_LOCK_ERROR);
+				return;
+			}
+
+			_waitingForAnrCncWriteComplete = true;
+			SetControllableNoiseCancellationLevelInternal(level, enabled);
+		}
+
+		/// <summary>
+		/// Performs the actual CNC mode write. Will not be called if any ANR or CNC writes are outstanding.
+		/// Providers should invoke <see cref="OnAnrCncWriteComplete"/> when the write is finished, which is permitted
+		/// to happen during this call.
+		/// </summary>
+		protected abstract void SetControllableNoiseCancellationLevelInternal(int level, bool enabled);
+
+		/// <summary>
 		/// Returns the device status of the connected device.
 		/// </summary>
 		/// <returns></returns>
@@ -315,11 +581,12 @@ namespace Bose.Wearable
 		/// call the <see cref="callback"/> when the validation is complete.
 		/// </summary>
 		/// <param name="profile"></param>
+		/// <param name="callback"></param>
 		internal void RequestIntentProfileValidation(AppIntentProfile profile, Action<bool> callback)
 		{
 			if (!_connectedDevice.HasValue)
 			{
-				Debug.LogWarning(WearableConstants.DeviceIsNotCurrentlyConnected);
+				Debug.LogWarning(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
 				_waitingForIntentValidation = false;
 				return;
 			}
@@ -338,7 +605,7 @@ namespace Bose.Wearable
 			else
 			{
 				// If there is an outstanding request, generate an error and ignore this call.
-				Debug.LogError(WearableConstants.TooManyValidationRequestsError);
+				Debug.LogError(WearableConstants.TOO_MANY_VALIDATION_REQUESTS_ERROR);
 			}
 		}
 
@@ -371,7 +638,6 @@ namespace Bose.Wearable
 			_waitingForDeviceConfig = false;
 			_waitingForIntentValidation = false;
 			DeviceConfigRequestSubscribers = null;
-			_lastDeviceStatus = WearableConstants.EmptyDeviceStatus;
 			_connectionStatus = ConnectionStatus.Disconnected;
 		}
 
@@ -384,8 +650,8 @@ namespace Bose.Wearable
 			_initialized = false;
 			_enabled = false;
 			_waitingForDeviceConfig = false;
+			_waitingForIntentValidation = false;
 			DeviceConfigRequestSubscribers = null;
-			_lastDeviceStatus = WearableConstants.EmptyDeviceStatus;
 			_connectionStatus = ConnectionStatus.Disconnected;
 		}
 
@@ -445,38 +711,55 @@ namespace Bose.Wearable
 		/// </summary>
 		private void MonitorDynamicDeviceInfo()
 		{
+			if (!_connectedDevice.HasValue)
+			{
+				return;
+			}
+
+			Device device = _connectedDevice.Value;
+			Device lastDevice = device;
+
 			DynamicDeviceInfo dynamicDeviceInfo = GetDynamicDeviceInfo();
 
-			if (_connectedDevice.HasValue)
-			{
-				Device device = _connectedDevice.Value;
-				device.deviceStatus = dynamicDeviceInfo.deviceStatus;
-				device.transmissionPeriod = dynamicDeviceInfo.transmissionPeriod;
-				_connectedDevice = device;
-			}
+			// Copy dynamic info to the device struct, then update the provider's device.
+			// Do this at the beginning so any callbacks invoked will have up-to-date info available.
+			device.SetDynamicInfo(dynamicDeviceInfo);
+			_connectedDevice = device;
 
 			// Calculate incoming outgoing events
-			DeviceStatus deviceStatus = dynamicDeviceInfo.deviceStatus;
-			DeviceStatus risingEvents = deviceStatus.GetRisingEdges(_lastDeviceStatus);
-			DeviceStatus fallingEvents = deviceStatus.GetFallingEdges(_lastDeviceStatus);
-			_lastDeviceStatus = deviceStatus;
+			DeviceStatus deviceStatus = device.deviceStatus;
+			DeviceStatus risingEvents = deviceStatus.GetRisingEdges(lastDevice.deviceStatus);
+			DeviceStatus fallingEvents = deviceStatus.GetFallingEdges(lastDevice.deviceStatus);
 
 			// Service suspended/resumes
-			if (risingEvents.GetFlagValue(DeviceStatusFlags.SensorServiceSuspended))
-			{
-				SensorServiceSuspendedReason reason = deviceStatus.GetServiceSuspendedReason();
-
-				if (SensorServiceSuspended != null)
-				{
-					SensorServiceSuspended.Invoke(reason);
-				}
-			}
+			CheckForServiceSuspended(risingEvents);
 
 			if (fallingEvents.GetFlagValue(DeviceStatusFlags.SensorServiceSuspended))
 			{
 				if (SensorServiceResumed != null)
 				{
 					SensorServiceResumed.Invoke();
+				}
+			}
+
+			// ANR state changed
+			if (lastDevice.activeNoiseReductionMode != device.activeNoiseReductionMode)
+			{
+				if (ActiveNoiseReductionModeChanged != null)
+				{
+					ActiveNoiseReductionModeChanged.Invoke(device.activeNoiseReductionMode);
+				}
+			}
+
+			// CNC state changed
+			if ((lastDevice.controllableNoiseCancellationLevel != device.controllableNoiseCancellationLevel) ||
+			    (lastDevice.controllableNoiseCancellationEnabled != device.controllableNoiseCancellationEnabled))
+			{
+				if (ControllableNoiseCancellationInfoChanged != null)
+				{
+					ControllableNoiseCancellationInfoChanged.Invoke(
+						device.controllableNoiseCancellationLevel,
+						device.controllableNoiseCancellationEnabled);
 				}
 			}
 		}
@@ -489,7 +772,7 @@ namespace Bose.Wearable
 		protected WearableProviderBase()
 		{
 			_currentSensorFrames = new List<SensorFrame>();
-			_lastSensorFrame = WearableConstants.EmptyFrame;
+			_lastSensorFrame = WearableConstants.EMPTY_FRAME;
 
 			_currentGestureData = new List<GestureData>();
 		}
@@ -543,13 +826,17 @@ namespace Bose.Wearable
 		/// <param name="device"></param>
 		protected void OnConnectionStatusChanged(ConnectionStatus status, Device? device = null)
 		{
-			if (status == ConnectionStatus.Disconnected)
+			// If the connection attempt has failed or the device is disconnected, clear device config and
+			// app intent validation state.
+			if (status == ConnectionStatus.Disconnected || status == ConnectionStatus.Failed)
 			{
 				_waitingForDeviceConfig = false;
 				DeviceConfigRequestSubscribers = null;
 
 				_waitingForIntentValidation = false;
 				IntentValidationSubscribers = null;
+
+				_connectedDevice = null;
 			}
 			else if (status == ConnectionStatus.Connected && device.HasValue)
 			{
@@ -616,6 +903,14 @@ namespace Bose.Wearable
 			{
 				ConfigurationFailed.Invoke(sensor, gesture);
 			}
+		}
+
+		/// <summary>
+		/// Invoked by providers when an ANR or CNC write is complete, regardless of whether it failed or succeeded.
+		/// </summary>
+		protected void OnAnrCncWriteComplete()
+		{
+			_waitingForAnrCncWriteComplete = false;
 		}
 	}
 }

@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomEditor(typeof(AppIntentProfile))]
-	public class AppIntentProfileInspector : UnityEditor.Editor
+	internal sealed class AppIntentProfileInspector : UnityEditor.Editor
 	{
-		private const string SensorsLabel = "Sensors";
-		private const string GesturesLabel = "Gestures";
-		private const string IntervalsLabel = "Sensor Update Intervals";
-		private const string NineDofLabel = "Rotation (9DOF)";
-		private const string SixDofLabel = "Rotation (6DOF)";
-		private const string IntervalFormat = "{0} ms";
+		private const string SENSORS_LABEL = "Sensors";
+		private const string GESTURES_LABEL = "Gestures";
+		private const string INTERVALS_LABEL = "Sensor Update Intervals";
+		private const string NINE_DOF_LABEL = "Rotation (9DOF)";
+		private const string SIX_DOF_LABEL = "Rotation (6DOF)";
+		private const string INTERVAL_FORMAT = "{0} ms";
 
 		private readonly List<SensorId> _newSensors;
 		private readonly List<GestureId> _newGestures;
@@ -39,15 +39,15 @@ namespace Bose.Wearable.Editor.Inspectors
 			}
 
 			// Sensors
-			EditorGUILayout.LabelField(SensorsLabel, EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(SENSORS_LABEL, EditorStyles.boldLabel);
 			_newSensors.Clear();
 			bool sensorsChanged = false;
-			for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				SensorId id = WearableConstants.SensorIds[i];
+				SensorId id = WearableConstants.SENSOR_IDS[i];
 
 				bool prior = profile.GetSensorInProfile(id);
-				bool post = EditorGUILayout.Toggle(id.ToString(), prior, WearableConstants.EmptyLayoutOptions);
+				bool post = EditorGUILayout.Toggle(id.ToString(), prior, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 				sensorsChanged |= prior != post;
 
 				if (post)
@@ -63,17 +63,17 @@ namespace Bose.Wearable.Editor.Inspectors
 
 			// Intervals
 			GUILayoutTools.LineSeparator();
-			EditorGUILayout.LabelField(IntervalsLabel, EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(INTERVALS_LABEL, EditorStyles.boldLabel);
 			_newIntervals.Clear();
 			bool intervalsChanged = false;
-			for (int i = 0; i < WearableConstants.UpdateIntervals.Length; i++)
+			for (int i = 0; i < WearableConstants.UPDATE_INTERVALS.Length; i++)
 			{
-				SensorUpdateInterval interval = WearableConstants.UpdateIntervals[i];
+				SensorUpdateInterval interval = WearableConstants.UPDATE_INTERVALS[i];
 				string label = string.Format(
-					IntervalFormat,
+					INTERVAL_FORMAT,
 					((int) WearableTools.SensorUpdateIntervalToMilliseconds(interval)).ToString());
 				bool prior = profile.GetIntervalInProfile(interval);
-				bool post = EditorGUILayout.Toggle(label, prior, WearableConstants.EmptyLayoutOptions);
+				bool post = EditorGUILayout.Toggle(label, prior, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 				intervalsChanged |= prior != post;
 
 				if (post)
@@ -90,13 +90,13 @@ namespace Bose.Wearable.Editor.Inspectors
 
 			// Gestures
 			GUILayoutTools.LineSeparator();
-			EditorGUILayout.LabelField(GesturesLabel, EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(GESTURES_LABEL, EditorStyles.boldLabel);
 
 			_newGestures.Clear();
 			bool gesturesChanged = false;
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				GestureId id = WearableConstants.GestureIds[i];
+				GestureId id = WearableConstants.GESTURE_IDS[i];
 
 				if (id == GestureId.None)
 				{
@@ -104,7 +104,7 @@ namespace Bose.Wearable.Editor.Inspectors
 				}
 
 				bool prior = profile.GetGestureInProfile(id);
-				bool post = EditorGUILayout.Toggle(id.ToString(), prior, WearableConstants.EmptyLayoutOptions);
+				bool post = EditorGUILayout.Toggle(id.ToString(), prior, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 				gesturesChanged |= prior != post;
 
 				if (post)
@@ -120,7 +120,7 @@ namespace Bose.Wearable.Editor.Inspectors
 
 			if (HasDeviceSpecificGesturesEnabled(profile))
 			{
-				EditorGUILayout.HelpBox(WearableConstants.DeviceSpecificGestureDiscouragedWarning, MessageType.Warning);
+				EditorGUILayout.HelpBox(WearableEditorConstants.DEVICE_SPECIFIC_GESTURE_DISCOURAGED_WARNING, MessageType.Warning);
 			}
 
 			if (GUI.changed)
@@ -132,9 +132,9 @@ namespace Bose.Wearable.Editor.Inspectors
 
 		private bool HasDeviceSpecificGesturesEnabled(AppIntentProfile profile)
 		{
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				GestureId id = WearableConstants.GestureIds[i];
+				GestureId id = WearableConstants.GESTURE_IDS[i];
 
 				if (id == GestureId.None)
 				{

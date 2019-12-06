@@ -1,9 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Bose.Wearable.Extensions;
-using Bose.Wearable.Proxy;
 using UnityEngine;
 
 namespace Bose.Wearable
@@ -17,12 +16,20 @@ namespace Bose.Wearable
 		public sealed class WearableSensor
 		{
 			/// <summary>
+			/// Returns the underling <see cref="Wearable.SensorId"/> of this sensor.
+			/// </summary>
+			public SensorId Id
+			{
+				get { return _sensorId; }
+			}
+
+			/// <summary>
 			/// Returns true or false depending on whether or not the sensor is enabled and
 			/// retrieving updates.
 			/// </summary>
 			public bool IsActive
 			{
-				get { return _wearableControl.GetSensorActive(_id); }
+				get { return _wearableControl.GetSensorActive(_sensorId); }
 			}
 
 			/// <summary>
@@ -30,28 +37,17 @@ namespace Bose.Wearable
 			/// </summary>
 			public bool IsAvailable
 			{
-				get { return _wearableControl.IsSensorAvailable(_id); }
+				get { return _wearableControl.IsSensorAvailable(_sensorId); }
 			}
+
+			private readonly SensorId _sensorId;
 
 			private readonly WearableControl _wearableControl;
-			private readonly SensorId _id;
 
-			internal WearableSensor(WearableControl wearableControl, SensorId id)
+			internal WearableSensor(WearableControl wearableControl, SensorId sensorId)
 			{
 				_wearableControl = wearableControl;
-				_id = id;
-			}
-
-			[Obsolete(WearableConstants.ManualSensorControlsDiscouraged)]
-			public void Start()
-			{
-				_wearableControl.StartSensor(_id);
-			}
-
-			[Obsolete(WearableConstants.ManualSensorControlsDiscouraged)]
-			public void Stop()
-			{
-				_wearableControl.StopSensor(_id);
+				_sensorId = sensorId;
 			}
 		}
 
@@ -60,6 +56,14 @@ namespace Bose.Wearable
 		/// </summary>
 		public sealed class WearableGesture
 		{
+			/// <summary>
+			/// Returns the underling <see cref="SensorId"/> of this sensor.
+			/// </summary>
+			public GestureId Id
+			{
+				get { return _gestureId; }
+			}
+
 			/// <summary>
 			/// Returns true or false depending on whether or not the Gesture is enabled and
 			/// retrieving updates.
@@ -77,26 +81,14 @@ namespace Bose.Wearable
 				get { return _wearableControl.IsGestureAvailable(_gestureId); }
 			}
 
-			private readonly WearableControl _wearableControl;
-
 			private readonly GestureId _gestureId;
+
+			private readonly WearableControl _wearableControl;
 
 			internal WearableGesture(WearableControl wearableControl, GestureId gestureId)
 			{
 				_wearableControl = wearableControl;
 				_gestureId = gestureId;
-			}
-
-			[Obsolete(WearableConstants.ManualGestureControlsDiscouraged)]
-			public void Enable()
-			{
-				_wearableControl.EnableGesture(_gestureId);
-			}
-
-			[Obsolete(WearableConstants.ManualGestureControlsDiscouraged)]
-			public void Disable()
-			{
-				_wearableControl.DisableGesture(_gestureId);
 			}
 		}
 
@@ -120,34 +112,6 @@ namespace Bose.Wearable
 		public event Action<Device> DeviceDisconnected;
 
 		/// <summary>
-		/// This event is obsolete and will be removed in a future release. Please use
-		/// <see cref="ConnectionStatusChanged"/> instead.
-		/// </summary>
-		[Obsolete(WearableConstants.ConnectionEventObsoleteWarning)]
-		public event Action<Device> DeviceConnecting;
-
-		/// <summary>
-		/// This event is obsolete and will be removed in a future release. Please use
-		/// <see cref="ConnectionStatusChanged"/> instead.
-		/// </summary>
-		[Obsolete(WearableConstants.ConnectionEventObsoleteWarning)]
-		public event Action<Device> DeviceSecurePairingRequired;
-
-		/// <summary>
-		/// This event is obsolete and will be removed in a future release. Please use
-		/// <see cref="ConnectionStatusChanged"/> instead.
-		/// </summary>
-		[Obsolete(WearableConstants.ConnectionEventObsoleteWarning)]
-		public event Action<Device, FirmwareUpdateInformation> DeviceFirmwareUpdateAvailable;
-
-		/// <summary>
-		/// This event is obsolete and will be removed in a future release. Please use
-		/// <see cref="ConnectionStatusChanged"/> instead.
-		/// </summary>
-		[Obsolete(WearableConstants.ConnectionEventObsoleteWarning)]
-		public event Action<Device, FirmwareUpdateInformation> DeviceFirmwareUpdateRequired;
-
-		/// <summary>
 		/// Invoked when a device suspends service.
 		/// </summary>
 		public event Action<SensorServiceSuspendedReason> SensorServiceSuspended;
@@ -166,24 +130,6 @@ namespace Bose.Wearable
 		/// Invoked when a sensor frame includes a gesture.
 		/// </summary>
 		public event Action<GestureId> GestureDetected;
-
-		/// <summary>
-		/// Invoked when a double-tap gesture has completed
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public event Action DoubleTapDetected;
-
-		/// <summary>
-		/// Invoked when a head shake gesture has completed
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public event Action HeadShakeDetected;
-
-		/// <summary>
-		/// Invoked when a head nod gesture has completed
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public event Action HeadNodDetected;
 
 		/// <summary>
 		/// Invoked when an abstract input gesture has completed
@@ -211,6 +157,17 @@ namespace Bose.Wearable
 		public event Action AppIntentValidationFailed;
 
 		/// <summary>
+		/// Invoked when the current active noise reduction mode has changed.
+		/// </summary>
+		public event Action<ActiveNoiseReductionMode> ActiveNoiseReductionModeChanged;
+
+		/// <summary>
+		/// Invoked when either the current controllable noise cancellation level has changed, or the feature's state
+		/// has changed.
+		/// </summary>
+		public event Action<int, bool> ControllableNoiseCancellationInfoChanged;
+
+		/// <summary>
 		/// The most recent <see cref="SensorFrame"/> returned by the active provider. Retains its value even if no
 		/// new <see cref="SensorFrame"/>s were emitted during the last render frame.
 		/// </summary>
@@ -232,7 +189,7 @@ namespace Bose.Wearable
 		/// A list of GestureData returned from the bridge in order from oldest to most recent.
 		/// The list is empty if no gestures were returned in the most recent update.
 		/// </summary>
-		internal List<GestureData> CurrentGestureData
+		public List<GestureData> CurrentGestureData
 		{
 			get { return _activeProvider.CurrentGestureData; }
 		}
@@ -278,33 +235,6 @@ namespace Bose.Wearable
 		private WearableSensor _rotationSensorSixDof;
 
 		/// <summary>
-		/// Get object for double-tap gesture.
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public WearableGesture DoubleTapGesture
-		{
-			get { return _wearableGestures[GestureId.DoubleTap]; }
-		}
-
-		/// <summary>
-		/// Get object for head nod gesture
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public WearableGesture HeadNodGesture
-		{
-			get { return _wearableGestures[GestureId.HeadNod]; }
-		}
-
-		/// <summary>
-		/// Get object for head shake gesture
-		/// </summary>
-		[Obsolete(WearableConstants.DeviceSpecificGestureDiscouragedWarning)]
-		public WearableGesture HeadShakeGesture
-		{
-			get { return _wearableGestures[GestureId.HeadShake]; }
-		}
-
-		/// <summary>
 		/// Get object for input device-agnostic gesture
 		/// </summary>
 		public WearableGesture InputGesture
@@ -327,6 +257,25 @@ namespace Bose.Wearable
 			get { return _wearableGestures[GestureId.Negative]; }
 		}
 
+		/// <summary>
+		/// If non-null, this will be initialized with the specific <see cref="OSPermission"/> value that the user
+		/// was last prompted to grant and was not granted or was denied. This will only be initialized if
+		/// <see cref="ConnectionStatusChanged"/> was invoked with parameter <see cref="ConnectionStatus.PermissionRequired"/>.
+		/// </summary>
+		public OSPermission? LastPermissionRequestedForUser
+		{
+			get { return _activeProvider.LastPermissionRequestedForUser; }
+		}
+
+		/// <summary>
+		/// If non-null, this will be initialized with the specific <see cref="OSService"/> value that the user
+		/// was last prompted to enable and was not enable. This will only be initialized if <see cref="ConnectionStatusChanged"/>
+		/// was invoked with parameter <see cref="ConnectionStatus.ServiceRequired"/>.
+		/// </summary>
+		public OSService? LastServiceRequestedForUser
+		{
+			get { return _activeProvider.LastServiceRequestedForUser; }
+		}
 
 		/// <summary>
 		/// Returns a <see cref="WearableSensor"/> based on the passed <see cref="SensorId"/>.
@@ -343,7 +292,7 @@ namespace Bose.Wearable
 				return sensor;
 			}
 
-			throw new Exception(string.Format(WearableConstants.WearableSensorNotYetSupported, sensorId));
+			throw new Exception(string.Format(WearableConstants.WEARABLE_SENSOR_NOT_YET_SUPPORTED, sensorId));
 		}
 
 		/// <summary>
@@ -357,7 +306,7 @@ namespace Bose.Wearable
 		{
 			if (gestureId == GestureId.None)
 			{
-				throw new Exception(WearableConstants.GestureIdNoneInvalidError);
+				throw new Exception(WearableConstants.GESTURE_ID_NONE_INVALID_ERROR);
 			}
 
 			WearableGesture wearableGesture;
@@ -366,7 +315,20 @@ namespace Bose.Wearable
 				return wearableGesture;
 			}
 
-			throw new Exception(string.Format(WearableConstants.WearableGestureNotYetSupported, gestureId));
+			throw new Exception(string.Format(WearableConstants.WEARABLE_GESTURE_NOT_YET_SUPPORTED, gestureId));
+		}
+
+		/// <summary>
+		/// Returns true if a device is currently connected, otherwise false.
+		/// </summary>
+		public bool IsDeviceConnected
+		{
+			get
+			{
+				return _activeProvider != null
+				       && _activeProvider.ConnectionStatus == ConnectionStatus.Connected
+				       && ConnectedDevice.HasValue;
+			}
 		}
 
 		/// <summary>
@@ -382,6 +344,79 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
+		/// <para>
+		/// Checks for any required permissions, services, etc... and makes sure that they are configured
+		/// correctly.
+		///</para>
+		///
+		/// <para>
+		/// Where any are found to need user action to correct, <see cref="ConnectionStatusChanged"/>
+		/// will be invoked with <see cref="ConnectionStatus.PermissionRequired"/> or
+		/// <see cref="ConnectionStatus.ServiceRequired"/> as the parameter value as appropriate.
+		///</para>
+		///
+		/// <para>
+		/// If all
+		/// requirements are met, <see cref="ConnectionStatusChanged"/> will be invoked with
+		/// <see cref="ConnectionStatus.RequirementsMet"/> as the parameter instead.
+		/// </para>
+		/// </summary>
+		internal void CheckForOSRequirements()
+		{
+			if (_checkForRequirementsCoroutine != null)
+			{
+				StopCoroutine(_checkForRequirementsCoroutine);
+				_checkForRequirementsCoroutine = null;
+			}
+
+			_checkForRequirementsCoroutine = StartCoroutine(CheckForOSRequirementsCoroutine());
+		}
+
+		/// <summary>
+		/// Requests the operating system permission and upon confirmation of the user's permission choice or
+		/// return to the application restarts the requirements check via <see cref="CheckForOSRequirements"/>.
+		/// </summary>
+		/// <param name="permission"></param>
+		public void RequestPermission(OSPermission permission)
+		{
+			if (_requestPermissionCoroutine != null)
+			{
+				StopCoroutine(_requestPermissionCoroutine);
+				_requestPermissionCoroutine = null;
+			}
+
+			_requestPermissionCoroutine = StartCoroutine(RequestPermissionCoroutine(permission));
+		}
+
+		/// <summary>
+		/// Executed when a user has denied granting a permission or enabling a service the SDK requires.
+		/// </summary>
+		public void DenyPermissionOrService()
+		{
+			_activeProvider.DenyPermissionOrService();
+		}
+
+		/// <summary>
+		/// Returns the proper text description of a permission prompt.
+		/// </summary>
+		/// <param name="permission"></param>
+		/// <returns></returns>
+		public string GetPermissionRequiredText(OSPermission permission)
+		{
+			return _activeProvider.GetPermissionRequiredText(permission);
+		}
+
+		/// <summary>
+		/// Returns the proper text description of a permission prompt.
+		/// </summary>
+		/// <param name="service"></param>
+		/// <returns></returns>
+		public string GetServiceRequiredText(OSService service)
+		{
+			return _activeProvider.GetServiceRequiredText(service);
+		}
+
+		/// <summary>
 		/// Searches for all Wearable devices that can be connected to.
 		/// </summary>
 		/// <param name="onDevicesUpdated"></param>
@@ -390,9 +425,32 @@ namespace Bose.Wearable
 		public void SearchForDevices(
 			Action<Device[]> onDevicesUpdated,
 			bool autoReconnect = false,
-			float autoReconnectTimeout = WearableConstants.DefaultAutoReconnectTimeout)
+			float autoReconnectTimeout = WearableConstants.DEFAULT_AUTO_RECONNECT_TIMEOUT)
 		{
-			_activeProvider.SearchForDevices(_activeAppIntentProfile, onDevicesUpdated, autoReconnect, autoReconnectTimeout);
+			// Only attempt an auto-reconnect if the user indicated they wanted it and the timeout is > 0.
+			_onDevicesUpdated = onDevicesUpdated;
+			_safeAutoReconnectTimeout = Mathf.Max(0, autoReconnectTimeout);
+			_doAutoReconnect = autoReconnect && _safeAutoReconnectTimeout > 0;
+
+			if (autoReconnect && !_doAutoReconnect)
+			{
+				Debug.LogWarningFormat(WearableConstants.INVALID_AUTO_RECONNECT_TIMEOUT_PERIOD_WARNING, autoReconnectTimeout);
+			}
+
+			CheckForOSRequirements();
+		}
+
+		/// <summary>
+		/// Inform the Active Provider to begin the search for devices. Called when the connection status is changed to
+		/// <see cref="ConnectionStatus.RequirementsMet"/>.
+		/// </summary>
+		private void ContinueSearchForDevices()
+		{
+			_activeProvider.SearchForDevices(
+				_activeAppIntentProfile,
+				_onDevicesUpdated,
+				_doAutoReconnect,
+				_safeAutoReconnectTimeout);
 		}
 
 		/// <summary>
@@ -412,15 +470,23 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
-		/// Connects to a specified device and invokes either <paramref name="onSuccess"/> or <paramref name="onFailure"/>
-		/// depending on the result.
+		/// Connects to a specified device and conveys the result via the <see cref="ConnectionStatusChanged"/>
+		/// event.
 		/// </summary>
 		/// <param name="device"></param>
-		/// <param name="onSuccess"></param>
-		/// <param name="onFailure"></param>
-		public void ConnectToDevice(Device device, Action onSuccess = null, Action onFailure = null)
+		public void ConnectToDevice(Device device)
 		{
-			_activeProvider.ConnectToDevice(device, onSuccess, onFailure);
+			_activeProvider.ConnectToDevice(device);
+		}
+
+		/// <summary>
+		/// Attempts to connect to the device that was last successfully connected to; this connection attempt
+		/// will continue until the device is found and the connection fails or succeeds or until cancelled. If
+		/// no device was previously connected to successfully, the connection will automatically fail.
+		/// </summary>
+		public void ReconnectToLastSuccessfulDevice()
+		{
+			_activeProvider.ReconnectToLastSuccessfulDevice(_activeAppIntentProfile);
 		}
 
 		/// <summary>
@@ -437,19 +503,6 @@ namespace Bose.Wearable
 		public SensorUpdateInterval UpdateInterval
 		{
 			get { return _activeProvider.GetCachedDeviceConfiguration().updateInterval; }
-		}
-
-		/// <summary>
-		/// Sets the update interval for the WearableDevice.
-		/// </summary>
-		public void SetSensorUpdateInterval(SensorUpdateInterval interval)
-		{
-			// If we've made a change that would result in the device's state changing,
-			// mark the device config as dirty.
-			if (SetSensorUpdateIntervalInternal(interval))
-			{
-				LockDeviceStateUpdate();
-			}
 		}
 
 		/// <summary>
@@ -507,6 +560,8 @@ namespace Bose.Wearable
 				_activeProvider.ConfigurationFailed -= OnConfigurationFailed;
 				_activeProvider.SensorServiceSuspended -= OnSensorServiceSuspended;
 				_activeProvider.SensorServiceResumed -= OnSensorServiceResumed;
+				_activeProvider.ActiveNoiseReductionModeChanged -= OnActiveNoiseReductionModeChanged;
+				_activeProvider.ControllableNoiseCancellationInfoChanged -= OnControllableNoiseCancellationInfoChanged;
 			}
 
 			_activeProvider = provider;
@@ -525,9 +580,14 @@ namespace Bose.Wearable
 			_activeProvider.ConfigurationFailed += OnConfigurationFailed;
 			_activeProvider.SensorServiceSuspended += OnSensorServiceSuspended;
 			_activeProvider.SensorServiceResumed += OnSensorServiceResumed;
+			_activeProvider.ActiveNoiseReductionModeChanged += OnActiveNoiseReductionModeChanged;
+			_activeProvider.ControllableNoiseCancellationInfoChanged += OnControllableNoiseCancellationInfoChanged;
 
 			// Enable the new provider after subscribing in case enabling the provider invokes an event
 			_activeProvider.OnEnableProvider();
+
+			// Setup the provider debug log level based on the serialized configuration.
+			_activeProvider.ConfigureDebugLogging();
 		}
 
 		/// <summary>
@@ -550,9 +610,9 @@ namespace Bose.Wearable
 				return (T)GetOrCreateProvider(ProviderId.DebugProvider);
 			}
 
-			if (_deviceProvider is T)
+			if (_bluetoothProvider is T)
 			{
-				return (T)GetOrCreateProvider(ProviderId.WearableDevice);
+				return (T)GetOrCreateProvider(ProviderId.BluetoothProvider);
 			}
 
 			if (_usbProvider is T)
@@ -560,12 +620,23 @@ namespace Bose.Wearable
 				return (T)GetOrCreateProvider(ProviderId.USBProvider);
 			}
 
-			if (_proxyProvider is T)
-			{
-				return (T)GetOrCreateProvider(ProviderId.WearableProxy);
-			}
+			throw new ArgumentOutOfRangeException(string.Format(WearableConstants.INVALID_PROVIDER_TYPE_ERROR, typeof(T)));
+		}
 
-			throw new ArgumentOutOfRangeException(string.Format(WearableConstants.InvalidProviderTypeError, typeof(T)));
+		/// <summary>
+		/// Set the active noise reduction mode on the attached device, if the feature is available.
+		/// </summary>
+		public void SetActiveNoiseReductionMode(ActiveNoiseReductionMode mode)
+		{
+			_activeProvider.SetActiveNoiseReductionMode(mode);
+		}
+
+		/// <summary>
+		/// Set the controllable noise cancellation level of the attached device, if the feature is available.
+		/// </summary>
+		public void SetControllableNoiseCancellationLevel(int level, bool enabled)
+		{
+			_activeProvider.SetControllableNoiseCancellationLevel(level, enabled);
 		}
 
 		/// <summary>
@@ -578,7 +649,7 @@ namespace Bose.Wearable
 		{
 			if (_activeProvider.ConnectionStatus == ConnectionStatus.Searching)
 			{
-				Debug.LogWarning(WearableConstants.IntentChangedWhileSearchingWarning);
+				Debug.LogWarning(WearableConstants.INTENT_CHANGED_WHILE_SEARCHING_WARNING);
 			}
 
 			_activeAppIntentProfile = profile;
@@ -655,27 +726,18 @@ namespace Bose.Wearable
 		private WearableDebugProvider _debugProvider;
 
 		[SerializeField]
-		private WearableDeviceProvider _deviceProvider;
+		private WearableBluetoothProvider _bluetoothProvider;
 
 		[SerializeField]
 		private WearableUSBProvider _usbProvider;
 
-		[SerializeField]
-		private WearableProxyProvider _proxyProvider;
-
 		#pragma warning disable 0414
 		[SerializeField]
-		private ProviderId _editorDefaultProvider = WearableConstants.EditorDefaultProvider;
+		private ProviderId _editorDefaultProvider = WearableConstants.EDITOR_DEFAULT_PROVIDER;
 
 		[SerializeField]
-		private ProviderId _runtimeDefaultProvider = WearableConstants.RuntimeDefaultProvider;
+		private ProviderId _runtimeDefaultProvider = WearableConstants.RUNTIME_DEFAULT_PROVIDER;
 		#pragma warning restore 0414
-
-		/// <summary>
-		/// The wearable device config used for public methods on WearableControl that are intended to
-		/// update device state.
-		/// </summary>
-		private WearableDeviceConfig _wearableDeviceConfig;
 
 		/// <summary>
 		/// The <see cref="WearableDeviceConfig"/> that is aggregated from all requirements and sent to the
@@ -764,7 +826,10 @@ namespace Bose.Wearable
 
 		private Dictionary<SensorId, WearableSensor> _wearableSensors;
 
-		// Reference Counting State. Initialized inline to support
+		private Coroutine _checkForRequirementsCoroutine;
+		private Coroutine _requestPermissionCoroutine;
+
+		// Reference Counting State. Initialized inline to support Singleton instantiation
 		#pragma warning disable 0414
 		private readonly List<WearableRequirement> _wearableRequirements = new List<WearableRequirement>();
 		#pragma warning restore 0414
@@ -772,7 +837,13 @@ namespace Bose.Wearable
 		// Helper objects for generating log entries
 		private List<string> _stringList;
 		private StringBuilder _stringBuilder;
-		private const string ItemSeparator = ", ";
+
+		// Searching for devices
+		private float _safeAutoReconnectTimeout;
+		private bool _doAutoReconnect;
+		private Action<Device[]> _onDevicesUpdated;
+
+		private const string ITEM_SEPARATOR = ", ";
 
 		private WearableProviderBase GetOrCreateProvider(ProviderId providerId)
 		{
@@ -785,12 +856,12 @@ namespace Bose.Wearable
 					}
 					return _debugProvider;
 
-				case ProviderId.WearableDevice:
-					if (_deviceProvider == null)
+				case ProviderId.BluetoothProvider:
+					if (_bluetoothProvider == null)
 					{
-						_deviceProvider = new WearableDeviceProvider();
+						_bluetoothProvider = new WearableBluetoothProvider();
 					}
-					return _deviceProvider;
+					return _bluetoothProvider;
 
 				case ProviderId.USBProvider:
 					if (_usbProvider == null)
@@ -800,27 +871,9 @@ namespace Bose.Wearable
 
 					return _usbProvider;
 
-				case ProviderId.WearableProxy:
-					if (_proxyProvider == null)
-					{
-						_proxyProvider = new WearableProxyProvider();
-					}
-
-					return _proxyProvider;
-
-				#pragma warning disable 618
-				case ProviderId.MobileProvider:
-					Debug.LogWarning(WearableConstants.MobileProviderCreateWarning);
-					if (_debugProvider == null)
-					{
-						_debugProvider = new WearableDebugProvider();
-					}
-					return _debugProvider;
-				#pragma warning restore 618
-
 				default:
 					throw new ArgumentOutOfRangeException(string.Format(
-						WearableConstants.InvalidProviderTypeError,
+						WearableConstants.INVALID_PROVIDER_TYPE_ERROR,
 						providerId.ToString()));
 			}
 		}
@@ -832,73 +885,38 @@ namespace Bose.Wearable
 				ConnectionStatusChanged.Invoke(status, device);
 			}
 
-			if (status == ConnectionStatus.Connected)
-			{
-				if (DeviceConnected != null)
-				{
-					DeviceConnected.Invoke(device.GetValueOrDefault());
-				}
-
-				// When a device has been connected, immediately clear any locks and then re-lock
-				// so that we update the state of the device at the end of this frame or the next.
-				UnlockDeviceStateUpdate();
-				LockDeviceStateUpdate();
-			}
-			else if (status == ConnectionStatus.Disconnected)
-			{
-				if (DeviceDisconnected != null)
-				{
-					DeviceDisconnected.Invoke(device.GetValueOrDefault());
-				}
-			}
-
-			// NB These events will be removed in a future PR, and are here for backwards-compatibility.
-			#pragma warning disable 618
 			switch (status)
 			{
-				case ConnectionStatus.Connecting:
-					if (DeviceConnecting != null)
-					{
-						DeviceConnecting.Invoke(device.GetValueOrDefault());
-					}
-					break;
-
-				case ConnectionStatus.SecurePairingRequired:
-					if (DeviceSecurePairingRequired != null)
-					{
-						DeviceSecurePairingRequired.Invoke(device.GetValueOrDefault());
-					}
-					break;
-
-				case ConnectionStatus.FirmwareUpdateAvailable:
-					if (DeviceFirmwareUpdateAvailable != null)
-					{
-						FirmwareUpdateInformation updateInformation = _activeProvider.GetFirmwareUpdateInformation();
-						DeviceFirmwareUpdateAvailable.Invoke(device.GetValueOrDefault(), updateInformation);
-					}
-					break;
-
-				case ConnectionStatus.FirmwareUpdateRequired:
-					if (DeviceFirmwareUpdateRequired != null)
-					{
-						FirmwareUpdateInformation updateInformation = _activeProvider.GetFirmwareUpdateInformation();
-						DeviceFirmwareUpdateRequired.Invoke(device.GetValueOrDefault(), updateInformation);
-					}
-					break;
-
 				case ConnectionStatus.Connected:
-				case ConnectionStatus.Disconnected:
-				case ConnectionStatus.Failed:
-				case ConnectionStatus.Cancelled:
-				case ConnectionStatus.AutoReconnect:
-				case ConnectionStatus.Searching:
-					// No-op
-					break;
+				{
+					if (DeviceConnected != null)
+					{
+						DeviceConnected.Invoke(device.GetValueOrDefault());
+					}
 
-				default:
-					throw new ArgumentOutOfRangeException();
+					// When a device has been connected, immediately clear any locks and then re-lock
+					// so that we update the state of the device at the end of this frame or the next.
+					UnlockDeviceStateUpdate();
+					LockDeviceStateUpdate();
+					break;
+				}
+				case ConnectionStatus.Disconnected:
+				{
+					if (DeviceDisconnected != null)
+					{
+						DeviceDisconnected.Invoke(device.GetValueOrDefault());
+					}
+
+					break;
+				}
+
+				case ConnectionStatus.RequirementsMet:
+				{
+					ContinueSearchForDevices();
+
+					break;
+				}
 			}
-			#pragma warning restore 618
 		}
 
 		private void OnIntentValidationResponse(bool valid)
@@ -916,7 +934,7 @@ namespace Bose.Wearable
 			{
 				_intentValidationStatus = IntentValidationStatus.Failure;
 
-				Debug.LogWarning(WearableConstants.InvalidIntentsWarning);
+				Debug.LogWarning(WearableConstants.INVALID_INTENTS_WARNING);
 
 				if (AppIntentValidationFailed != null)
 				{
@@ -926,12 +944,34 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
+		/// Invokes the <see cref="ActiveNoiseReductionModeChanged"/> event.
+		/// </summary>
+		private void OnActiveNoiseReductionModeChanged(ActiveNoiseReductionMode currentMode)
+		{
+			if (ActiveNoiseReductionModeChanged != null)
+			{
+				ActiveNoiseReductionModeChanged.Invoke(currentMode);
+			}
+		}
+
+		/// <summary>
+		/// Invokes the <see cref="ControllableNoiseCancellationInfoChanged"/> event.
+		/// </summary>
+		private void OnControllableNoiseCancellationInfoChanged(int level, bool featureEnabled)
+		{
+			if (ControllableNoiseCancellationInfoChanged != null)
+			{
+				ControllableNoiseCancellationInfoChanged.Invoke(level, featureEnabled);
+			}
+		}
+
+		/// <summary>
 		/// Invokes the <see cref="SensorServiceSuspended"/> event.
 		/// </summary>
 		/// <param name="reason"></param>
 		private void OnSensorServiceSuspended(SensorServiceSuspendedReason reason)
 		{
-			Debug.LogWarningFormat(WearableConstants.SensorServiceSuspendedWarning, reason.ToString());
+			Debug.LogWarningFormat(WearableConstants.SENSOR_SERVICE_SUSPENDED_WARNING, reason.ToString());
 
 			if (SensorServiceSuspended != null)
 			{
@@ -944,7 +984,7 @@ namespace Bose.Wearable
 		/// </summary>
 		private void OnSensorServiceResumed()
 		{
-			Debug.Log(WearableConstants.SensorServiceResumedInfo);
+			Debug.Log(WearableConstants.SENSOR_SERVICE_RESUMED_INFO);
 
 			if (SensorServiceResumed != null)
 			{
@@ -979,29 +1019,6 @@ namespace Bose.Wearable
 			// Use device-agnostic gestures instead.
 			switch (gestureId)
 			{
-				#pragma warning disable 0618
-				case GestureId.DoubleTap:
-					if (DoubleTapDetected != null)
-					{
-						DoubleTapDetected.Invoke();
-					}
-					break;
-				case GestureId.HeadShake:
-					if (HeadShakeDetected != null)
-					{
-						HeadShakeDetected.Invoke();
-					}
-					break;
-				case GestureId.HeadNod:
-					if (HeadNodDetected != null)
-					{
-						HeadNodDetected.Invoke();
-					}
-					break;
-				case GestureId.TouchAndHold:
-					// no-op. section to be deprecated.
-					break;
-				#pragma warning restore 0618
 				case GestureId.Input:
 					if (InputGestureDetected != null)
 					{
@@ -1020,6 +1037,12 @@ namespace Bose.Wearable
 						NegativeGestureDetected.Invoke();
 					}
 					break;
+				case GestureId.DoubleTap:
+				case GestureId.HeadShake:
+				case GestureId.HeadNod:
+				case GestureId.TouchAndHold:
+					// No-op
+					break;
 				case GestureId.None:
 				default:
 					throw new ArgumentOutOfRangeException();
@@ -1035,7 +1058,59 @@ namespace Bose.Wearable
 		{
 			UnlockDeviceStateUpdate();
 
-			Debug.LogWarningFormat(WearableConstants.ConfigFailedWarning, sensor.ToString(), gesture.ToString());
+			Debug.LogWarningFormat(WearableConstants.CONFIG_FAILED_WARNING, sensor.ToString(), gesture.ToString());
+		}
+
+		/// <summary>
+		/// Checks to make sure that any requirements for permissions, services have been satisfied.
+		/// </summary>
+		/// <returns></returns>
+		private IEnumerator CheckForOSRequirementsCoroutine()
+		{
+			for (var i = 0; i < WearableConstants.OS_PERMISSIONS.Length; i++)
+			{
+				var permission = WearableConstants.OS_PERMISSIONS[i];
+				yield return _activeProvider.ValidatePermissionIsGranted(permission);
+
+				if (!_activeProvider.LastPermissionCheckedIsGranted)
+				{
+					_checkForRequirementsCoroutine = null;
+					yield break;
+				}
+			}
+
+			for (var i = 0; i < WearableConstants.OS_SERVICES.Length; i++)
+			{
+				var service = WearableConstants.OS_SERVICES[i];
+				yield return _activeProvider.ValidateServiceIsEnabled(service);
+
+				if (!_activeProvider.LastServiceCheckedIsEnabled)
+				{
+					_checkForRequirementsCoroutine = null;
+					yield break;
+				}
+			}
+
+			_activeProvider.SetOSRequirementsAsMet();
+
+			_checkForRequirementsCoroutine = null;
+		}
+
+		private IEnumerator RequestPermissionCoroutine(OSPermission permission)
+		{
+			yield return _activeProvider.RequestPermissionCoroutine(permission);
+			yield return _activeProvider.ValidatePermissionIsGranted(permission);
+
+			if (_activeProvider.LastPermissionCheckedIsGranted)
+			{
+				CheckForOSRequirements();
+			}
+			else
+			{
+				_activeProvider.DenyPermissionOrService();
+			}
+
+			_requestPermissionCoroutine = null;
 		}
 
 		/// <summary>
@@ -1112,26 +1187,15 @@ namespace Bose.Wearable
 		}
 
 		/// <summary>
-		/// Sets the <see cref="SensorUpdateInterval"/> <paramref name="newInterval"/>.
-		/// </summary>
-		private bool SetSensorUpdateIntervalInternal(SensorUpdateInterval newInterval)
-		{
-			var hasDeviceStateChanged = false;
-			if (_wearableDeviceConfig.updateInterval != newInterval)
-			{
-				_wearableDeviceConfig.updateInterval = newInterval;
-
-				hasDeviceStateChanged = true;
-			}
-
-			return hasDeviceStateChanged;
-		}
-
-		/// <summary>
 		/// Marks the device state update functionality to be unlocked such that device updates can take place again.
 		/// </summary>
 		private void UnlockDeviceStateUpdate()
 		{
+			if (_isDeviceStateUpdatePendingDuringLock)
+			{
+				return;
+			}
+
 			_isDeviceStateUpdateLocked = false;
 			_appTimeSinceDeviceStateUpdateLocked = Time.time;
 			_hasDeviceUpdateBeenApplied = false;
@@ -1147,7 +1211,7 @@ namespace Bose.Wearable
 			var timeSinceLocked = Time.time - _appTimeSinceDeviceStateUpdateLocked;
 			if (_isDeviceStateUpdateLocked && timeSinceLocked > 0f)
 			{
-				Debug.LogWarning(WearableConstants.OnlyOneSensorFrequencyUpdatePerFrameWarning, this);
+				Debug.LogWarning(WearableConstants.ONLY_ONE_SENSOR_FREQUENCY_UPDATE_PER_FRAME_WARNING, this);
 
 				_isDeviceStateUpdatePendingDuringLock = true;
 			}
@@ -1209,8 +1273,7 @@ namespace Bose.Wearable
 			// Reset all state in the final device config to off/slowest speeds.
 			ResetFinalDeviceConfig();
 
-			// Process all registered wearable requirement's device config and internal device config to
-			// additively update state on the final config
+			// Process all registered wearable requirement's device config to additively update state on the final config
 			for (var i = _wearableRequirements.Count - 1; i >= 0; i--)
 			{
 				var wr = _wearableRequirements[i];
@@ -1223,8 +1286,6 @@ namespace Bose.Wearable
 
 				UpdateFinalDeviceConfig(wr.DeviceConfig);
 			}
-
-			UpdateFinalDeviceConfig(_wearableDeviceConfig);
 		}
 
 		/// <summary>
@@ -1239,7 +1300,7 @@ namespace Bose.Wearable
 			if (config.HasThreeOrMoreSensorsEnabled() &&
 			    config.updateInterval == SensorUpdateInterval.TwentyMs)
 			{
-				Debug.LogWarning(WearableConstants.SensorUpdateIntervalDecreasedWarning, this);
+				Debug.LogWarning(WearableConstants.SENSOR_UPDATE_INTERVAL_DECREASED_WARNING, this);
 				config.updateInterval = SensorUpdateInterval.FortyMs;
 			}
 
@@ -1252,22 +1313,22 @@ namespace Bose.Wearable
 
 			Device device = _activeProvider.ConnectedDevice.Value;
 
-			for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				var sensorId = WearableConstants.SensorIds[i];
+				var sensorId = WearableConstants.SENSOR_IDS[i];
 				var sensorConfig = config.GetSensorConfig(sensorId);
 				if (sensorConfig.isEnabled && !device.IsSensorAvailable(sensorId))
 				{
 					Debug.LogWarningFormat(
-						WearableConstants.RequestedSensorNotAvailableWarningFormat,
+						WearableConstants.REQUESTED_SENSOR_NOT_AVAILABLE_WARNING_FORMAT,
 						sensorId.ToString());
 					sensorConfig.isEnabled = false;
 				}
 			}
 
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				var gestureId = WearableConstants.GestureIds[i];
+				var gestureId = WearableConstants.GESTURE_IDS[i];
 				if (gestureId == GestureId.None)
 				{
 					continue;
@@ -1277,7 +1338,7 @@ namespace Bose.Wearable
 				if (gestureConfig.isEnabled && !device.IsGestureAvailable(gestureId))
 				{
 					Debug.LogWarningFormat(
-						WearableConstants.RequestedGestureNotAvailableWarningFormat,
+						WearableConstants.REQUESTED_GESTURE_NOT_AVAILABLE_WARNING_FORMAT,
 						gestureId.ToString());
 					gestureConfig.isEnabled = false;
 				}
@@ -1293,21 +1354,21 @@ namespace Bose.Wearable
 			_finalWearableDeviceConfig.updateInterval = SensorUpdateInterval.ThreeHundredTwentyMs;
 
 			// Set all sensor state and update intervals
-			for (var i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (var i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				var finalSensorConfig = _finalWearableDeviceConfig.GetSensorConfig(WearableConstants.SensorIds[i]);
+				var finalSensorConfig = _finalWearableDeviceConfig.GetSensorConfig(WearableConstants.SENSOR_IDS[i]);
 				finalSensorConfig.isEnabled = false;
 			}
 
 			// Set all gesture state
-			for (var i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				if (WearableConstants.GestureIds[i] == GestureId.None)
+				if (WearableConstants.GESTURE_IDS[i] == GestureId.None)
 				{
 					continue;
 				}
 
-				var finalGestureConfig = _finalWearableDeviceConfig.GetGestureConfig(WearableConstants.GestureIds[i]);
+				var finalGestureConfig = _finalWearableDeviceConfig.GetGestureConfig(WearableConstants.GESTURE_IDS[i]);
 				finalGestureConfig.isEnabled = false;
 			}
 		}
@@ -1319,9 +1380,9 @@ namespace Bose.Wearable
 		private void UpdateFinalDeviceConfig(WearableDeviceConfig config)
 		{
 			// Set all sensor state and update intervals
-			for (var i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (var i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				var sensorId = WearableConstants.SensorIds[i];
+				var sensorId = WearableConstants.SENSOR_IDS[i];
 				var finalSensorConfig = _finalWearableDeviceConfig.GetSensorConfig(sensorId);
 				var reqSensorConfig = config.GetSensorConfig(sensorId);
 
@@ -1329,15 +1390,15 @@ namespace Bose.Wearable
 			}
 
 			// Set all gesture state.
-			for (var i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				if (WearableConstants.GestureIds[i] == GestureId.None)
+				if (WearableConstants.GESTURE_IDS[i] == GestureId.None)
 				{
 					continue;
 				}
 
-				var finalGestureConfig = _finalWearableDeviceConfig.GetGestureConfig(WearableConstants.GestureIds[i]);
-				var reqGestureConfig = config.GetGestureConfig(WearableConstants.GestureIds[i]);
+				var finalGestureConfig = _finalWearableDeviceConfig.GetGestureConfig(WearableConstants.GESTURE_IDS[i]);
+				var reqGestureConfig = config.GetGestureConfig(WearableConstants.GESTURE_IDS[i]);
 
 				finalGestureConfig.isEnabled |= reqGestureConfig.isEnabled;
 			}
@@ -1361,9 +1422,9 @@ namespace Bose.Wearable
 		{
 			// Check all sensors to see if we need to update the device.
 			var deviceShouldBeUpdated = false;
-			for (var i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (var i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				var sensorId = WearableConstants.SensorIds[i];
+				var sensorId = WearableConstants.SENSOR_IDS[i];
 				var sensorConfig = config.GetSensorConfig(sensorId);
 				if (sensorConfig.isEnabled != GetSensorActive(sensorId) &&
 				    IsSensorAvailable(sensorId))
@@ -1381,9 +1442,9 @@ namespace Bose.Wearable
 			// Check all gestures to see if we need to update the device state.
 			if (!deviceShouldBeUpdated)
 			{
-				for (var i = 0; i < WearableConstants.GestureIds.Length; i++)
+				for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 				{
-					var gestureId = WearableConstants.GestureIds[i];
+					var gestureId = WearableConstants.GESTURE_IDS[i];
 					if (gestureId == GestureId.None)
 					{
 						continue;
@@ -1413,7 +1474,7 @@ namespace Bose.Wearable
 			{
 				if (!_hasWarnedNullIntentProfile)
 				{
-					Debug.LogWarning(WearableConstants.ValidatingIntentsButNoProfileWarning);
+					Debug.LogWarning(WearableConstants.VALIDATING_INTENTS_BUT_NO_PROFILE_WARNING);
 				}
 
 				_hasWarnedNullIntentProfile = true;
@@ -1425,9 +1486,9 @@ namespace Bose.Wearable
 			_stringList.Clear();
 
 			// Check sensors
-			for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				SensorId id = WearableConstants.SensorIds[i];
+				SensorId id = WearableConstants.SENSOR_IDS[i];
 
 				bool configEnabled = config.GetSensorConfig(id).isEnabled;
 				bool intentEnabled = _activeAppIntentProfile.GetSensorInProfile(id);
@@ -1438,9 +1499,9 @@ namespace Bose.Wearable
 			}
 
 			// Check gestures
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				GestureId id = WearableConstants.GestureIds[i];
+				GestureId id = WearableConstants.GESTURE_IDS[i];
 
 				if (id == GestureId.None)
 				{
@@ -1472,11 +1533,11 @@ namespace Bose.Wearable
 
 					if (i != _stringList.Count - 1)
 					{
-						_stringBuilder.Append(ItemSeparator);
+						_stringBuilder.Append(ITEM_SEPARATOR);
 					}
 				}
 
-				Debug.LogWarningFormat(WearableConstants.ViolatedIntentProfileWarningFormat, _stringBuilder);
+				Debug.LogWarningFormat(WearableConstants.VIOLATED_INTENT_PROFILE_WARNING_FORMAT, _stringBuilder);
 			}
 		}
 
@@ -1490,71 +1551,11 @@ namespace Bose.Wearable
 		{
 			if (!ConnectedDevice.HasValue)
 			{
-				Debug.Log(WearableConstants.DeviceIsNotCurrentlyConnected);
+				Debug.Log(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
 				return false;
 			}
 
 			return ConnectedDevice.Value.IsSensorAvailable(sensorId);
-		}
-
-		/// <summary>
-		/// Starts the <see cref="WearableSensor"/> for <see cref="SensorId"/> <paramref name="sensorId"/>
-		/// </summary>
-		/// <param name="sensorId"></param>
-		private void StartSensor(SensorId sensorId)
-		{
-			if (StartSensorInternal(sensorId))
-			{
-				LockDeviceStateUpdate();
-			}
-		}
-
-		/// <summary>
-		/// Start a sensor with a given interval <see cref="SensorId"/>. Returns true if the sensor was started,
-		/// otherwise false.
-		/// </summary>
-		/// <param name="sensorId"></param>
-		private bool StartSensorInternal(SensorId sensorId)
-		{
-			var sensorConfig = _wearableDeviceConfig.GetSensorConfig(sensorId);
-			if (sensorConfig.isEnabled)
-			{
-				return false;
-			}
-
-			sensorConfig.isEnabled = true;
-
-			return true;
-		}
-
-		/// <summary>
-		/// Stops the <see cref="WearableSensor"/> for <see cref="SensorId"/> <paramref name="sensorId"/>
-		/// </summary>
-		/// <param name="sensorId"></param>
-		private void StopSensor(SensorId sensorId)
-		{
-			if (StopSensorInternal(sensorId))
-			{
-				LockDeviceStateUpdate();
-			}
-		}
-
-		/// <summary>
-		/// Stop a sensor with a given <see cref="SensorId"/>. Returns true if the sensor was stopped,
-		/// otherwise false.
-		/// </summary>
-		/// <param name="sensorId"></param>
-		private bool StopSensorInternal(SensorId sensorId)
-		{
-			var sensorConfig = _wearableDeviceConfig.GetSensorConfig(sensorId);
-			if (!sensorConfig.isEnabled)
-			{
-				return false;
-			}
-
-			sensorConfig.isEnabled = false;
-
-			return true;
 		}
 
 		/// <summary>
@@ -1577,79 +1578,11 @@ namespace Bose.Wearable
 		{
 			if (!ConnectedDevice.HasValue)
 			{
-				Debug.Log(WearableConstants.DeviceIsNotCurrentlyConnected);
+				Debug.Log(WearableConstants.DEVICE_IS_NOT_CURRENTLY_CONNECTED);
 				return false;
 			}
 
 			return ConnectedDevice.Value.IsGestureAvailable(gestureId);
-		}
-
-		/// <summary>
-		/// Enables the <see cref="WearableGesture"/> for <see cref="GestureId"/> <paramref name="gestureId"/>
-		/// </summary>
-		/// <param name="gestureId"></param>
-		private void EnableGesture(GestureId gestureId)
-		{
-			if (gestureId == GestureId.None)
-			{
-				throw new Exception(WearableConstants.GestureIdNoneInvalidError);
-			}
-
-			if (EnableGestureInternal(gestureId))
-			{
-				LockDeviceStateUpdate();
-			}
-		}
-
-		/// <summary>
-		/// Start a gesture with a given interval <see cref="GestureId"/>.
-		/// </summary>
-		/// <param name="gestureId"></param>
-		private bool EnableGestureInternal(GestureId gestureId)
-		{
-			var gestureConfig = _wearableDeviceConfig.GetGestureConfig(gestureId);
-			if (gestureConfig.isEnabled)
-			{
-				return false;
-			}
-
-			gestureConfig.isEnabled = true;
-
-			return true;
-		}
-
-		/// <summary>
-		/// Disables the <see cref="WearableGesture"/> for <see cref="GestureId"/> <paramref name="gestureId"/>
-		/// </summary>
-		/// <param name="gestureId"></param>
-		private void DisableGesture(GestureId gestureId)
-		{
-			if (gestureId == GestureId.None)
-			{
-				throw new Exception(WearableConstants.GestureIdNoneInvalidError);
-			}
-
-			if (DisableGestureInternal(gestureId))
-			{
-				LockDeviceStateUpdate();
-			}
-		}
-
-		/// <summary>
-		/// Stop a gesture with a given <see cref="GestureId"/>.
-		/// </summary>
-		/// <param name="gestureId"></param>
-		private bool DisableGestureInternal(GestureId gestureId)
-		{
-			var gestureConfig = _wearableDeviceConfig.GetGestureConfig(gestureId);
-			if (!gestureConfig.isEnabled)
-			{
-				return false;
-			}
-
-			gestureConfig.isEnabled = false;
-
-			return true;
 		}
 
 		/// <summary>
@@ -1664,100 +1597,97 @@ namespace Bose.Wearable
 
 		protected override void Awake()
 		{
-			_stringList = new List<string>();
-			_stringBuilder = new StringBuilder();
-
-			_wearableDeviceConfig = new WearableDeviceConfig();
-			_finalWearableDeviceConfig = new WearableDeviceConfig();
-
-			// populate sensors and dictionary
-			_accelerometerSensor = new WearableSensor(this, SensorId.Accelerometer);
-			_gyroscopeSensor = new WearableSensor(this, SensorId.Gyroscope);
-			_rotationSensorNineDof = new WearableSensor(this, SensorId.RotationNineDof);
-			_rotationSensorSixDof = new WearableSensor(this, SensorId.RotationSixDof);
-
-			_wearableSensors = new Dictionary<SensorId, WearableSensor>
-			{
-				{SensorId.Accelerometer, _accelerometerSensor},
-				{SensorId.Gyroscope, _gyroscopeSensor},
-				{SensorId.RotationNineDof, _rotationSensorNineDof},
-				{SensorId.RotationSixDof, _rotationSensorSixDof}
-			};
-
-			// populate wearable gesture dictionary
-			_wearableGestures = new Dictionary<GestureId, WearableGesture>();
-			for (var i = 0; i < WearableConstants.GestureIds.Length; ++i)
-			{
-				if (WearableConstants.GestureIds[i] != GestureId.None)
-				{
-					_wearableGestures[WearableConstants.GestureIds[i]] =
-						new WearableGesture(this, WearableConstants.GestureIds[i]);
-				}
-			}
-
-			_intentValidationStatus = GetIntentValidationStatus();
-
-			// Activate the default provider depending on the platform
-			#if UNITY_EDITOR
-			SetActiveProvider(GetOrCreateProvider(_editorDefaultProvider));
-			#else
-			SetActiveProvider(GetOrCreateProvider(_runtimeDefaultProvider));
-			#endif
-
 			base.Awake();
+
+			if (IsSingletonInstance)
+			{
+				_stringList = new List<string>();
+				_stringBuilder = new StringBuilder();
+
+				_finalWearableDeviceConfig = new WearableDeviceConfig();
+
+				// populate sensors and dictionary
+				_accelerometerSensor = new WearableSensor(this, SensorId.Accelerometer);
+				_gyroscopeSensor = new WearableSensor(this, SensorId.Gyroscope);
+				_rotationSensorNineDof = new WearableSensor(this, SensorId.RotationNineDof);
+				_rotationSensorSixDof = new WearableSensor(this, SensorId.RotationSixDof);
+
+				_wearableSensors = new Dictionary<SensorId, WearableSensor>
+				{
+					{
+						SensorId.Accelerometer, _accelerometerSensor
+					},
+					{
+						SensorId.Gyroscope, _gyroscopeSensor
+					},
+					{
+						SensorId.RotationNineDof, _rotationSensorNineDof
+					},
+					{
+						SensorId.RotationSixDof, _rotationSensorSixDof
+					}
+				};
+
+				// populate wearable gesture dictionary
+				_wearableGestures = new Dictionary<GestureId, WearableGesture>();
+				for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; ++i)
+				{
+					if (WearableConstants.GESTURE_IDS[i] != GestureId.None)
+					{
+						_wearableGestures[WearableConstants.GESTURE_IDS[i]] =
+							new WearableGesture(this, WearableConstants.GESTURE_IDS[i]);
+					}
+				}
+
+				_intentValidationStatus = GetIntentValidationStatus();
+
+				// Activate the default provider depending on the platform
+				#if UNITY_EDITOR
+				SetActiveProvider(GetOrCreateProvider(_editorDefaultProvider));
+				#else
+				SetActiveProvider(GetOrCreateProvider(_runtimeDefaultProvider));
+				#endif
+			}
 		}
 
 		#if UNITY_EDITOR
 
 		private void OnValidate()
 		{
-			// Convert mobile provider to debug provider
+			const string DISALLOWED_EDITOR_PROVIDER_FORMAT =
+				"[Bose Wearable] Your current Editor Default Provider, {0}, is not allowed. " +
+				"It has been reset to the default: {1}.";
+
+			const string DISALLOWED_RUNTIME_PROVIDER_FORMAT =
+				"[Bose Wearable] Your current Runtime Default Provider, {0}, is not allowed. " +
+				"It has been reset to the default: {1}.";
+
 			const string RECORD_MESSAGE = "UpdatedProvider";
 
-			#pragma warning disable 618
-			if (_editorDefaultProvider == ProviderId.MobileProvider)
-			{
-				UnityEditor.Undo.RecordObject(this, RECORD_MESSAGE);
-
-				Debug.LogWarning(WearableConstants.MobileProviderRemovedWarning);
-
-				_editorDefaultProvider = ProviderId.DebugProvider;
-			}
-
-			if (_runtimeDefaultProvider == ProviderId.MobileProvider)
-			{
-				UnityEditor.Undo.RecordObject(this, RECORD_MESSAGE);
-
-				Debug.LogWarning(WearableConstants.MobileProviderRemovedWarning);
-
-				_runtimeDefaultProvider = ProviderId.DebugProvider;
-			}
-			#pragma warning restore 618
-
-			if (WearableConstants.DisallowedEditorProviders.Contains(_editorDefaultProvider))
+			if (WearableConstants.DISALLOWED_EDITOR_PROVIDERS.Contains(_editorDefaultProvider))
 			{
 				UnityEditor.Undo.RecordObject(this, RECORD_MESSAGE);
 
 				Debug.LogWarningFormat(
-					WearableConstants.DisallowedEditorProviderFormat,
+					DISALLOWED_EDITOR_PROVIDER_FORMAT,
 					_editorDefaultProvider.ToString(),
-					WearableConstants.EditorDefaultProvider
+					WearableConstants.EDITOR_DEFAULT_PROVIDER
 				);
 
-				_editorDefaultProvider = WearableConstants.EditorDefaultProvider;
+				_editorDefaultProvider = WearableConstants.EDITOR_DEFAULT_PROVIDER;
 			}
 
-			if (WearableConstants.DisallowedRuntimeProviders.Contains(_runtimeDefaultProvider))
+			if (WearableConstants.DISALLOWED_RUNTIME_PROVIDERS.Contains(_runtimeDefaultProvider))
 			{
 				UnityEditor.Undo.RecordObject(this, RECORD_MESSAGE);
 
 				Debug.LogWarningFormat(
-					WearableConstants.DisallowedRuntimeProviderFormat,
+					DISALLOWED_RUNTIME_PROVIDER_FORMAT,
 					_runtimeDefaultProvider.ToString(),
-					WearableConstants.RuntimeDefaultProvider
+					WearableConstants.RUNTIME_DEFAULT_PROVIDER
 				);
 
-				_runtimeDefaultProvider = WearableConstants.RuntimeDefaultProvider;
+				_runtimeDefaultProvider = WearableConstants.RUNTIME_DEFAULT_PROVIDER;
 			}
 
 			// Set using the variable not the method, so the provider doesn't get prematurely initialized
@@ -1771,26 +1701,29 @@ namespace Bose.Wearable
 		/// </summary>
 		protected override void OnDestroy()
 		{
-			if (ConnectedDevice.HasValue)
+			if (IsSingletonInstance)
 			{
-				_activeProvider.SetDeviceConfiguration(WearableConstants.DisabledDeviceConfig);
-				DisconnectFromDevice();
+				if (ConnectedDevice.HasValue)
+				{
+					_activeProvider.SetDeviceConfiguration(WearableConstants.DISABLED_DEVICE_CONFIG);
+					DisconnectFromDevice();
+				}
+
+				// Clean up providers
+				_activeProvider.OnDisableProvider();
+
+				if (_bluetoothProvider != null && _bluetoothProvider.Initialized)
+				{
+					_bluetoothProvider.OnDestroyProvider();
+				}
+
+				if (_debugProvider != null && _debugProvider.Initialized)
+				{
+					_debugProvider.OnDestroyProvider();
+				}
+
+				base.OnDestroy();
 			}
-
-			// Clean up providers
-			_activeProvider.OnDisableProvider();
-
-			if (_deviceProvider != null && _deviceProvider.Initialized)
-			{
-				_deviceProvider.OnDestroyProvider();
-			}
-
-			if (_debugProvider != null && _debugProvider.Initialized)
-			{
-				_debugProvider.OnDestroyProvider();
-			}
-
-			base.OnDestroy();
 		}
 
 		/// <summary>
@@ -1809,7 +1742,10 @@ namespace Bose.Wearable
 		/// </summary>
 		private void OnDisable()
 		{
-			_activeProvider.OnDisableProvider();
+			if (IsSingletonInstance)
+			{
+				_activeProvider.OnDisableProvider();
+			}
 		}
 
 		private void Update()
@@ -1851,7 +1787,7 @@ namespace Bose.Wearable
 					// Execute the update.
 					UpdateDeviceFromConfig();
 				}
-				else if (secondsSinceLockStart >= WearableConstants.NumberOfSecondsToLockSensorFrequencyUpdate)
+				else if (secondsSinceLockStart >= WearableConstants.NUMBER_OF_SECONDS_TO_LOCK_SENSOR_FREQUENCY_UPDATE)
 				{
 					// If another pending update during the lock, execute it immediately/refresh the lock
 					if (_isDeviceStateUpdatePendingDuringLock)

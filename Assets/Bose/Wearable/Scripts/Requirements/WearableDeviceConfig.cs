@@ -86,7 +86,7 @@ namespace Bose.Wearable
 			affirmativeGesture = new WearableGestureConfig();
 			negativeGesture = new WearableGestureConfig();
 
-			updateInterval = WearableConstants.DefaultUpdateInterval;
+			updateInterval = WearableConstants.DEFAULT_UPDATE_INTERVAL;
 		}
 
 		/// <summary>
@@ -216,9 +216,9 @@ namespace Bose.Wearable
 		/// </summary>
 		public void DisableAllSensors()
 		{
-			for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				GetSensorConfig(WearableConstants.SensorIds[i]).isEnabled = false;
+				GetSensorConfig(WearableConstants.SENSOR_IDS[i]).isEnabled = false;
 			}
 		}
 
@@ -227,14 +227,48 @@ namespace Bose.Wearable
 		/// </summary>
 		public void DisableAllGestures()
 		{
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				if (WearableConstants.GestureIds[i] == GestureId.None)
+				if (WearableConstants.GESTURE_IDS[i] == GestureId.None)
 				{
 					continue;
 				}
 
-				GetGestureConfig(WearableConstants.GestureIds[i]).isEnabled = false;
+				GetGestureConfig(WearableConstants.GESTURE_IDS[i]).isEnabled = false;
+			}
+		}
+
+		/// <summary>
+		/// Copy only the sensor configuration from another <see cref="WearableDeviceConfig"/>. Includes the sensor
+		/// update interval.
+		/// </summary>
+		/// <param name="config"></param>
+		public void CopySensorConfigFrom(WearableDeviceConfig config)
+		{
+			for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
+			{
+				SensorId sensorId = WearableConstants.SENSOR_IDS[i];
+				GetSensorConfig(sensorId).isEnabled = config.GetSensorConfig(sensorId).isEnabled;
+			}
+			updateInterval = config.updateInterval;
+		}
+
+		/// <summary>
+		/// Copy only the gesture configuration from another <see cref="WearableDeviceConfig"/>.
+		/// </summary>
+		/// <param name="config"></param>
+		public void CopyGestureConfigFrom(WearableDeviceConfig config)
+		{
+			for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
+			{
+				GestureId gestureId = WearableConstants.GESTURE_IDS[i];
+
+				if (gestureId == GestureId.None)
+				{
+					continue;
+				}
+
+				GetGestureConfig(gestureId).isEnabled = config.GetGestureConfig(gestureId).isEnabled;
 			}
 		}
 
@@ -244,27 +278,14 @@ namespace Bose.Wearable
 		/// <param name="config"></param>
 		public void CopyValuesFrom(WearableDeviceConfig config)
 		{
-			for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
-			{
-				SensorId sensorId = WearableConstants.SensorIds[i];
-				GetSensorConfig(sensorId).isEnabled = config.GetSensorConfig(sensorId).isEnabled;
-			}
-
-			for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
-			{
-				GestureId gestureId = WearableConstants.GestureIds[i];
-
-				if (gestureId == GestureId.None)
-				{
-					continue;
-				}
-
-				GetGestureConfig(gestureId).isEnabled = config.GetGestureConfig(gestureId).isEnabled;
-			}
-
-			updateInterval = config.updateInterval;
+			CopySensorConfigFrom(config);
+			CopyGestureConfigFrom(config);
 		}
 
+		/// <summary>
+		/// Returns a deep copy of this configuration.
+		/// </summary>
+		/// <returns></returns>
 		public WearableDeviceConfig Clone()
 		{
 			var result = new WearableDeviceConfig();
@@ -297,9 +318,9 @@ namespace Bose.Wearable
 		internal bool AreAnyGesturesEnabled()
 		{
 			var result = false;
-			for (var i = 0; i < WearableConstants.GestureIds.Length; i++)
+			for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 			{
-				var gestureId = WearableConstants.GestureIds[i];
+				var gestureId = WearableConstants.GESTURE_IDS[i];
 				if (gestureId == GestureId.None)
 				{
 					continue;
@@ -322,9 +343,9 @@ namespace Bose.Wearable
 				: null;
 
 			var numberOfSensorsActive = 0;
-			for (var i = 0; i < WearableConstants.SensorIds.Length; i++)
+			for (var i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 			{
-				var sensorId = WearableConstants.SensorIds[i];
+				var sensorId = WearableConstants.SENSOR_IDS[i];
 				var sensor = GetSensorConfig(sensorId);
 				if (!sensor.isEnabled ||
 				    wearableControl != null && !wearableControl.GetWearableSensorById(sensorId).IsAvailable)

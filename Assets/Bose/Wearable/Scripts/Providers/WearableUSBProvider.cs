@@ -2,10 +2,11 @@
 *
 * Provider class to connect to a device over USB.  We do not expect this class to be used
 * on phones or tablets, since the point is to keep someone from walking off with the device.
-* The native function implementations are in BoseWearableUSB.dll.
+* The native function implementations are in the BoseWearableUSB plugin.
 */
 
 using System;
+using System.Collections;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
@@ -29,11 +30,6 @@ namespace Bose.Wearable
 
 
 		#pragma warning disable 0414
-		[SerializeField]
-		// This flag controls printing of log messages which aren't warnings or errors, both here
-		// and in the DLL.
-		private bool _debugLogging;
-
 		private char[] _statusMessageSeparators;
 
 		// log any status accumulated since the previous update
@@ -41,17 +37,38 @@ namespace Bose.Wearable
 		private StringBuilder _statusMessage;
 		#pragma warning restore 0414
 
-
-		public void SetDebugLoggingInPlugin()
+		internal override void SetDebugLogging(LogLevel logLevel)
 		{
 			#if UNITY_EDITOR
-			WearableUSBSetDebugLogging(_debugLogging);
+			WearableUSBSetDebugLogging(logLevel != LogLevel.Error);
 			#endif // UNITY_EDITOR
 		}
 
 		#endregion // Provider-Specific
 
 		#region Provider API
+
+		internal override IEnumerator ValidatePermissionIsGranted(OSPermission permissionFlags)
+		{
+			// USB provider does not require any permissions to be granted
+			_lastPermissionCheckedIsGranted = true;
+
+			yield break;
+		}
+
+		internal override IEnumerator ValidateServiceIsEnabled(OSService serviceFlags)
+		{
+			// USB provider does not require any services to be granted
+			_lastServiceCheckedIsEnabled = true;
+
+			yield break;
+		}
+
+		internal override IEnumerator RequestPermissionCoroutine(OSPermission permission)
+		{
+			// Requesting permissions resolves to a no-op
+			yield break;
+		}
 
 		internal override void SearchForDevices(
 			AppIntentProfile appIntentProfile,
@@ -64,11 +81,6 @@ namespace Bose.Wearable
 
 			base.SearchForDevices(appIntentProfile, onDevicesUpdated, autoReconnect, autoReconnectTimeout);
 
-			if (onDevicesUpdated == null)
-			{
-				return;
-			}
-
 			USBAppIntentProfile usbProfile = MakeUSBProfile(appIntentProfile);
 			unsafe
 			{
@@ -76,12 +88,12 @@ namespace Bose.Wearable
 			}
 			WearableUSBRefreshDeviceList();
 			_performDeviceSearch = true;
-			_nextDeviceSearchTime = Time.unscaledTime + WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+			_nextDeviceSearchTime = Time.unscaledTime + WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 
 			OnConnectionStatusChanged(autoReconnect ? ConnectionStatus.AutoReconnect : ConnectionStatus.Searching);
 			#else
-			Debug.LogError(WearableConstants.UnsupportedPlatformError);
-			OnReceivedSearchDevices(WearableConstants.EmptyDeviceList);
+			Debug.LogError(WearableConstants.UNSUPPORTED_PLATFORM_ERROR);
+			OnReceivedSearchDevices(WearableConstants.EMPTY_DEVICE_LIST);
 			#endif // UNITY_EDITOR
 		}
 
@@ -101,6 +113,27 @@ namespace Bose.Wearable
 			}
 		}
 
+		internal override void ReconnectToLastSuccessfulDevice(AppIntentProfile appIntentProfile)
+		{
+			// The WearableBluetoothProvider has a special implementation for this connection flow where devices are not
+			// searched for; instead we continuously try to connect to the last successful UID we connected to.
+			// Given that this is not possible in the USB Provider, we mimic the flow by using the autoReconnect
+			// feature with an incredibly large timeout, and adding in appropriate failures during the process:
+			// * When attempting to connect when there was no previously successful last connection.
+
+			// Please Note: Since the USB Provider skips the firmware check step, a failed App Intent Validation would
+			// automatically result in a failed connection.
+			if (string.IsNullOrEmpty(LastConnectedDeviceUID))
+			{
+				OnConnectionStatusChanged(ConnectionStatus.Failed);
+			}
+			else
+			{
+				SearchForDevices(appIntentProfile, null, true, float.MaxValue);
+				base.ReconnectToLastSuccessfulDevice(appIntentProfile);
+			}
+		}
+
 		internal override void CancelDeviceConnection()
 		{
 			#if UNITY_EDITOR
@@ -111,16 +144,14 @@ namespace Bose.Wearable
 			OnConnectionStatusChanged(ConnectionStatus.Cancelled, _deviceToConnect);
 		}
 
-		internal override void ConnectToDevice(Device device, Action onSuccess, Action onFailure)
+		internal override void ConnectToDevice(Device device)
 		{
 			StopSearchingForDevices();
 			DisconnectFromDevice();
 
 			_performDeviceConnection = true;
-			_deviceConnectSuccessCallback = onSuccess;
-			_deviceConnectFailureCallback = onFailure;
 			_deviceToConnect = device;
-			_nextDeviceConnectTime = Time.unscaledTime + WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+			_nextDeviceConnectTime = Time.unscaledTime + WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 
 			#if UNITY_EDITOR
 			WearableUSBSetDebugLogging(_debugLogging);
@@ -138,12 +169,13 @@ namespace Bose.Wearable
 			_config.DisableAllSensors();
 			_config.DisableAllGestures();
 
+			OnConnectionStatusChanged(ConnectionStatus.Disconnected, _connectedDevice);
+
 			if (_connectedDevice == null)
 			{
 				return;
 			}
 
-			OnConnectionStatusChanged(ConnectionStatus.Disconnected, _connectedDevice);
 			_connectedDevice = null;
 			_sendConfigSuccessNextFrame = false;
 
@@ -154,7 +186,7 @@ namespace Bose.Wearable
 
 		internal override FirmwareUpdateInformation GetFirmwareUpdateInformation()
 		{
-			return WearableConstants.DefaultFirmwareUpdateInformation;
+			return WearableConstants.DEFAULT_FIRMWARE_UPDATE_INFORMATION;
 		}
 
 		internal override void SelectFirmwareUpdateOption(int index)
@@ -191,7 +223,7 @@ namespace Bose.Wearable
 
 		internal override WearableDeviceConfig GetCachedDeviceConfiguration()
 		{
-			return _connectedDevice.HasValue ? _config : WearableConstants.DisabledDeviceConfig;
+			return _connectedDevice.HasValue ? _config : WearableConstants.DISABLED_DEVICE_CONFIG;
 		}
 
 		protected override void RequestDeviceConfigurationInternal()
@@ -202,6 +234,31 @@ namespace Bose.Wearable
 			// Nothing we can do, so fall back to cached.
 			OnReceivedDeviceConfiguration(GetCachedDeviceConfiguration());
 			#endif
+		}
+
+		protected override void SetActiveNoiseReductionModeInternal(ActiveNoiseReductionMode mode)
+		{
+			Debug.LogWarning(WearableConstants.USB_PROVIDER_ANR_NOT_AVAILABLE_WARNING);
+			OnAnrCncWriteComplete();
+		}
+
+		protected override void SetControllableNoiseCancellationLevelInternal(int level, bool enabled)
+		{
+			if (_latestDynamicDeviceInfo.totalControllableNoiseCancellationLevels == 0)
+			{
+				Debug.LogWarning(WearableConstants.USB_PROVIDER_NO_CNC_WARNING);
+			}
+			else
+			{
+				level = Math.Min(level, _latestDynamicDeviceInfo.totalControllableNoiseCancellationLevels - 1);
+				level = Math.Max(level, 0);
+				#if UNITY_EDITOR
+				WearableUSBSetCNCState(level, enabled);
+				#endif
+			}
+
+			// Invoke the write-complete even if the write was a failure to un-latch future writes.
+			OnAnrCncWriteComplete();
 		}
 
 		internal override DynamicDeviceInfo GetDynamicDeviceInfo()
@@ -216,15 +273,20 @@ namespace Bose.Wearable
 			float time = Time.unscaledTime;
 			if (time >= _nextDynamicDeviceInfoTime)
 			{
-				_nextDynamicDeviceInfoTime = time + WearableConstants.DeviceUSBDynamicInfoUpdateIntervalInSeconds;
+				_nextDynamicDeviceInfoTime = time + WearableConstants.DEVICE_USB_DYNAMIC_INFO_UPDATE_INTERVAL_IN_SECONDS;
 
 				#if UNITY_EDITOR
 				unsafe
 				{
 					USBDynamicDeviceInfo dynamicUSBInfo = new USBDynamicDeviceInfo();
 					WearableUSBGetDynamicDeviceInfo(&dynamicUSBInfo);
+
 					_latestDynamicDeviceInfo.deviceStatus = dynamicUSBInfo.deviceStatus;
 					_latestDynamicDeviceInfo.transmissionPeriod = dynamicUSBInfo.transmissionPeriod;
+					_latestDynamicDeviceInfo.activeNoiseReductionMode = (ActiveNoiseReductionMode) dynamicUSBInfo.activeNoiseReductionMode;
+					_latestDynamicDeviceInfo.controllableNoiseCancellationLevel = dynamicUSBInfo.controllableNoiseCancellationLevel;
+					_latestDynamicDeviceInfo.controllableNoiseCancellationEnabled = dynamicUSBInfo.controllableNoiseCancellationEnabled == 1? true : false;
+					_latestDynamicDeviceInfo.totalControllableNoiseCancellationLevels = dynamicUSBInfo.totalControllableNoiseCancellationLevels;
 				}
 				#endif
 			}
@@ -336,7 +398,7 @@ namespace Bose.Wearable
 			{
 				if (Time.unscaledTime >= _nextDeviceSearchTime)
 				{
-					_nextDeviceSearchTime += WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+					_nextDeviceSearchTime += WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 					Device[] devices = GetDiscoveredDevices();
 					OnReceivedSearchDevices(devices);
 				}
@@ -345,7 +407,7 @@ namespace Bose.Wearable
 			// Check if it's time to query the connection routine
 			if (_performDeviceConnection && Time.unscaledTime >= _nextDeviceConnectTime)
 			{
-				_nextDeviceConnectTime += WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+				_nextDeviceConnectTime += WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 				PerformDeviceConnection();
 			}
 
@@ -353,7 +415,7 @@ namespace Bose.Wearable
 			if (_pollDeviceMonitor && Time.unscaledTime >= _nextDeviceMonitorTime)
 			{
 				// NB: The monitor uses the same time interval
-				_nextDeviceMonitorTime += WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+				_nextDeviceMonitorTime += WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 				MonitorDeviceSession();
 			}
 			#endif // UNITY_EDITOR
@@ -381,8 +443,6 @@ namespace Bose.Wearable
 		// Device connection
 		private bool _performDeviceConnection;
 		private Device _deviceToConnect;
-		private Action _deviceConnectSuccessCallback;
-		private Action _deviceConnectFailureCallback;
 		private float _nextDeviceConnectTime;
 
 		// Device connection monitoring
@@ -392,7 +452,10 @@ namespace Bose.Wearable
 
 		// DynamicDeviceInfo monitoring
 		private float _nextDynamicDeviceInfoTime;
+
+		#pragma warning disable 0649
 		private DynamicDeviceInfo _latestDynamicDeviceInfo;
+		#pragma warning restore 0649
 
 		#pragma warning restore CS0414
 
@@ -428,13 +491,12 @@ namespace Bose.Wearable
 
 					_currentSensorFrames.Add(new SensorFrame
 					{
-						timestamp = WearableConstants.Sensor2UnityTime * frame.timestamp,
-						deltaTime = WearableConstants.Sensor2UnityTime * frame.deltaTime,
+						timestamp = WearableConstants.SENSOR2_UNITY_TIME * frame.timestamp,
+						deltaTime = WearableConstants.SENSOR2_UNITY_TIME * frame.deltaTime,
 						acceleration = frame.acceleration,
 						angularVelocity = frame.angularVelocity,
 						rotationNineDof = frame.rotationNineDof,
-						rotationSixDof = frame.rotationSixDof,
-						gestureId = GestureId.None
+						rotationSixDof = frame.rotationSixDof
 					});
 				}
 
@@ -449,7 +511,7 @@ namespace Bose.Wearable
 				{
 					var gestureData = new GestureData
 					{
-						timestamp = WearableConstants.Sensor2UnityTime * usbGestureData.timestamp,
+						timestamp = WearableConstants.SENSOR2_UNITY_TIME * usbGestureData.timestamp,
 						gestureId = usbGestureData.gesture
 					};
 					_currentGestureData.Add(gestureData);
@@ -546,7 +608,7 @@ namespace Bose.Wearable
 		/// </summary>
 		private Device[] GetDiscoveredDevices()
 		{
-			Device[] devices = WearableConstants.EmptyDeviceList;
+			Device[] devices = WearableConstants.EMPTY_DEVICE_LIST;
 
 			#if UNITY_EDITOR
 			WearableUSBRefreshDeviceList();
@@ -569,7 +631,6 @@ namespace Bose.Wearable
 						uid = _uidBuilder.ToString(),
 						name = _nameBuilder.ToString(),
 						firmwareVersion = _firmwareVersionBuilder.ToString(),
-						isConnected = (WearableUSBGetDiscoveredDeviceIsConnected(i) == 0) ? false : true,
 						productId = ProductId.Undefined,
 						variantId = (byte)VariantType.Undefined
 					};
@@ -594,22 +655,17 @@ namespace Bose.Wearable
 				case SessionStatus.Closed:
 					if (string.IsNullOrEmpty(_statusMessage.ToString()))
 					{
-						Debug.LogWarning(WearableConstants.DeviceConnectionFailed);
+						Debug.LogWarning(WearableConstants.DEVICE_CONNECTION_FAILED);
 					}
 					else
 					{
-						Debug.LogWarningFormat(WearableConstants.DeviceConnectionFailedWithMessage, _statusMessage);
+						Debug.LogWarningFormat(WearableConstants.DEVICE_CONNECTION_FAILED_WITH_MESSAGE, _statusMessage);
 					}
 
 					// It's OK to not have an open session if we're just searching for a device.
 					if (ConnectionStatus != ConnectionStatus.Searching)
 					{
 						OnConnectionStatusChanged(ConnectionStatus.Failed, _deviceToConnect);
-
-						if (_deviceConnectFailureCallback != null)
-						{
-							_deviceConnectFailureCallback.Invoke();
-						}
 
 						StopDeviceConnection();
 					}
@@ -625,7 +681,7 @@ namespace Bose.Wearable
 				case SessionStatus.Open:
 					if (_debugLogging)
 					{
-						Debug.Log(WearableConstants.DeviceConnectionOpened);
+						Debug.Log(WearableConstants.DEVICE_CONNECTION_OPENED);
 					}
 
 					// Add sensor and gesture availability and other invariant device info
@@ -641,7 +697,7 @@ namespace Bose.Wearable
 						_deviceToConnect.maximumActiveSensors = staticUSBInfo.maximumActiveSensors;
 						_deviceToConnect.maximumPayloadPerTransmissionPeriod = staticUSBInfo.maximumPayloadPerTransmissionPeriod;
 
-						GetDynamicDeviceInfo();
+						_deviceToConnect.SetDynamicInfo(GetDynamicDeviceInfo());
 
 						_deviceToConnect.deviceStatus = _latestDynamicDeviceInfo.deviceStatus;
 						_deviceToConnect.transmissionPeriod = _latestDynamicDeviceInfo.transmissionPeriod;
@@ -660,16 +716,12 @@ namespace Bose.Wearable
 
 					_connectedDevice = _deviceToConnect;
 
-					if (_deviceConnectSuccessCallback != null)
-					{
-						_deviceConnectSuccessCallback.Invoke();
-					}
+					StartDeviceMonitor();
+					StopDeviceConnection();
 
 					OnConnectionStatusChanged(ConnectionStatus.Connected, _connectedDevice);
 
-					StartDeviceMonitor();
-
-					StopDeviceConnection();
+					CheckForServiceSuspended(_deviceToConnect.deviceStatus);
 					break;
 
 				default:
@@ -686,7 +738,7 @@ namespace Bose.Wearable
 			_pollDeviceMonitor = true;
 
 			// NB The device monitor runs on the same time interval as the connection routine
-			_nextDeviceMonitorTime = Time.unscaledTime + WearableConstants.DeviceUSBConnectUpdateIntervalInSeconds;
+			_nextDeviceMonitorTime = Time.unscaledTime + WearableConstants.DEVICE_USB_CONNECT_UPDATE_INTERVAL_IN_SECONDS;
 		}
 
 		/// <summary>
@@ -709,11 +761,11 @@ namespace Bose.Wearable
 			{
 				if (string.IsNullOrEmpty(_statusMessage.ToString()))
 				{
-					Debug.Log(WearableConstants.DeviceConnectionMonitorWarning);
+					Debug.Log(WearableConstants.DEVICE_CONNECTION_MONITOR_WARNING);
 				}
 				else
 				{
-					Debug.LogFormat(WearableConstants.DeviceConnectionMonitorWarningWithMessage, _statusMessage);
+					Debug.LogFormat(WearableConstants.DEVICE_CONNECTION_MONITOR_WARNING_WITH_MESSAGE, _statusMessage);
 				}
 
 				if (_connectedDevice != null)
@@ -737,8 +789,6 @@ namespace Bose.Wearable
 		private void StopDeviceConnection()
 		{
 			_performDeviceConnection = false;
-			_deviceConnectFailureCallback = null;
-			_deviceConnectSuccessCallback = null;
 			_nextDeviceConnectTime = float.PositiveInfinity;
 		}
 
@@ -751,9 +801,9 @@ namespace Bose.Wearable
 			{
 				// Sensors
 				usbProfile.sensorBitmask = 0;
-				for (int i = 0; i < WearableConstants.SensorIds.Length; i++)
+				for (int i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 				{
-					SensorId sensor = WearableConstants.SensorIds[i];
+					SensorId sensor = WearableConstants.SENSOR_IDS[i];
 
 					// Does this profile require this sensor?
 					if (appIntentProfile.GetSensorInProfile(sensor))
@@ -765,9 +815,9 @@ namespace Bose.Wearable
 
 				// Gestures
 				usbProfile.gestureBitmask = 0;
-				for (int i = 0; i < WearableConstants.GestureIds.Length; i++)
+				for (int i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 				{
-					GestureId gesture = WearableConstants.GestureIds[i];
+					GestureId gesture = WearableConstants.GESTURE_IDS[i];
 
 					// Does this profile require this gesture?
 					if (appIntentProfile.GetGestureInProfile(gesture))
@@ -778,9 +828,9 @@ namespace Bose.Wearable
 				}
 
 				usbProfile.updateIntervalBitmask = 0;
-				for (int i = 0; i < WearableConstants.UpdateIntervals.Length; i++)
+				for (int i = 0; i < WearableConstants.UPDATE_INTERVALS.Length; i++)
 				{
-					SensorUpdateInterval interval = WearableConstants.UpdateIntervals[i];
+					SensorUpdateInterval interval = WearableConstants.UPDATE_INTERVALS[i];
 
 					// Does this profile require this update interval?
 					if (appIntentProfile.GetIntervalInProfile(interval))
@@ -877,12 +927,18 @@ namespace Bose.Wearable
 
 		/// <summary>
 		/// This struct helps us populate fields in Device.  It has information which could change at runtime.
+		/// The members of this struct are the same as those of the Device struct in Device.cs.
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		private struct USBDynamicDeviceInfo
 		{
 			public int deviceStatus;
 			public int transmissionPeriod;
+			public int activeNoiseReductionMode;
+			public int availableActiveNoiseReductionModes;
+			public int controllableNoiseCancellationLevel;
+			public int controllableNoiseCancellationEnabled;
+			public int totalControllableNoiseCancellationLevels;
 		}
 
 		/// <summary>
@@ -1016,6 +1072,13 @@ namespace Bose.Wearable
 		/// <returns></returns>
 		[DllImport("BoseWearableUSBBridge")]
 		private static extern void WearableUSBRequestDeviceConfiguration();
+
+		/// <summary>
+		/// Set the device's CNC level, 0-10, and whether CNC is enabled.
+		/// </summary>
+		/// <returns></returns>
+		[DllImport("BoseWearableUSBBridge")]
+		private static extern void WearableUSBSetCNCState(int level, bool enabled);
 
 		/// <summary>
 		/// Returns true when the data requested by <see cref="WearableUSBRequestDeviceConfiguration"/> is ready to read

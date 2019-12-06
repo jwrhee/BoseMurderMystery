@@ -5,7 +5,7 @@ namespace Bose.Wearable
 	[Serializable]
 	public enum BoseUpdateIcon
 	{
-		Connect,
-		Music
+		Connect = 0,
+		Music = 1
 	}
 }

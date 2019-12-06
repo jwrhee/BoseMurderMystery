@@ -1,4 +1,4 @@
-﻿#if UNITY_IOS
+#if UNITY_IOS
 
 using UnityEditor;
 using UnityEditor.Build;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Bose.Wearable.Editor
 {
-	public class XcodePreBuildProcessor
+	internal sealed class XcodePreBuildProcessor
 		#if UNITY_2018_1_OR_NEWER
 		: IPreprocessBuildWithReport
 		#else
@@ -25,9 +25,9 @@ namespace Bose.Wearable.Editor
 
 		public int callbackOrder
 		{
-			get { return WearableConstants.XcodePreBuildProcessorOrder; }
+			get { return WearableEditorConstants.XCODE_PRE_BUILD_PROCESSOR_ORDER; }
 		}
-		
+
 		#if UNITY_2018_1_OR_NEWER
 		public void OnPreprocessBuild(UnityEditor.Build.Reporting.BuildReport report)
 		{
@@ -49,24 +49,33 @@ namespace Bose.Wearable.Editor
 				// Set the Project to ARM64 for iOS.
 				PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, (int)Architecture.ARM64);
 
-				Debug.LogWarningFormat(WearableConstants.ArchitectureAlterationWarningWithMessage, arch);
+				Debug.LogWarningFormat(WearableEditorConstants.ARCHITECTURE_ALTERATION_WARNING_WITH_MESSAGE, arch);
 			}
 
 			// Make sure the target iOS version is at or above the minimum.
 			float targetOSVersion;
 			if (float.TryParse(PlayerSettings.iOS.targetOSVersionString, out targetOSVersion))
 			{
-				if (targetOSVersion < WearableConstants.MinimumSupportediOSVersion)
+				if (targetOSVersion < WearableConstants.MINIMUM_COMPILABLE_IOS_VERSION)
 				{
-					var minimumVersion = WearableConstants.MinimumSupportediOSVersion.ToString("0.0");
-					PlayerSettings.iOS.targetOSVersionString = minimumVersion;
+					Debug.LogWarningFormat(
+						WearableEditorConstants.OS_VERSION_ALTERATION_WARNING_WITH_MESSAGE,
+						WearableConstants.MINIMUM_COMPILABLE_IOS_VERSION,
+						targetOSVersion.ToString("0.0"));
 
-					var msg = string.Format(
-						WearableConstants.iOSVersionAlterationWarningWithMessage,
-						minimumVersion,
-						targetOSVersion.ToString("0.0")
-					);
-					Debug.LogWarning(msg);
+					targetOSVersion = WearableConstants.MINIMUM_COMPILABLE_IOS_VERSION;
+
+					PlayerSettings.iOS.targetOSVersionString = targetOSVersion.ToString("0.0");
+				}
+
+				// If the target iOS version is in the minimum compilable version, warn the user.
+				if (targetOSVersion >= WearableConstants.MINIMUM_COMPILABLE_IOS_VERSION &&
+				   targetOSVersion < WearableConstants.MINIMUM_SUPPORTED_IOS_VERSION)
+				{
+					Debug.LogWarningFormat(
+						WearableEditorConstants.OS_VERSION_COMPILE_WARNING_WITH_MESSAGE,
+						WearableConstants.MINIMUM_COMPILABLE_IOS_VERSION,
+						WearableConstants.MINIMUM_SUPPORTED_IOS_VERSION);
 				}
 			}
 
@@ -79,7 +88,7 @@ namespace Bose.Wearable.Editor
 				PlayerSettings.iOS.appInBackgroundBehavior = iOSAppInBackgroundBehavior.Custom;
 				PlayerSettings.iOS.backgroundModes |= iOSBackgroundMode.BluetoothCentral;
 
-				Debug.LogWarning(WearableConstants.iOSBluetoothAlterationWarning);
+				Debug.LogWarning(WearableEditorConstants.OS_BLUETOOTH_ALTERATION_WARNING);
 			}
 		}
 	}

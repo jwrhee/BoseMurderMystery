@@ -1,15 +1,15 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomPropertyDrawer(typeof(WearableDeviceConfig.WearableSensorConfig))]
-	public class WearableSensorConfigDrawer : PropertyDrawer
+	internal sealed class WearableSensorConfigDrawer : PropertyDrawer
 	{
-		private const string EnabledPropertyName = "isEnabled";
-		private const float BottomPadding = 5f;
-		private const float LabelWidth = 100f;
-		private const float LabelPadding = 15f;
+		private const string ENABLED_PROPERTY_NAME = "isEnabled";
+		private const float BOTTOM_PADDING = 5f;
+		private const float LABEL_WIDTH = 125f;
+		private const float LABEL_PADDING = 15f;
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
@@ -21,23 +21,23 @@ namespace Bose.Wearable.Editor.Inspectors
 				position.x,
 				position.y,
 				position.width,
-				GetPropertyHeight(property, label) - BottomPadding),
+				GetPropertyHeight(property, label) - BOTTOM_PADDING),
 				GUIContent.none);
 
 			GUI.Label(new Rect(
 				position.x,
 				position.y,
-				LabelWidth,
-				WearableConstants.SingleLineHeight),
+				LABEL_WIDTH,
+				WearableEditorConstants.SINGLE_LINE_HEIGHT),
 				label,
 				EditorStyles.boldLabel);
 
-			var onEnableProp = property.FindPropertyRelative(EnabledPropertyName);
+			var onEnableProp = property.FindPropertyRelative(ENABLED_PROPERTY_NAME);
 			var onEnableRect = new Rect(
-				position.x + LabelWidth + LabelPadding,
+				position.x + LABEL_WIDTH + LABEL_PADDING,
 				position.y,
-				position.width - LabelWidth + LabelPadding,
-				WearableConstants.SingleLineHeight);
+				position.width - LABEL_WIDTH + LABEL_PADDING,
+				WearableEditorConstants.SINGLE_LINE_HEIGHT);
 
 			EditorGUI.PropertyField(onEnableRect, onEnableProp, GUIContent.none);
 
@@ -47,7 +47,7 @@ namespace Bose.Wearable.Editor.Inspectors
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			return WearableConstants.SingleLineHeight + BottomPadding;
+			return WearableEditorConstants.SINGLE_LINE_HEIGHT + BOTTOM_PADDING;
 		}
 	}
 }

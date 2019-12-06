@@ -6,10 +6,10 @@ using Bose.Wearable.Extensions;
 using UnityEditor;
 using UnityEngine;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomEditor(typeof(WearableControl))]
-	public sealed class WearableControlInspector : UnityEditor.Editor
+	internal sealed class WearableControlInspector : UnityEditor.Editor
 	{
 		private SerializedProperty _editorProvider;
 		private SerializedProperty _runtimeProvider;
@@ -22,49 +22,48 @@ namespace Bose.Wearable.Editor.Inspectors
 		private string[] _runtimeProviderOptions;
 		private int _runtimeProviderIndex;
 
-		private const string OverrideConfigPresentWarning =
+		private const string OVERRIDE_CONFIG_PRESENT_WARNING =
 			"The device config is currently overridden and does not reflect the normal device config present " +
 			"during normal runtime usage.";
-		private const string SpecifyIntentWarning =
+		private const string SPECIFY_INTENT_WARNING =
 			"Specify an intent profile to enable intent validation.";
-		private const string IntentValidationInProgress = "App intent validation in progress...";
-		private const string IntentValidationSucceeded = "Current app intent is valid.";
-		private const string IntentValidationFailed =
+		private const string INTENT_VALIDATION_IN_PROGRESS = "App intent validation in progress...";
+		private const string INTENT_VALIDATION_SUCCEEDED = "Current app intent is valid.";
+		private const string INTENT_VALIDATION_FAILED =
 			"Current app intent is invalid! Some sensors, gestures, or update intervals might not be available on " +
 			"this hardware or firmware version.";
-		private const string IntentProfileChanged =
+		private const string INTENT_PROFILE_CHANGED =
 			"The active intent profile has changed since last validation. Consider re-validating.";
 
-		private const string EditorDefaultTitle = "Editor Default";
-		private const string RuntimeDefaultTitle = "Runtime Default";
-		private const string ResolvedDeviceConfigTitle = "Resolved Device Config";
-		private const string OverrideDeviceConfigTitle = "Override Device Config";
-		private const string ValidateIntentsTitle = "Validate Intents";
-		private const string TitleSeparator = " - ";
+		private const string EDITOR_DEFAULT_TITLE = "Editor Default";
+		private const string RUNTIME_DEFAULT_TITLE = "Runtime Default";
+		private const string RESOLVED_DEVICE_CONFIG_TITLE = "Resolved Device Config";
+		private const string OVERRIDE_DEVICE_CONFIG_TITLE = "Override Device Config";
+		private const string VALIDATE_INTENTS_TITLE = "Validate Intents";
+		private const string TITLE_SEPARATOR = " - ";
 
-		private const string EditorDefaultProviderField = "_editorDefaultProvider";
-		private const string RuntimeDefaultProviderField = "_runtimeDefaultProvider";
-		private const string UpdateModeField = "_updateMode";
-		private const string DebugProviderField = "_debugProvider";
-		private const string DeviceProviderField = "_deviceProvider";
-		private const string USBProviderField = "_usbProvider";
-		private const string ProxyProviderField = "_proxyProvider";
-		private const string IntentProfileField = "_activeAppIntentProfile";
+		private const string EDITOR_DEFAULT_PROVIDER_FIELD = "_editorDefaultProvider";
+		private const string RUNTIME_DEFAULT_PROVIDER_FIELD = "_runtimeDefaultProvider";
+		private const string UPDATE_MODE_FIELD = "_updateMode";
+		private const string DEBUG_PROVIDER_FIELD = "_debugProvider";
+		private const string BLUETOOTH_PROVIDER_FIELD = "_bluetoothProvider";
+		private const string USB_PROVIDER_FIELD = "_usbProvider";
+		private const string INTENT_PROFILE_FIELD = "_activeAppIntentProfile";
 
-		private const string FinalWearableDeviceConfigField = "_finalWearableDeviceConfig";
-		private const string OverrideWearableDeviceConfigField = "_overrideDeviceConfig";
+		private const string FINAL_WEARABLE_DEVICE_CONFIG_FIELD = "_finalWearableDeviceConfig";
+		private const string OVERRIDE_WEARABLE_DEVICE_CONFIG_FIELD = "_overrideDeviceConfig";
 
 		private WearableControl _wearableControl;
 
 		private void OnEnable()
 		{
-			_editorProvider = serializedObject.FindProperty(EditorDefaultProviderField);
-			_runtimeProvider = serializedObject.FindProperty(RuntimeDefaultProviderField);
+			_editorProvider = serializedObject.FindProperty(EDITOR_DEFAULT_PROVIDER_FIELD);
+			_runtimeProvider = serializedObject.FindProperty(RUNTIME_DEFAULT_PROVIDER_FIELD);
 
-			_editorProviderMap = GetProviderMap(WearableConstants.DisallowedEditorProviders);
+			_editorProviderMap = GetProviderMap(WearableConstants.DISALLOWED_EDITOR_PROVIDERS);
 			_editorProviderOptions = _editorProviderMap.Keys.ToArray();
 
-			_runtimeProviderMap = GetProviderMap(WearableConstants.DisallowedRuntimeProviders);
+			_runtimeProviderMap = GetProviderMap(WearableConstants.DISALLOWED_RUNTIME_PROVIDERS);
 			_runtimeProviderOptions = _runtimeProviderMap.Keys.ToArray();
 
 			_wearableControl = (WearableControl)target;
@@ -84,19 +83,19 @@ namespace Bose.Wearable.Editor.Inspectors
 
 				if (isEditorDefault)
 				{
-					titleBuilder.Append(TitleSeparator);
-					titleBuilder.Append(EditorDefaultTitle);
+					titleBuilder.Append(TITLE_SEPARATOR);
+					titleBuilder.Append(EDITOR_DEFAULT_TITLE);
 				}
 
 				if (isRuntimeDefault)
 				{
-					titleBuilder.Append(TitleSeparator);
-					titleBuilder.Append(RuntimeDefaultTitle);
+					titleBuilder.Append(TITLE_SEPARATOR);
+					titleBuilder.Append(RUNTIME_DEFAULT_TITLE);
 				}
 
-				EditorGUILayout.LabelField(titleBuilder.ToString(), WearableConstants.EmptyLayoutOptions);
+				EditorGUILayout.LabelField(titleBuilder.ToString(), WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(field), WearableConstants.EmptyLayoutOptions);
+				EditorGUILayout.PropertyField(serializedObject.FindProperty(field), WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 			}
 		}
 
@@ -106,13 +105,13 @@ namespace Bose.Wearable.Editor.Inspectors
 
 			var status = _wearableControl.GetIntentValidationStatus();
 
-			var profileProperty = serializedObject.FindProperty(IntentProfileField);
+			var profileProperty = serializedObject.FindProperty(INTENT_PROFILE_FIELD);
 			AppIntentProfile oldProfile = profileProperty.objectReferenceValue as AppIntentProfile;
-			EditorGUILayout.ObjectField(profileProperty, WearableConstants.EmptyLayoutOptions);
+			EditorGUILayout.ObjectField(profileProperty, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 			AppIntentProfile newProfile = profileProperty.objectReferenceValue as AppIntentProfile;
 			if (newProfile == null)
 			{
-				EditorGUILayout.HelpBox(SpecifyIntentWarning, MessageType.Warning);
+				EditorGUILayout.HelpBox(SPECIFY_INTENT_WARNING, MessageType.Warning);
 				return;
 			}
 
@@ -133,9 +132,9 @@ namespace Bose.Wearable.Editor.Inspectors
 			// Re-validate warning
 			if (status == IntentValidationStatus.Unknown)
 			{
-				EditorGUILayout.HelpBox(IntentProfileChanged, MessageType.Warning);
+				EditorGUILayout.HelpBox(INTENT_PROFILE_CHANGED, MessageType.Warning);
 
-				bool validateAgain = GUILayout.Button(ValidateIntentsTitle, WearableConstants.EmptyLayoutOptions);
+				bool validateAgain = GUILayout.Button(VALIDATE_INTENTS_TITLE, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 				if (validateAgain)
 				{
 					_wearableControl.SetIntentProfile(newProfile);
@@ -149,13 +148,13 @@ namespace Bose.Wearable.Editor.Inspectors
 				{
 					// "Unknown" is checked above, so no need to check it here.
 					case IntentValidationStatus.Validating:
-						EditorGUILayout.HelpBox(IntentValidationInProgress, MessageType.Info);
+						EditorGUILayout.HelpBox(INTENT_VALIDATION_IN_PROGRESS, MessageType.Info);
 						break;
 					case IntentValidationStatus.Success:
-						EditorGUILayout.HelpBox(IntentValidationSucceeded, MessageType.Info);
+						EditorGUILayout.HelpBox(INTENT_VALIDATION_SUCCEEDED, MessageType.Info);
 						break;
 					case IntentValidationStatus.Failure:
-						EditorGUILayout.HelpBox(IntentValidationFailed, MessageType.Error);
+						EditorGUILayout.HelpBox(INTENT_VALIDATION_FAILED, MessageType.Error);
 						break;
 					case IntentValidationStatus.Disabled:
 						break;
@@ -170,7 +169,7 @@ namespace Bose.Wearable.Editor.Inspectors
 			serializedObject.Update();
 
 			// Update mode
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(UpdateModeField), WearableConstants.EmptyLayoutOptions);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty(UPDATE_MODE_FIELD), WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 
 			// Provider defaults
 			using (new EditorGUI.DisabledScope(Application.isPlaying))
@@ -179,8 +178,8 @@ namespace Bose.Wearable.Editor.Inspectors
 				string editorProviderName = GetNameForProvider((ProviderId)_editorProvider.intValue);
 				int optionIndex = Array.IndexOf(_editorProviderOptions, editorProviderName);
 				_editorProviderIndex = EditorGUILayout.Popup(
-					ObjectNames.NicifyVariableName(EditorDefaultProviderField),
-					optionIndex >= 0 ? optionIndex : (int)WearableConstants.EditorDefaultProvider,
+					ObjectNames.NicifyVariableName(EDITOR_DEFAULT_PROVIDER_FIELD),
+					optionIndex >= 0 ? optionIndex : (int)WearableConstants.EDITOR_DEFAULT_PROVIDER,
 					_editorProviderOptions
 				);
 
@@ -190,8 +189,8 @@ namespace Bose.Wearable.Editor.Inspectors
 				string runtimeProviderName = GetNameForProvider((ProviderId)_runtimeProvider.intValue);
 				optionIndex = Array.IndexOf(_runtimeProviderOptions, runtimeProviderName);
 				_runtimeProviderIndex = EditorGUILayout.Popup(
-					ObjectNames.NicifyVariableName(RuntimeDefaultProviderField),
-					optionIndex >= 0 ? optionIndex : (int)WearableConstants.RuntimeDefaultProvider,
+					ObjectNames.NicifyVariableName(RUNTIME_DEFAULT_PROVIDER_FIELD),
+					optionIndex >= 0 ? optionIndex : (int)WearableConstants.RUNTIME_DEFAULT_PROVIDER,
 					_runtimeProviderOptions
 				);
 
@@ -203,10 +202,9 @@ namespace Bose.Wearable.Editor.Inspectors
 			DrawIntentsSection();
 
 			// Providers
-			DrawProviderBox(DebugProviderField, ProviderId.DebugProvider);
-			DrawProviderBox(ProxyProviderField, ProviderId.WearableProxy);
-			DrawProviderBox(USBProviderField, ProviderId.USBProvider);
-			DrawProviderBox(DeviceProviderField, ProviderId.WearableDevice);
+			DrawProviderBox(DEBUG_PROVIDER_FIELD, ProviderId.DebugProvider);
+			DrawProviderBox(USB_PROVIDER_FIELD, ProviderId.USBProvider);
+			DrawProviderBox(BLUETOOTH_PROVIDER_FIELD, ProviderId.BluetoothProvider);
 
 			if (Application.isPlaying)
 			{
@@ -214,26 +212,25 @@ namespace Bose.Wearable.Editor.Inspectors
 
 				if (_wearableControl.IsOverridingDeviceConfig)
 				{
-					EditorGUILayout.LabelField(OverrideDeviceConfigTitle, WearableConstants.EmptyLayoutOptions);
-					EditorGUILayout.HelpBox(OverrideConfigPresentWarning, MessageType.Warning);
+					EditorGUILayout.LabelField(OVERRIDE_DEVICE_CONFIG_TITLE, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
+					EditorGUILayout.HelpBox(OVERRIDE_CONFIG_PRESENT_WARNING, MessageType.Warning);
 					using (new EditorGUI.DisabledScope(true))
 					{
 						EditorGUILayout.PropertyField(
-							serializedObject.FindProperty(OverrideWearableDeviceConfigField),
-							WearableConstants.EmptyLayoutOptions);
+							serializedObject.FindProperty(OVERRIDE_WEARABLE_DEVICE_CONFIG_FIELD),
+							WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 					}
 				}
 				else
 				{
-					EditorGUILayout.LabelField(ResolvedDeviceConfigTitle, WearableConstants.EmptyLayoutOptions);
+					EditorGUILayout.LabelField(RESOLVED_DEVICE_CONFIG_TITLE, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 					using (new EditorGUI.DisabledScope(true))
 					{
 						EditorGUILayout.PropertyField(
-							serializedObject.FindProperty(FinalWearableDeviceConfigField),
-							WearableConstants.EmptyLayoutOptions);
+							serializedObject.FindProperty(FINAL_WEARABLE_DEVICE_CONFIG_FIELD),
+							WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 					}
 				}
-
 			}
 
 			serializedObject.ApplyModifiedProperties();

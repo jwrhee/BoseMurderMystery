@@ -10,33 +10,33 @@ namespace Bose.Wearable.Editor
 	internal class DeveloperAboutWindow : EditorWindow
 	{
 		// Window UI
-		private const string WindowTitle = "Bose AR SDK for Unity";
+		private const string WINDOW_TITLE = "Bose AR SDK for Unity";
 
 		// Version UI
-		private const string UnitySdkVersionLabel = "SDK Version:";
+		private const string UNITY_SDK_VERSION_LABEL = "SDK Version:";
 
 		[SerializeField]
-		private Texture2D boseArSdkLogo;
+		private Texture2D _boseArSdkLogo;
 
 		public static void LaunchWindow()
 		{
 			var window = CreateInstance<DeveloperAboutWindow>();
 			window.minSize = new Vector2(300f, 115f);
 			window.maxSize = window.minSize;
-			window.titleContent = new GUIContent(WindowTitle);
+			window.titleContent = new GUIContent(WINDOW_TITLE);
 			window.position = new Rect(Screen.currentResolution.width / 2f, Screen.currentResolution.height/2f, 0f, 0f);
 			window.ShowUtility();
 		}
 
 		private void OnGUI()
 		{
-			GUILayout.Label(boseArSdkLogo);
+			GUILayout.Label(_boseArSdkLogo);
 
 			GUILayoutTools.LineSeparator();
 
 			// Draw SDK version
 			EditorGUILayout.BeginHorizontal(GUILayout.Width(300f));
-			EditorGUILayout.LabelField(UnitySdkVersionLabel, EditorStyles.boldLabel, GUILayout.Width(200f));
+			EditorGUILayout.LabelField(UNITY_SDK_VERSION_LABEL, EditorStyles.boldLabel, GUILayout.Width(200f));
 			EditorGUILayout.LabelField(WearableVersion.UnitySdkVersion);
 			EditorGUILayout.EndHorizontal();
 		}

@@ -1,22 +1,23 @@
 ﻿using UnityEditor;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomEditor(typeof(GestureDetector))]
-	public sealed class GestureDetectorInspector : UnityEditor.Editor
+	internal sealed class GestureDetectorInspector : UnityEditor.Editor
 	{
 		private SerializedProperty _gestureId;
 		private SerializedProperty _gestureEvent;
 
-		private const string GestureIdField = "_gesture";
-		private const string GestureEventField = "_onGestureDetected";
+		private const string GESTURE_ID_FIELD = "_gesture";
 
-		private const string GestureSelectMessage = "Please select a Gesture.";
+		private const string GESTURE_EVENT_FIELD = "_onGestureDetected";
+
+		private const string GESTURE_SELECT_MESSAGE = "Please select a Gesture.";
 
 		private void OnEnable()
 		{
-			_gestureId = serializedObject.FindProperty(GestureIdField);
-			_gestureEvent = serializedObject.FindProperty(GestureEventField);
+			_gestureId = serializedObject.FindProperty(GESTURE_ID_FIELD);
+			_gestureEvent = serializedObject.FindProperty(GESTURE_EVENT_FIELD);
 		}
 
 		public override void OnInspectorGUI()
@@ -26,18 +27,18 @@ namespace Bose.Wearable.Editor.Inspectors
 			GestureId gestureId = (GestureId)_gestureId.intValue;
 			bool isGestureSelected = gestureId != (int) GestureId.None;
 
-			EditorGUILayout.PropertyField(_gestureId, WearableConstants.EmptyLayoutOptions);
+			EditorGUILayout.PropertyField(_gestureId, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 
 			if (!isGestureSelected)
 			{
-				EditorGUILayout.HelpBox(GestureSelectMessage, MessageType.Warning);
+				EditorGUILayout.HelpBox(GESTURE_SELECT_MESSAGE, MessageType.Warning);
 			}
 			else if (gestureId.IsGestureDeviceSpecific())
 			{
-				EditorGUILayout.HelpBox(WearableConstants.DeviceSpecificGestureDiscouragedWarning, MessageType.Warning);
+				EditorGUILayout.HelpBox(WearableEditorConstants.DEVICE_SPECIFIC_GESTURE_DISCOURAGED_WARNING, MessageType.Warning);
 			}
 
-			EditorGUILayout.PropertyField(_gestureEvent, WearableConstants.EmptyLayoutOptions);
+			EditorGUILayout.PropertyField(_gestureEvent, WearableEditorConstants.EMPTY_LAYOUT_OPTIONS);
 
 			serializedObject.ApplyModifiedProperties();
 		}

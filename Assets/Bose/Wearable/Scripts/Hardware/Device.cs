@@ -26,11 +26,6 @@ namespace Bose.Wearable
 		public string firmwareVersion;
 
 		/// <summary>
-		/// The connection state of this device.
-		/// </summary>
-		public bool isConnected;
-
-		/// <summary>
 		/// A bitfield that contains status of this device.
 		/// </summary>
 		public DeviceStatus deviceStatus;
@@ -77,6 +72,54 @@ namespace Bose.Wearable
 		/// Indicates the maximum number of sensors that can be active simultaneously.
 		/// </summary>
 		internal int maximumActiveSensors;
+
+		/// <summary>
+		/// The current Active Noise Reduction Mode of the device.
+		/// </summary>
+		public ActiveNoiseReductionMode activeNoiseReductionMode;
+
+		/// <summary>
+		/// A bitfield listing the available Active Noise Reduction Modes on the device. Use
+		/// <see cref="GetAvailableActiveNoiseReductionModes"/> and <see cref="IsActiveNoiseReductionModeAvailable"/> for
+		/// methods making use of this field.
+		/// </summary>
+		public int availableActiveNoiseReductionModes;
+
+		/// <summary>
+		/// Returns true if the Active Noise Reduction feature is available, otherwise false.
+		/// </summary>
+		public bool IsActiveNoiseReductionAvailable
+		{
+			get
+			{
+				return WearableTools.GetActiveNoiseReductionModesAsList(availableActiveNoiseReductionModes).Length > 0;
+			}
+		}
+
+		/// <summary>
+		/// The current Controllable Noise Cancellation level of the device. Values range between zero and
+		/// (<see cref="totalControllableNoiseCancellationLevels"/> - 1).
+		/// </summary>
+		public int controllableNoiseCancellationLevel;
+
+		/// <summary>
+		/// Whether or not the Controllable Noise Cancellation feature is currently enabled on this device.
+		/// </summary>
+		public bool controllableNoiseCancellationEnabled;
+
+		/// <summary>
+		///The total number of Controllable Noise Cancellation levels on this device. If the feature is not available
+		/// on the device, this value will be zero.
+		/// </summary>
+		public int totalControllableNoiseCancellationLevels;
+
+		/// <summary>
+		/// Returns true if the Noise Cancellation feature is available on this device, otherwise false.
+		/// </summary>
+		public bool IsControllableNoiseCancellationAvailable
+		{
+			get { return totalControllableNoiseCancellationLevels > 0; }
+		}
 
 		/// <summary>
 		/// Returns the <see cref="ProductType"/> of the device.
@@ -141,6 +184,46 @@ namespace Bose.Wearable
 			}
 
 			return signalStrength;
+		}
+
+		/// <summary>
+		/// Get a list of <see cref="ActiveNoiseReductionMode"/>s supported by the device. An empty list will be
+		/// returned if the feature is not supported.
+		/// </summary>
+		/// <returns></returns>
+		public ActiveNoiseReductionMode[] GetAvailableActiveNoiseReductionModes()
+		{
+			return WearableTools.GetActiveNoiseReductionModesAsList(availableActiveNoiseReductionModes);
+		}
+
+		/// <summary>
+		/// Returns true if a given <see cref="ActiveNoiseReductionMode"/> is available on this device.
+		/// </summary>
+		/// <param name="mode"></param>
+		/// <returns></returns>
+		public bool IsActiveNoiseReductionModeAvailable(ActiveNoiseReductionMode mode)
+		{
+			if (mode == ActiveNoiseReductionMode.Invalid)
+			{
+				return false;
+			}
+
+			// Check if the corresponding bit is set
+			return ((1 << (int) mode) & availableActiveNoiseReductionModes) != 0;
+		}
+
+		/// <summary>
+		/// Copies dynamic info into this device.
+		/// </summary>
+		internal void SetDynamicInfo(DynamicDeviceInfo dynamicDeviceInfo)
+		{
+			deviceStatus = dynamicDeviceInfo.deviceStatus;
+			transmissionPeriod = dynamicDeviceInfo.transmissionPeriod;
+			activeNoiseReductionMode = dynamicDeviceInfo.activeNoiseReductionMode;
+			availableActiveNoiseReductionModes = dynamicDeviceInfo.availableActiveNoiseReductionModes;
+			controllableNoiseCancellationLevel = dynamicDeviceInfo.controllableNoiseCancellationLevel;
+			totalControllableNoiseCancellationLevels = dynamicDeviceInfo.totalControllableNoiseCancellationLevels;
+			controllableNoiseCancellationEnabled = dynamicDeviceInfo.controllableNoiseCancellationEnabled;
 		}
 
 		#region IEquatable<Device>

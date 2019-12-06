@@ -1,30 +1,30 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Bose.Wearable.Editor.Inspectors
+namespace Bose.Wearable.Editor
 {
 	[CustomPropertyDrawer(typeof(WearableDeviceConfig))]
-	public sealed class WearableDeviceConfigDrawer : PropertyDrawer
+	internal sealed class WearableDeviceConfigDrawer : PropertyDrawer
 	{
 		// Property names
-		private const string SensorUpdateIntervalPropertyName = "updateInterval";
-		private const string AccelerometerConfigPropertyName = "accelerometer";
-		private const string GyroscopeConfigPropertyName = "gyroscope";
-		private const string RotationNineDofConfigPropertyName = "rotationNineDof";
-		private const string RotationSixDofConfigPropertyName = "rotationSixDof";
-		private const string DoubleTapPropertyName = "doubleTapGesture";
-		private const string HeadNodPropertyName = "headNodGesture";
-		private const string HeadShakePropertyName = "headShakeGesture";
-		private const string TouchAndHoldPropertyName = "touchAndHoldGesture";
-		private const string InputPropertyName = "inputGesture";
-		private const string AffirmativePropertyName = "affirmativeGesture";
-		private const string NegativePropertyName = "negativeGesture";
+		private const string SENSOR_UPDATE_INTERVAL_PROPERTY_NAME = "updateInterval";
+		private const string ACCELEROMETER_CONFIG_PROPERTY_NAME = "accelerometer";
+		private const string GYROSCOPE_CONFIG_PROPERTY_NAME = "gyroscope";
+		private const string ROTATION_NINE_DOF_CONFIG_PROPERTY_NAME = "rotationNineDof";
+		private const string ROTATION_SIX_DOF_CONFIG_PROPERTY_NAME = "rotationSixDof";
+		private const string DOUBLE_TAP_PROPERTY_NAME = "doubleTapGesture";
+		private const string HEAD_NOD_PROPERTY_NAME = "headNodGesture";
+		private const string HEAD_SHAKE_PROPERTY_NAME = "headShakeGesture";
+		private const string TOUCH_AND_HOLD_PROPERTY_NAME = "touchAndHoldGesture";
+		private const string INPUT_PROPERTY_NAME = "inputGesture";
+		private const string AFFIRMATIVE_PROPERTY_NAME = "affirmativeGesture";
+		private const string NEGATIVE_PROPERTY_NAME = "negativeGesture";
 
-		private const string EnabledPropertyName = "isEnabled";
+		private const string ENABLED_PROPERTY_NAME = "isEnabled";
 
 		// UI
-		private const string UnavailableSensorWarning = "{0} Sensor Not Available on the Connected Device.";
-		private const string UnavailableGestureWarning = "{0} Gesture Not Available on the Connected Device.";
+		private const string UNAVAILABLE_SENSOR_WARNING = "{0} Sensor Not Available on the Connected Device.";
+		private const string UNAVAILABLE_GESTURE_WARNING = "{0} Gesture Not Available on the Connected Device.";
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
@@ -41,7 +41,7 @@ namespace Bose.Wearable.Editor.Inspectors
 				position.x,
 				position.y,
 				position.width,
-				WearableConstants.SingleLineHeight);
+				WearableEditorConstants.SINGLE_LINE_HEIGHT);
 			GUI.Label(titleRect, "Sensors", EditorStyles.boldLabel);
 
 			var indent = EditorGUI.indentLevel;
@@ -52,16 +52,16 @@ namespace Bose.Wearable.Editor.Inspectors
 				position.x,
 				titleRect.y + titleRect.height,
 				position.width,
-				WearableConstants.SingleLineHeight);
+				WearableEditorConstants.SINGLE_LINE_HEIGHT);
 
 			EditorGUI.BeginDisabledGroup(HasAnySensorsEnabled(property));
-			var sensorUpdateProp = property.FindPropertyRelative(SensorUpdateIntervalPropertyName);
+			var sensorUpdateProp = property.FindPropertyRelative(SENSOR_UPDATE_INTERVAL_PROPERTY_NAME);
 			EditorGUI.PropertyField(sensorUpdateIntervalRect, sensorUpdateProp);
 			EditorGUI.EndDisabledGroup();
 
 
 			// Accelerometer
-			var accelProp = property.FindPropertyRelative(AccelerometerConfigPropertyName);
+			var accelProp = property.FindPropertyRelative(ACCELEROMETER_CONFIG_PROPERTY_NAME);
 			var accelRect = new Rect(
 				position.x,
 				sensorUpdateIntervalRect.y + sensorUpdateIntervalRect.height,
@@ -76,15 +76,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					accelRect.y + accelRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					accelWarningRect,
-					string.Format(UnavailableSensorWarning, SensorId.Accelerometer),
+					string.Format(UNAVAILABLE_SENSOR_WARNING, SensorId.Accelerometer),
 					MessageType.Warning);
 			}
 
 			// Gyroscope
-			var gyroProp = property.FindPropertyRelative(GyroscopeConfigPropertyName);
+			var gyroProp = property.FindPropertyRelative(GYROSCOPE_CONFIG_PROPERTY_NAME);
 			var gyroRect = new Rect(
 				position.x,
 				accelWarningRect.y + accelWarningRect.height,
@@ -99,15 +99,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					gyroRect.y + gyroRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					gyroWarningRect,
-					string.Format(UnavailableSensorWarning, SensorId.Gyroscope),
+					string.Format(UNAVAILABLE_SENSOR_WARNING, SensorId.Gyroscope),
 					MessageType.Warning);
 			}
 
 			// Rotation (Nine Dof)
-			var rotNineProp = property.FindPropertyRelative(RotationNineDofConfigPropertyName);
+			var rotNineProp = property.FindPropertyRelative(ROTATION_NINE_DOF_CONFIG_PROPERTY_NAME);
 			var rotNineRect = new Rect(
 				position.x,
 				gyroWarningRect.y + gyroWarningRect.height,
@@ -122,15 +122,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					rotNineRect.y + rotNineRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					rotNineWarningRect,
-					string.Format(UnavailableSensorWarning, SensorId.RotationNineDof),
+					string.Format(UNAVAILABLE_SENSOR_WARNING, SensorId.RotationNineDof),
 					MessageType.Warning);
 			}
 
 			// Rotation (Six Dof)
-			var rotSixProp = property.FindPropertyRelative(RotationSixDofConfigPropertyName);
+			var rotSixProp = property.FindPropertyRelative(ROTATION_SIX_DOF_CONFIG_PROPERTY_NAME);
 			var rotSixRect = new Rect(
 				position.x,
 				rotNineRect.y + rotNineRect.height,
@@ -145,10 +145,10 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					rotSixRect.y + rotSixRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					rotSixWarningRect,
-					string.Format(UnavailableSensorWarning, SensorId.RotationSixDof),
+					string.Format(UNAVAILABLE_SENSOR_WARNING, SensorId.RotationSixDof),
 					MessageType.Warning);
 			}
 
@@ -157,11 +157,11 @@ namespace Bose.Wearable.Editor.Inspectors
 				position.x,
 				rotSixWarningRect.y + rotSixWarningRect.height,
 				position.width,
-				WearableConstants.SingleLineHeight);
+				WearableEditorConstants.SINGLE_LINE_HEIGHT);
 			EditorGUI.LabelField(gesturesLabelRect, "Gestures", EditorStyles.boldLabel);
 
 			// Double Tap
-			var doubleTapProp = property.FindPropertyRelative(DoubleTapPropertyName);
+			var doubleTapProp = property.FindPropertyRelative(DOUBLE_TAP_PROPERTY_NAME);
 			var doubleTapRect = new Rect(
 				position.x,
 				gesturesLabelRect.y + gesturesLabelRect.height,
@@ -176,15 +176,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					doubleTapRect.y + doubleTapRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					doubleTapWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.DoubleTap),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.DoubleTap),
 					MessageType.Warning);
 			}
 
 			// Head Nod
-			var headNodProp = property.FindPropertyRelative(HeadNodPropertyName);
+			var headNodProp = property.FindPropertyRelative(HEAD_NOD_PROPERTY_NAME);
 			var headNodRect = new Rect(
 				position.x,
 				doubleTapWarningRect.y + doubleTapWarningRect.height,
@@ -199,15 +199,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					headNodRect.y + headNodRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					headNodWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.HeadNod),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.HeadNod),
 					MessageType.Warning);
 			}
 
 			// Head Shake
-			var headShakeProp = property.FindPropertyRelative(HeadShakePropertyName);
+			var headShakeProp = property.FindPropertyRelative(HEAD_SHAKE_PROPERTY_NAME);
 			var headShakeRect = new Rect(
 				position.x,
 				headNodWarningRect.y + headNodWarningRect.height,
@@ -222,15 +222,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					headShakeRect.y + headShakeRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					headShakeWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.HeadShake),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.HeadShake),
 					MessageType.Warning);
 			}
 
 			// Touch and Hold
-			var touchAndHoldProp = property.FindPropertyRelative(TouchAndHoldPropertyName);
+			var touchAndHoldProp = property.FindPropertyRelative(TOUCH_AND_HOLD_PROPERTY_NAME);
 			var touchAndHoldRect = new Rect(
 				position.x,
 				headShakeWarningRect.y + headShakeWarningRect.height,
@@ -245,15 +245,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					touchAndHoldRect.y + touchAndHoldRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					touchAndHoldWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.TouchAndHold),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.TouchAndHold),
 					MessageType.Warning);
 			}
 
 			// Input
-			var inputProp = property.FindPropertyRelative(InputPropertyName);
+			var inputProp = property.FindPropertyRelative(INPUT_PROPERTY_NAME);
 			var inputRect = new Rect(
 				position.x,
 				touchAndHoldWarningRect.y + touchAndHoldWarningRect.height,
@@ -268,15 +268,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					inputRect.y + inputRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					inputWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.Input),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.Input),
 					MessageType.Warning);
 			}
 
 			// Affirmative
-			var affirmativeProp = property.FindPropertyRelative(AffirmativePropertyName);
+			var affirmativeProp = property.FindPropertyRelative(AFFIRMATIVE_PROPERTY_NAME);
 			var affirmativeRect = new Rect(
 				position.x,
 				inputWarningRect.y + inputWarningRect.height,
@@ -291,15 +291,15 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					affirmativeRect.y + affirmativeRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					affirmativeWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.Affirmative),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.Affirmative),
 					MessageType.Warning);
 			}
 
 			// Negative
-			var negativeProp = property.FindPropertyRelative(NegativePropertyName);
+			var negativeProp = property.FindPropertyRelative(NEGATIVE_PROPERTY_NAME);
 			var negativeRect = new Rect(
 				position.x,
 				affirmativeWarningRect.y + affirmativeWarningRect.height,
@@ -314,10 +314,10 @@ namespace Bose.Wearable.Editor.Inspectors
 					position.x,
 					negativeRect.y + negativeRect.height,
 					position.width,
-					WearableConstants.SingleLineHeight * 2);
+					WearableEditorConstants.SINGLE_LINE_HEIGHT * 2);
 				EditorGUI.HelpBox(
 					negativeWarningRect,
-					string.Format(UnavailableGestureWarning, GestureId.Negative),
+					string.Format(UNAVAILABLE_GESTURE_WARNING, GestureId.Negative),
 					MessageType.Warning);
 			}
 
@@ -329,21 +329,21 @@ namespace Bose.Wearable.Editor.Inspectors
 		{
 			var newProps = new[]
 			{
-				property.FindPropertyRelative(SensorUpdateIntervalPropertyName),
-				property.FindPropertyRelative(AccelerometerConfigPropertyName),
-				property.FindPropertyRelative(GyroscopeConfigPropertyName),
-				property.FindPropertyRelative(RotationNineDofConfigPropertyName),
-				property.FindPropertyRelative(RotationSixDofConfigPropertyName),
-				property.FindPropertyRelative(DoubleTapPropertyName),
-				property.FindPropertyRelative(HeadNodPropertyName),
-				property.FindPropertyRelative(HeadShakePropertyName),
-				property.FindPropertyRelative(TouchAndHoldPropertyName),
-				property.FindPropertyRelative(InputPropertyName),
-				property.FindPropertyRelative(AffirmativePropertyName),
-				property.FindPropertyRelative(NegativePropertyName)
+				property.FindPropertyRelative(SENSOR_UPDATE_INTERVAL_PROPERTY_NAME),
+				property.FindPropertyRelative(ACCELEROMETER_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(GYROSCOPE_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(ROTATION_NINE_DOF_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(ROTATION_SIX_DOF_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(DOUBLE_TAP_PROPERTY_NAME),
+				property.FindPropertyRelative(HEAD_NOD_PROPERTY_NAME),
+				property.FindPropertyRelative(HEAD_SHAKE_PROPERTY_NAME),
+				property.FindPropertyRelative(TOUCH_AND_HOLD_PROPERTY_NAME),
+				property.FindPropertyRelative(INPUT_PROPERTY_NAME),
+				property.FindPropertyRelative(AFFIRMATIVE_PROPERTY_NAME),
+				property.FindPropertyRelative(NEGATIVE_PROPERTY_NAME)
 			};
 
-			var height = WearableConstants.SingleLineHeight * 2;
+			var height = WearableEditorConstants.SINGLE_LINE_HEIGHT * 2;
 			for (var i = 0; i < newProps.Length; i++)
 			{
 				height += EditorGUI.GetPropertyHeight(newProps[i]);
@@ -358,19 +358,19 @@ namespace Bose.Wearable.Editor.Inspectors
 
 			if (canShowWarning)
 			{
-				for (var i = 0; i < WearableConstants.SensorIds.Length; i++)
+				for (var i = 0; i < WearableConstants.SENSOR_IDS.Length; i++)
 				{
-					var sensorId = WearableConstants.SensorIds[i];
+					var sensorId = WearableConstants.SENSOR_IDS[i];
 					var sensor = wearableControl.GetWearableSensorById(sensorId);
 					if (!sensor.IsAvailable)
 					{
-						height += WearableConstants.SingleLineHeight * 2;
+						height += WearableEditorConstants.SINGLE_LINE_HEIGHT * 2;
 					}
 				}
 
-				for (var i = 0; i < WearableConstants.GestureIds.Length; i++)
+				for (var i = 0; i < WearableConstants.GESTURE_IDS.Length; i++)
 				{
-					var gestureId = WearableConstants.GestureIds[i];
+					var gestureId = WearableConstants.GESTURE_IDS[i];
 					if (gestureId == GestureId.None)
 					{
 						continue;
@@ -379,7 +379,7 @@ namespace Bose.Wearable.Editor.Inspectors
 					var gesture = wearableControl.GetWearableGestureById(gestureId);
 					if (!gesture.IsAvailable)
 					{
-						height += WearableConstants.SingleLineHeight * 2;
+						height += WearableEditorConstants.SINGLE_LINE_HEIGHT * 2;
 					}
 				}
 			}
@@ -396,16 +396,16 @@ namespace Bose.Wearable.Editor.Inspectors
 		{
 			var newProps = new[]
 			{
-				property.FindPropertyRelative(AccelerometerConfigPropertyName),
-				property.FindPropertyRelative(GyroscopeConfigPropertyName),
-				property.FindPropertyRelative(RotationNineDofConfigPropertyName),
-				property.FindPropertyRelative(RotationSixDofConfigPropertyName)
+				property.FindPropertyRelative(ACCELEROMETER_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(GYROSCOPE_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(ROTATION_NINE_DOF_CONFIG_PROPERTY_NAME),
+				property.FindPropertyRelative(ROTATION_SIX_DOF_CONFIG_PROPERTY_NAME)
 			};
 
 			var numberOfSensorsActive = 0;
 			for (var i = 0; i < newProps.Length; i++)
 			{
-				if (!newProps[i].FindPropertyRelative(EnabledPropertyName).boolValue)
+				if (!newProps[i].FindPropertyRelative(ENABLED_PROPERTY_NAME).boolValue)
 				{
 					continue;
 				}

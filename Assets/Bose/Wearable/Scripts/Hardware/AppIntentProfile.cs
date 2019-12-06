@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Bose.Wearable
 {
 	[CreateAssetMenu(fileName = "App Intent Profile", menuName = "Bose Wearable/App Intent Profile")]
-	public class AppIntentProfile : ScriptableObject
+	public sealed class AppIntentProfile : ScriptableObject
 	{
 		[SerializeField]
 		private List<SensorId> _sensors;
@@ -187,12 +187,12 @@ namespace Bose.Wearable
 
 		public override string ToString()
 		{
-			const string ItemSeparator = ", ";
-			const string NoneLabel = "None";
-			const string SensorsLabel = "Sensors: ";
-			const string GesturesLabel = "Gestures: ";
-			const string IntervalsLabel = "Intervals: ";
-			const string IntervalFormat = "{0}ms";
+			const string ITEM_SEPARATOR = ", ";
+			const string NONE_LABEL = "None";
+			const string SENSORS_LABEL = "Sensors: ";
+			const string GESTURES_LABEL = "Gestures: ";
+			const string INTERVALS_LABEL = "Intervals: ";
+			const string INTERVAL_FORMAT = "{0}ms";
 
 			if (_stringBuilder == null)
 			{
@@ -203,7 +203,7 @@ namespace Bose.Wearable
 				_stringBuilder.Length = 0;
 			}
 
-			_stringBuilder.Append(SensorsLabel);
+			_stringBuilder.Append(SENSORS_LABEL);
 			for (int i = 0; i < _sensors.Count; i++)
 			{
 				SensorId id = _sensors[i];
@@ -212,49 +212,49 @@ namespace Bose.Wearable
 
 				if (i != _sensors.Count - 1)
 				{
-					_stringBuilder.Append(ItemSeparator);
+					_stringBuilder.Append(ITEM_SEPARATOR);
 				}
 			}
 
 			if (_sensors.Count == 0)
 			{
-				_stringBuilder.Append(NoneLabel);
+				_stringBuilder.Append(NONE_LABEL);
 			}
 
 			_stringBuilder.AppendLine();
-			_stringBuilder.Append(IntervalsLabel);
+			_stringBuilder.Append(INTERVALS_LABEL);
 			for (int i = 0; i < _intervals.Count; i++)
 			{
 				_stringBuilder.AppendFormat(
-					IntervalFormat,
+					INTERVAL_FORMAT,
 					((int) WearableTools.SensorUpdateIntervalToMilliseconds(_intervals[i])).ToString());
 
 				if (i != _intervals.Count - 1)
 				{
-					_stringBuilder.Append(ItemSeparator);
+					_stringBuilder.Append(ITEM_SEPARATOR);
 				}
 			}
 
 			if (_intervals.Count == 0)
 			{
-				_stringBuilder.Append(NoneLabel);
+				_stringBuilder.Append(NONE_LABEL);
 			}
 
 			_stringBuilder.AppendLine();
-			_stringBuilder.Append(GesturesLabel);
+			_stringBuilder.Append(GESTURES_LABEL);
 			for (int i = 0; i < _gestures.Count; i++)
 			{
 				_stringBuilder.Append(_gestures[i].ToString());
 
 				if (i != _gestures.Count - 1)
 				{
-					_stringBuilder.Append(ItemSeparator);
+					_stringBuilder.Append(ITEM_SEPARATOR);
 				}
 			}
 
 			if (_gestures.Count == 0)
 			{
-				_stringBuilder.Append(NoneLabel);
+				_stringBuilder.Append(NONE_LABEL);
 			}
 
 			return _stringBuilder.ToString();

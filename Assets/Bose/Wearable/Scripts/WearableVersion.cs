@@ -3,10 +3,10 @@
 namespace Bose.Wearable
 {
 	/// <summary>
-	/// Version information for the Bose Wearable SDK.
+	/// Version information for the Bose AR SDK for Unity.
 	/// </summary>
 	public static class WearableVersion
 	{
-		public const string UnitySdkVersion = "0.15.0";
+		public const string UnitySdkVersion = "4.0.5";
 	}
 }
