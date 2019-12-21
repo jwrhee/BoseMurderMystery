@@ -20,6 +20,9 @@ public class GameUI : MonoBehaviour
 
     public GameObject characterSelectMenu;
 
+    public GameObject InstructionPanel;
+    public Text InstructionPanelText;
+
     private bool isBoseConnected;
 
     void Awake() 
@@ -38,6 +41,7 @@ public class GameUI : MonoBehaviour
         nextMenu.SetActive(false);
         yesNoMenu.SetActive(false);
         characterSelectMenu.SetActive(false);
+        InstructionPanel.SetActive(false);
     }
 
     public void SetNextState() 
@@ -47,6 +51,7 @@ public class GameUI : MonoBehaviour
             nextMenu.SetActive(true);
             yesNoMenu.SetActive(false);
             characterSelectMenu.SetActive(false);
+            InstructionPanel.SetActive(false);
         } else
         {
             DisableMenu();
@@ -61,9 +66,12 @@ public class GameUI : MonoBehaviour
             nextMenu.SetActive(false);
             yesNoMenu.SetActive(true);
             characterSelectMenu.SetActive(false);
+            InstructionPanel.SetActive(false);
         } else
         {
             DisableMenu();
+            InstructionPanelText.text = "Shake or nod head";
+            InstructionPanel.SetActive(true);
         }
         
     }
@@ -75,6 +83,7 @@ public class GameUI : MonoBehaviour
             nextMenu.SetActive(false);
             yesNoMenu.SetActive(false);
             characterSelectMenu.SetActive(true);
+            InstructionPanel.SetActive(false);
 
             // Disable all character buttons 
             foreach (var button in chrButtons)
@@ -96,6 +105,8 @@ public class GameUI : MonoBehaviour
         } else
         {
             DisableMenu();
+            InstructionPanelText.text = "Look around and nod head to select character";
+            InstructionPanel.SetActive(true);
         }
         
     }
@@ -131,5 +142,10 @@ public class GameUI : MonoBehaviour
     {
         isBoseConnected = (status == Bose.Wearable.ConnectionStatus.Connected);
         Debug.Log("bose glasses status " + isBoseConnected);
+    }
+
+    private void OnDisable()
+    {
+        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged -= OnBoseConnectStatusChange;
     }
 }
