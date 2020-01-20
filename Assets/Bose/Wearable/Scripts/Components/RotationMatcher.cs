@@ -99,7 +99,7 @@ namespace Bose.Wearable
 
 		private void Awake()
 		{
-			_mode = RotationReference.Absolute;
+			_mode = RotationReference.Relative;
 			_inverseReference = Quaternion.identity;
 			_requirement = null;
 			_wearableControl = WearableControl.Instance;
