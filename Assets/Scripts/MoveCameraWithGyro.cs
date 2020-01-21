@@ -10,7 +10,8 @@ public class MoveCameraWithGyro : MonoBehaviour
 
     private void OnEnable()
     {
-        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
+        if (Bose.Wearable.WearableControl.Instance)
+            Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
     }
 
     // Start is called before the first frame update
@@ -21,7 +22,8 @@ public class MoveCameraWithGyro : MonoBehaviour
 
     private void OnDisable()
     {
-        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged -= OnBoseConnectStatusChange;
+        if (Bose.Wearable.WearableControl.Instance)
+            Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged -= OnBoseConnectStatusChange;
     }
 
     // Update is called once per frame

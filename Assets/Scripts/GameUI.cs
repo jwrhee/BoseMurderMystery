@@ -28,7 +28,8 @@ public class GameUI : MonoBehaviour
     void Awake() 
     {
         instance = this;
-        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
+        if (Bose.Wearable.WearableControl.Instance)
+            Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged += OnBoseConnectStatusChange;
     }
 
     public bool GetBoseConnected()
@@ -146,6 +147,7 @@ public class GameUI : MonoBehaviour
 
     private void OnDisable()
     {
-        Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged -= OnBoseConnectStatusChange;
+        if (Bose.Wearable.WearableControl.Instance)
+            Bose.Wearable.WearableControl.Instance.ConnectionStatusChanged -= OnBoseConnectStatusChange;
     }
 }
